@@ -11,7 +11,7 @@ const { getEnv, unpackMongodbConfig, unpackKOPPSConfig, unpackApiKeysConfig, dev
 const { safeGet } = require('safe-utils')
 
 // DEFAULT SETTINGS used for dev, if you want to override these for you local environment, use env-vars in .env
-const devPrefixPath = devDefaults('/api/kursinfo')
+const devPrefixPath = devDefaults('/api/kursplan')
 const devSsl = devDefaults(false)
 const devPort = devDefaults(3001)
 const devMongodb = devDefaults('mongodb://localhost:27017/kursinfo')
