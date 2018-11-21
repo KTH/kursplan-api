@@ -25,6 +25,7 @@
     "express": "^4.14.0",
     "express-handlebars": "^3.0.0",
     "kth-node-access-log": "KTH/kth-node-access-log.git#v1.0.0",
+    "kth-node-api-call": "^2.0.0",
     "kth-node-api-common": "^0.1.5",
     "kth-node-api-key-strategy": "^1.0.5",
     "kth-node-configuration": "^1.6.4",
@@ -36,6 +37,7 @@
     "kth-node-server": "^3.1.1",
     "mongoose": "^4.5.8",
     "passport": "^0.4.0",
+    "pdfkit": "^0.8.3",
     "safe-utils": "0.2.1",
     "swagger-ui": "^2.1.5"
   },

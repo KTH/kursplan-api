@@ -14,10 +14,10 @@ const { safeGet } = require('safe-utils')
 const devPrefixPath = devDefaults('/api/kursplan')
 const devSsl = devDefaults(false)
 const devPort = devDefaults(3001)
-const devMongodb = devDefaults('mongodb://localhost:27017/kursinfo')
+const devMongodb = devDefaults('mongodb://localhost:27017/kursplan')
 
 // EXAMPLE: const devApiKeys = devDefaults('?name=devClient&apiKey=SET_YOUR_API_KEY&scope=write&scope=read')
-const devApiKeys = devDefaults('?name=devClient&apiKey=&scope=write&scope=read')
+const devApiKeys = devDefaults('?name=devClient&apiKey=123&scope=write&scope=read')
 const devKOPPSURI = devDefaults('https://kopps-r.referens.sys.kth.se/api/kopps/v2/?defaultTimeout=60000')
 // END DEFAULT SETTINGS
 
@@ -36,7 +36,7 @@ module.exports = {
   },
 
   // API keys
-  api_keys: unpackApiKeysConfig('API_KEYS', devApiKeys),
+  api_keys: unpackApiKeysConfig('KURSPLAN_API_KEYS', devApiKeys),
 
   // Services
   db: unpackMongodbConfig('MONGODB_URI', devMongodb),

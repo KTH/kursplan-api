@@ -5,5 +5,5 @@ module.exports = {
   System: require('./systemCtrl'),
 
   // Replace with actual API controller
-  Sample: require('./sampleCtrl')
+  Syllabus: require('./syllabusCtrl')
 }

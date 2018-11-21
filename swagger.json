@@ -5,7 +5,7 @@
     "description": "Template API project for Node.js",
     "version": "1.0.0"
   },
-  "basePath": "/api/kursinfo",
+  "basePath": "/api/kursplan",
   "produces": [
     "application/json"
   ],
@@ -39,6 +39,51 @@
           ]
         }
       }
+    },
+    "/v1/syllabus/{courseCode}/{semester}":{  
+      "get":{  
+         "operationId":"getSyllabusByCourseCode",
+         "summary":"Get Syllabus",
+         "description":"Gets some form of data that only requires read access",
+         "parameters":[  
+            {  
+               "name":"courseCode",
+               "in":"path",
+               "description":"course code that has the syllabus",
+               "required":true,
+               "type":"string"
+            },
+            {  
+              "name":"semester",
+              "in":"path",
+              "description":"semester for the syllabus",
+              "required":true,
+              "type":"string"
+           }
+         ],
+         "tags":[  
+            "v1"
+         ],
+         "responses":{  
+            "200":{  
+               "description":"The requested data",
+               "schema":{  
+                  "$ref":"#/definitions/Syllabus"
+               }
+            },
+            "default":{  
+               "description":"Unexpected error",
+               "schema":{  
+                  "$ref":"#/definitions/Error"
+               }
+            }
+         },
+         "security":{  
+            "api_key":[  
+               "read"
+            ]
+         }
+        }
     },
     "/v1/data/{id}": {
       "get": {
@@ -133,6 +178,18 @@
     }
   },
   "definitions": {
+    "Syllabus": {
+      "properties": {
+        "courseCode": {
+          "type": "string",
+          "description": "Unique identifier representing some specific data"
+        },
+        "courseTitle": {
+          "type": "string",
+          "description": "Description of the data"
+        }
+      }
+    },
     "Data": {
       "properties": {
         "id": {
