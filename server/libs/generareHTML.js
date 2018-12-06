@@ -21,7 +21,9 @@ module.exports = function (syllabusObject, semester, lang = 'sv'){
         </h1>
         <h2 class="secondTitle">
             <span property="teach:courseTitle">${titleData.course_other_title}</span>
-        </h2> `
+        </h2>
+        <p>${validFromHtml(selectedSyllabus, language, syllabusObject.course.courseCode, "title") }</p>
+         `
 
     const keyData ={
         course_grade_scale: isValidData(syllabusObject.formattedGradeScales[syllabusObject.course.gradeScaleCode],language), //TODO: can this be an array?
@@ -59,15 +61,11 @@ module.exports = function (syllabusObject, semester, lang = 'sv'){
         bodyHTML += toHeaderAndText(i18n.messages[language].courseInformation[key], bodyInformation[key])
     })
 
-    const footerTextTranslation = i18n.messages[language].course_pdf_footer_string
-    const footerText = footerTextTranslation.for_code + syllabusObject.course.courseCode + 
-                   footerTextTranslation.valid_from + footerTextTranslation.semester[Number(selectedSyllabus.semesterNumber)] + 
-                   selectedSyllabus.year+ 
-                   footerTextTranslation.edition + selectedSyllabus.edition
+    
 
     console.log("!!pageContentHtml: OK !!")
     const pageContentHtml = topHtml(titleData.course_code) + titleHTML + keyInformation + bodyHTML + bottomHtml()
-    
+    const footerText = validFromHtml(selectedSyllabus, language, syllabusObject.course.courseCode, "footer") 
     return {pageContentHtml, footerText}
 }
 
@@ -78,6 +76,14 @@ function toHeaderAndText(header, text){
           <p> ${text} </p> 
         </div>`
     )
+}
+
+function validFromHtml(selectedSyllabus, language, courseCode, type){
+    const translation = i18n.messages[language].course_pdf_footer_string
+    const addText = type === "footer" ? translation.edition + selectedSyllabus.edition : ""
+    return( translation.for_code + courseCode + 
+            translation.valid_from + translation.semester[Number(selectedSyllabus.semesterNumber)] + 
+            selectedSyllabus.year + addText )      
 }
 
 function getExamObject(dataObject, grades, language = 0){

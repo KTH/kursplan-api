@@ -1,7 +1,8 @@
 'use strict'
 
 /**
- * Sample API controller. Can safely be removed.
+ * Syllabus controller is getting syllabus information using kopps api and creates
+ * html and configurations for pdf
  */
 
 const Sample = require('../models').sample.Sample
