@@ -1,8 +1,8 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "Node API",
-    "description": "Template API project for Node.js",
+    "title": "Kursplan API",
+    "description": "Creates html and configuration for showing course syllabus information based on course code and semester",
     "version": "1.0.0"
   },
   "basePath": "/api/kursplan",
@@ -40,26 +40,33 @@
         }
       }
     },
-    "/v1/syllabus/{courseCode}/{semester}":{  
+    "/v1/syllabus/{courseCode}/{semester}/{language}":{  
       "get":{  
          "operationId":"getSyllabusByCourseCode",
          "summary":"Get Syllabus",
-         "description":"Gets some form of data that only requires read access",
+         "description":"Gets html and configuration for syllabus pdf",
          "parameters":[  
             {  
                "name":"courseCode",
                "in":"path",
-               "description":"course code that has the syllabus",
+               "description":"Course code that has the requested syllabus",
                "required":true,
                "type":"string"
             },
             {  
               "name":"semester",
               "in":"path",
-              "description":"semester for the syllabus",
+              "description":"Semester, five digits, with the year and semester number    (Fall: 1, Spring: 2, ex: 20102) for the requested syllabus ",
               "required":true,
               "type":"string"
-           }
+           },
+           {  
+            "name":"language",
+            "in":"path",
+            "description":"Language for the response, 'sv': Swedish, 'en': English, default is 'sv'",
+            "required":false,
+            "type":"string"
+         }
          ],
          "tags":[  
             "v1"
@@ -84,86 +91,6 @@
             ]
          }
         }
-    },
-    "/v1/data/{id}": {
-      "get": {
-        "operationId": "getDataById",
-        "summary": "Get data",
-        "description": "Gets some form of data that only requires read access",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "Id of data to get",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "tags": [
-          "v1"
-        ],
-        "responses": {
-          "200": {
-            "description": "The requested data",
-            "schema": {
-              "$ref": "#/definitions/Data"
-            }
-          },
-          "default": {
-            "description": "Unexpected error",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          }
-        },
-        "security": {
-          "api_key": [
-            "read"
-          ]
-        }
-      },
-      "post": {
-        "operationId": "postDataById",
-        "summary": "Saves an object in the database",
-        "description": "Saves changes to an object in the database",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "Id of the data to save",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "data",
-            "in": "body",
-            "description": "The data to save",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/Data"
-            }
-          }
-        ],
-        "tags": [
-          "v1"
-        ],
-        "responses": {
-          "200": {
-            "description": "A successful save"
-          },
-          "default": {
-            "description": "Unexpected error",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          }
-        },
-        "security": {
-          "api_key": [
-            "write"
-          ]
-        }
-      }
     }
   },
   "securityDefinitions": {

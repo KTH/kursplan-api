@@ -7,13 +7,9 @@
 const Sample = require('../models').sample.Sample
 const co = require('co')
 const { safeGet } = require('safe-utils')
-const PDFDocument = require('pdfkit')
-
-
+const generateHTML = require('../libs/generareHTML')
 
 module.exports = {
-  getData: co.wrap(getData),
-  postData: co.wrap(postData),
   getSyllabus: co.wrap(getSyllabus)
 }
 
@@ -31,87 +27,41 @@ let koppsApiInternal = new BasicAPI({
 })
 
 
-
-function * getData (req, res, next) {
-  try {
-    let doc = {}
-    if (process.env.NODE_MOCK) {
-      doc = yield { _id: 0, name: 'mockdata' }
-    } else {
-      doc = yield Sample.findById(req.params.id)
-    }
-
-    if (!doc) {
-      return next()
-    }
-
-    res.json({ id: doc._id, name: doc.name })
-  } catch (err) {
-    next(err)
-  }
-}
-
 function * getSyllabus (req, res, next) {
 
   const courseCode = req.params.courseCode
   const semester = req.params.semester
-
-  res.writeHead( 200, {
-    'Content-Type': 'application/pdf',
-    'Content-Disposition': 'attachment; filename=Kursplan.pdf'
-    } )
-  var doc = new PDFDocument()
-  doc.info.Title="Kursplan_"
-  doc.pipe(res)  
-  doc.circle(280, 200, 50).fill("#6600FF")
-  var lorem = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam in suscipit purus.  Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Vivamus nec hendrerit felis. Morbi aliquam facilisis risus eu lacinia. Sed eu leo in turpis fringilla hendrerit. Ut nec accumsan nisl.'
-  doc.text(lorem,{
-    width: 412,
-    align: 'justify',
-    indent: 30,
-    columns: 2,
-    height: 300,
-    ellipsis: true,
-    color: '#0000FF'
-  })
-  doc.text(lorem)
-  doc.text(lorem)
-  doc.text(lorem)
-  doc.text(lorem)
-  doc.addPage().fillColor('blue')
-  .text('Here is a link!').underline(100, 100, 160, 27, {
-    color: '#0000FF'
-  }).link(100, 100, 160, 27, 'http://google.com/')
-  doc.end()
-
-  console.log("!!!",res)
+  const language = req.params.language.length === 2 ? req.params.language : "sv"
+  
   try {
     let syllabus = {}
-    //const syllabuskoppsAPI_course_tot = yield koppsApiInternal.getAsync(`courses/${courseCode}`)
-    //syllabus = syllabuskoppsAPI_course_tot.body
-    //console.log("syllabus",syllabus);
-    
-    //res.json({ courseCode: courseCode, courseTitle: semester})
-  } catch (err) {
-    next(err)
-  }
-}
-
-function * postData (req, res, next) {
-  try {
-    let doc = yield Sample.findById(req.params.id)
-
-    if (!doc) {
-      doc = new Sample({
-        _id: req.params.id,
-        name: req.body.name
-      })
-    } else {
-      doc.name = req.body.name
+    const syllabuskoppsAPI_course_tot = yield koppsApiInternal.getAsync(`syllabuses/${courseCode}/${semester}?lang=${language}`)
+    syllabus = syllabuskoppsAPI_course_tot.body
+   
+    const syllabusHTML = generateHTML(syllabus, semester, language)
+    //console.log("syllabus",syllabusHTML)
+    const pdfConfig = {
+      "format": "A4",        
+      "orientation": "portrait", 
+      "border": "0",           
+      paginationOffset: 1,       // Override the initial pagination number
+      "header": {
+        "height": "15mm",
+        "contents": ""
+      },
+      "footer": {
+        "height": "18mm",
+        "contents": {
+          default: `<div class="pdfFooterText" style="text-align: left;"> ${syllabusHTML.footerText}. <div style="text-align: right;">Sida {{page}} av {{pages}}</div></div> `,
+        }
+      },
+      "zoomFactor": "1",
+      "base": "https://www.kth.se", 
+      "type": "pdf"
     }
 
-    yield doc.save()
-    res.json({ id: doc._id, name: doc.name })
+    res.send({ syllabusHTML, pdfConfig})
+
   } catch (err) {
     next(err)
   }
