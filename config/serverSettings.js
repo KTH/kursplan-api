@@ -39,7 +39,7 @@ module.exports = {
   api_keys: unpackApiKeysConfig('KURSPLAN_API_KEYS', devApiKeys),
 
   // Services
-  db: unpackMongodbConfig('MONGODB_URI', devMongodb),
+  db: unpackMongodbConfig('KURSPLAN_MONGODB_URI', devMongodb),
 
   // Logging
   logging: {

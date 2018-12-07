@@ -32,7 +32,7 @@ module.exports = {
     lang_block_id: '1.77273',
     locale_text: 'Course information in English',
 
-    site_name: 'Kursinformation',
+    site_name: 'Kursplan',
     host_name: 'KTH'
   },
   courseInformationLabels: {
