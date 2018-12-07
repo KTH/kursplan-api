@@ -54,11 +54,15 @@ module.exports = function (syllabusObject, semester, lang = 'sv'){
     }
 
     let bodyHTML = ""
+    let styleClass = ""
     Object.keys(bodyInformation).forEach(function (key) {
         if(bodyInformation[key].length > 0 
-            || key === 'course_literature' || key === 'course_eligibility' 
-            || key === 'course_goals' || key === 'course_content' || key === 'course_examination')
-        bodyHTML += toHeaderAndText(i18n.messages[language].courseInformation[key], bodyInformation[key])
+           || key === 'course_literature' || key === 'course_eligibility' 
+           || key === 'course_goals' || key === 'course_content' || key === 'course_examination'){
+            styleClass = key === 'course_goals' ? 'pdfSection1' : 'pdfSection'
+            console.log("text length", bodyInformation[key].length)
+            bodyHTML += toHeaderAndText(i18n.messages[language].courseInformation[key], bodyInformation[key], styleClass)
+        }
     })
 
     
@@ -69,9 +73,9 @@ module.exports = function (syllabusObject, semester, lang = 'sv'){
     return {pageContentHtml, footerText}
 }
 
-function toHeaderAndText(header, text){
+function toHeaderAndText(header, text, styleClass){
     return(
-        `<div>
+        `<div class="${styleClass}" >
           <h3>${header}</h3>
           <p> ${text} </p> 
         </div>`
@@ -110,9 +114,10 @@ function topHtml(courseCode){
         body{ background-color:#ffffff; font-size:11px; margin-left:40px; margin-right:40px; line-height: 15px;}
         #kth-logo{ height:80px; margin-left:15px; margin-bottom: 20px;}
         .pdfContainer{ max-width:540px; background-color:#ffffff;}
-        .pdfFooterText{ width:520px; background-color:#ffffff; font-size: 9px; margin-left:10px; margin-right:10px; padding-top: 10px; border-top: 1px solid #ddd;  display: inline-block; color: #444;}
-        .pdfContent p{margin-bottom: 5px;}
+        .pdfFooterText{ width:520px; background-color:#ffffff; font-size: 9px; margin-left:10px; margin-right:10px; margin-top:20px; border-top: 1px solid #ddd;  display: inline-block; color: #444;}
+        .pdfContent p{margin-bottom: 5px; page-break-inside: avoid;}
         .pdfContent h3{margin-top: 20px;}
+        .pdfSection{page-break-inside: avoid;}
         .secondTitle{ margin-top: -25px; margin-bottom: 17px; color:#444; font-size: 16px;}
         ul li{font-family: "Open Sans", Arial, "Helvetica Neue", helvetica, sans-serif;}
     </style>
