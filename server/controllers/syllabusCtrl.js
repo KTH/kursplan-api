@@ -40,7 +40,7 @@ function * getSyllabus (req, res, next) {
     syllabus = syllabuskoppsAPI_course_tot.body
    
     const syllabusHTML = generateHTML(syllabus, semester, language)
-    //console.log("syllabus",syllabusHTML)
+    console.log("syllabus",syllabusHTML)
     const pdfConfig = {
       "format": "A4",        
       "orientation": "portrait", 
@@ -59,7 +59,8 @@ function * getSyllabus (req, res, next) {
       "zoomFactor": "1",
       "base": "https://www.kth.se", 
       "type": "pdf",
-      "phantomPath": "./node_modules/phantomjs/bin/phantomjs"
+      "phantomPath": "./node_modules/phantomjs-prebuilt/lib/phantom/bin/phantomjs",
+      "timeout": 30000
     }
 
     res.send({ syllabusHTML, pdfConfig})
