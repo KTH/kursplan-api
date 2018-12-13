@@ -17,7 +17,7 @@ module.exports = function (syllabusObject, semester, lang = 'sv'){
     const titleHTML = `
         <h1><span property="aiiso:code">${titleData.course_code}</span>
             <span property="teach:courseTitle"> ${titleData.course_title},</span>
-            <span content=${titleData.course_credits} datatype="xsd:decimal" property="teach:ects"> ${titleData.course_credits} ${language === 0 ? " credits" : " hp"} </span>
+            <span content=${titleData.course_credits} datatype="xsd:decimal" property="teach:ects"> ${titleData.course_credits}&nbsp;${language === 0 ? "credits" : "hp"} </span>
         </h1>
         <h2 class="secondTitle">
             <span property="teach:courseTitle">${titleData.course_other_title}</span>

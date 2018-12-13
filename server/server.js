@@ -127,7 +127,6 @@ const paths = getPaths()
 
 // Api enpoints
 apiRoute.register(paths.api.checkAPIkey, System.checkAPIKey)
-
 //apiRoute.register(paths.api.getDataById, Syllabus.getData)
 //apiRoute.register(paths.api.postDataById, Syllabus.postData)
 apiRoute.register(paths.api.getSyllabusByCourseCode, Syllabus.getSyllabus)
