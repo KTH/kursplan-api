@@ -59,7 +59,7 @@ function * getSyllabus (req, res, next) {
       "zoomFactor": "1",
       "base": "https://www.kth.se", 
       "type": "pdf",
-      "phantomPath": "./node_modules/phantomjs-prebuilt/lib/phantom/bin/phantomjs",
+      "phantomPath": "/usr/bin/phantomjs",
       "timeout": 30000
     }
 
