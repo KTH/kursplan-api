@@ -81,7 +81,7 @@ module.exports = {
     course_examiners:"Examinator",
     course_recruitment_text:"Kort beskrivning svenska",
     course_ethical: "Etiskt förhållningssätt",
-    course_ethical_text: "<li>Vid grupparbete har alla i gruppen ett gemensamt ansvar för arbetet.</li><li>Vid examination ska varje student ärligt redovisa hjälp som erhållits och källor som använts.</li><li>Vid muntlig examination ska varje student kunna redogöra för hela uppgiften och hela lösningen.</li>",
+    course_ethical_text: "<li>Vid grupparbete har alla i gruppen ansvar för gruppens arbete.</li><li>Vid examination ska varje student ärligt redovisa hjälp som erhållits och källor som använts.</li><li>Vid muntlig examination ska varje student kunna redogöra för hela uppgiften och hela lösningen.</li>",
     course_language_default_text: "Undervisningsspråk anges i kurstillfällesinformationen i kurs- och programkatalogen."
   },
   course_pdf_footer_string: {
