@@ -51,7 +51,7 @@ function * getSyllabus (req, res, next) {
         "contents": ""
       },
       "footer": {
-        "height": "18mm",
+        "height": "22mm",
         "contents": {
           default: `<div class="pdfFooterText" style="text-align: left;"> ${syllabusHTML.footerText}. <div style="text-align: right;">Sida {{page}} av {{pages}}</div></div> `,
         }

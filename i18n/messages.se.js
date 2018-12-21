@@ -58,11 +58,12 @@ module.exports = {
     course_disposition:"Kursupplägg",
     course_eligibility:"Behörighet",
     course_requirments_for_final_grade:"Krav för slutbetyg",
-    course_literature:"Kurslitteratur",
-    course_examination_comments:"Kommentar till examinationsmoment",
+    course_literature:"Litteratur",
+    course_literature_comment: "",
+    course_examination_comments:"",
     course_examination:"Examination",
     course_valid_from:"Giltig från",
-    course_main_subject:"Huvudområden",
+    course_main_subject:"Huvudområden:",
     course_language:"Undervisningsspråk",
     course_required_equipment:"Utrustningskrav",
     course_level_code:"Utbildningsnivå",
@@ -82,12 +83,13 @@ module.exports = {
     course_recruitment_text:"Kort beskrivning svenska",
     course_ethical: "Etiskt förhållningssätt",
     course_ethical_text: "<li>Vid grupparbete har alla i gruppen ansvar för gruppens arbete.</li><li>Vid examination ska varje student ärligt redovisa hjälp som erhållits och källor som använts.</li><li>Vid muntlig examination ska varje student kunna redogöra för hela uppgiften och hela lösningen.</li>",
+    course_grade_label: "Betygsskala",
     course_language_default_text: "Undervisningsspråk anges i kurstillfällesinformationen i kurs- och programkatalogen."
   },
   course_pdf_footer_string: {
    for_code: "Kursplan för ",
    valid_from: " gäller från och med ",
-   semester: ["sommar","HT","VT"],
+   semester: ["sommar","VT","HT"],
    edition: ", utgåva "
   },
   courseRoundInformation: {

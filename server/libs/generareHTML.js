@@ -13,29 +13,33 @@ module.exports = function (syllabusObject, semester, lang = 'sv'){
       course_credits:isValidData(syllabusObject.course.credits),
       course_valid_from: syllabusObject.publicSyllabusVersions && syllabusObject.publicSyllabusVersions.length > 0 ? isValidData(syllabusObject.publicSyllabusVersions[selectedSyllabus.index].validFromTerm.term).toString().match(/.{1,4}/g) : []
     }
+    //** Adding a decimal if it's missing in credits **/
+    titleData.course_credits = titleData.course_credits !== EMPTY && titleData.course_credits.toString().length === 1 ? titleData.course_credits+".0": titleData.course_credits
 
+    const englishTranlationLine = language == 0 ? '<p>This is a translation of the Swedish, legally binding, course syllabus.</p>':''
     const titleHTML = `
         <h1><span property="aiiso:code">${titleData.course_code}</span>
             <span property="teach:courseTitle"> ${titleData.course_title},</span>
-            <span content=${titleData.course_credits} datatype="xsd:decimal" property="teach:ects"> ${titleData.course_credits}&nbsp;${language === 0 ? "credits" : "hp"} </span>
+            <span content=${titleData.course_credits} datatype="xsd:decimal" property="teach:ects"> ${language === 0 ? titleData.course_credits : titleData.course_credits.toString().replace('.',',') }&nbsp;${language === 0 ? "credits" : "hp"} </span>
         </h1>
         <h2 class="secondTitle">
             <span property="teach:courseTitle">${titleData.course_other_title}</span>
         </h2>
+        ${englishTranlationLine} 
         <p>${validFromHtml(selectedSyllabus, language, syllabusObject.course.courseCode, "title") }</p>
          `
 
     const keyData ={
         course_grade_scale: isValidData(syllabusObject.formattedGradeScales[syllabusObject.course.gradeScaleCode],language), //TODO: can this be an array?
         course_level_code: isValidData(syllabusObject.course.educationalLevelCode),
-        course_main_subject: syllabusObject.mainSubjects ?  Array.isArray(syllabusObject.mainSubjects) ? syllabusObject.mainSubjects.map(sub => sub + " ") : isValidData(syllabusObject.mainSubjects) : EMPTY
+        course_main_subject: syllabusObject.mainSubjects ?  Array.isArray(syllabusObject.mainSubjects) ? syllabusObject.mainSubjects.toString() : isValidData(syllabusObject.mainSubjects) : EMPTY
     }
 
     const keyInformation = `
         <p>
-            <b>Betygsskala:</b> ${keyData.course_grade_scale}<br/>
-            <b>Utbildningsnivå:</b> ${keyData.course_level_code}<br/>
-            <b>Huvudområde:</b> ${keyData.course_main_subject}
+            <b>${i18n.messages[language].courseInformation.course_grade_label}:</b> ${keyData.course_grade_scale}<br/>
+            <b>${i18n.messages[language].courseInformation.course_level_code}:</b> ${i18n.messages[language].courseInformation.course_level_code_label[keyData.course_level_code]}<br/>
+            <b>${keyData.course_level_code !== 'PREPARATORY' && keyData.course_level_code !== 'RESEARCH' ? i18n.messages[language].courseInformation.course_main_subject : "" }</b> ${keyData.course_main_subject}
         </p>
         `
 
@@ -45,11 +49,12 @@ module.exports = function (syllabusObject, semester, lang = 'sv'){
       course_disposition:  syllabusObject.publicSyllabusVersions && syllabusObject.publicSyllabusVersions.length > 0 ? isValidData(syllabusObject.publicSyllabusVersions[selectedSyllabus.index].courseSyllabus.disposition, language): EMPTY, 
       course_language: i18n.messages[language].courseInformation.course_language_default_text,
       course_eligibility:  syllabusObject.publicSyllabusVersions && syllabusObject.publicSyllabusVersions.length > 0 ? isValidData(syllabusObject.publicSyllabusVersions[selectedSyllabus.index].courseSyllabus.eligibility, language): EMPTY, 
-      course_requirments_for_final_grade:  syllabusObject.publicSyllabusVersions && syllabusObject.publicSyllabusVersions.length > 0 ? isValidData(syllabusObject.publicSyllabusVersions[selectedSyllabus.index].courseSyllabus.reqsForFinalGrade, language): EMPTY,
       course_literature: syllabusObject.publicSyllabusVersions && syllabusObject.publicSyllabusVersions.length > 0 ? isValidData(syllabusObject.publicSyllabusVersions[selectedSyllabus.index].courseSyllabus.literature, language): EMPTY, 
+      course_literature_comment: syllabusObject.publicSyllabusVersions && syllabusObject.publicSyllabusVersions.length > 0 ? isValidData(syllabusObject.publicSyllabusVersions[selectedSyllabus.index].courseSyllabus.literatureComment, language): EMPTY, 
       course_required_equipment: syllabusObject.publicSyllabusVersions && syllabusObject.publicSyllabusVersions.length > 0 ? isValidData(syllabusObject.publicSyllabusVersions[selectedSyllabus.index].courseSyllabus.requiredEquipment, language): EMPTY,
       course_examination: getExamObject(syllabusObject.examinationSets[Object.keys(syllabusObject.examinationSets)[0]].examinationRounds, syllabusObject.formattedGradeScales, language),
       course_examination_comments:  syllabusObject.publicSyllabusVersions && syllabusObject.publicSyllabusVersions.length > 0 ? isValidData(syllabusObject.publicSyllabusVersions[selectedSyllabus.index].courseSyllabus.examComments, language):EMPTY,
+      course_requirments_for_final_grade:  syllabusObject.publicSyllabusVersions && syllabusObject.publicSyllabusVersions.length > 0 ? isValidData(syllabusObject.publicSyllabusVersions[selectedSyllabus.index].courseSyllabus.reqsForFinalGrade, language): EMPTY,
       course_ethical: i18n.messages[language].courseInformation.course_ethical_text
     }
 
@@ -74,9 +79,10 @@ module.exports = function (syllabusObject, semester, lang = 'sv'){
 }
 
 function toHeaderAndText(header, text, styleClass){
+    header = header.length > 0 ? ` <h3>${header}</h3>`: ''
     return(
         `<div class="${styleClass}" >
-          <h3>${header}</h3>
+          ${header}
           <p> ${text} </p> 
         </div>`
     )
@@ -94,11 +100,14 @@ function getExamObject(dataObject, grades, language = 0){
   let examString = ""
   if(dataObject.length > 0){
     for(let exam of dataObject){
-     examString += `<li>${exam.examCode} - 
-                    ${exam.title},
-                    ${exam.credits},  
-                    Betygskala: ${grades[exam.gradeScaleCode]}             
-                    </li>`
+        //** Adding a decimal if it's missing in credits **/
+        exam.credits = exam.credits !== EMPTY && exam.credits.toString().length === 1 ? exam.credits+".0": exam.credits
+
+        examString += `<li>${exam.examCode} - 
+                        ${exam.title},
+                        ${language === 0 ? exam.credits : exam.credits.toString().replace('.',',')} ${language === 0 ? " credits" : " hp"},  
+                        ${i18n.messages[language].courseInformation.course_grade_label.toLowerCase()}: ${grades[exam.gradeScaleCode]}             
+                        </li>`
     }
   }
   console.log("!!getExamObject is ok!!")
@@ -118,7 +127,7 @@ function topHtml(courseCode){
         .pdfContent p{margin-bottom: 5px; page-break-inside: avoid;}
         .pdfContent h3{margin-top: 20px;}
         .pdfSection{page-break-inside: avoid;}
-        .secondTitle{ margin-top: -25px; margin-bottom: 17px; color:#444; font-size: 16px;}
+        .secondTitle{ margin-top: -25px; margin-bottom: 17px; color:#444; font-size: 16px; border-bottom:1px solid #444}
         ul li{font-family: "Open Sans", Arial, "Helvetica Neue", helvetica, sans-serif;}
     </style>
     `
