@@ -65,7 +65,7 @@ module.exports = function (syllabusObject, semester, lang = 'sv'){
            || key === 'course_literature' || key === 'course_eligibility' 
            || key === 'course_goals' || key === 'course_content' || key === 'course_examination'){
             styleClass = key === 'course_goals' ? 'pdfSection1' : 'pdfSection'
-            console.log("text length", bodyInformation[key].length)
+            //console.log("text length", bodyInformation[key].length)
             bodyHTML += toHeaderAndText(i18n.messages[language].courseInformation[key], bodyInformation[key], styleClass)
         }
     })

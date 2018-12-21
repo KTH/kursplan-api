@@ -40,7 +40,7 @@ function * getSyllabus (req, res, next) {
     syllabus = syllabuskoppsAPI_course_tot.body
    
     const syllabusHTML = generateHTML(syllabus, semester, language)
-    console.log("syllabus",syllabusHTML)
+ //   console.log("syllabus",syllabusHTML)
     const pdfConfig = {
       "format": "A4",        
       "orientation": "portrait", 
