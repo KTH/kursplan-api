@@ -14,7 +14,7 @@ module.exports = function (syllabusObject, semester, lang = 'sv'){
       course_valid_from: syllabusObject.publicSyllabusVersions && syllabusObject.publicSyllabusVersions.length > 0 ? isValidData(syllabusObject.publicSyllabusVersions[selectedSyllabus.index].validFromTerm.term).toString().match(/.{1,4}/g) : []
     }
     //** Adding a decimal if it's missing in credits **/
-    titleData.course_credits = titleData.course_credits !== EMPTY && titleData.course_credits.toString().length === 1 ? titleData.course_credits+".0": titleData.course_credits
+    titleData.course_credits = titleData.course_credits !== EMPTY && titleData.course_credits.toString().indexOf('.') < 0 ? titleData.course_credits+".0": titleData.course_credits
 
     const englishTranlationLine = language == 0 ? '<p>This is a translation of the Swedish, legally binding, course syllabus.</p>':''
     const titleHTML = `
@@ -123,11 +123,11 @@ function topHtml(courseCode){
         body{ background-color:#ffffff; font-size:11px; margin-left:40px; margin-right:40px; line-height: 15px;}
         #kth-logo{ height:80px; margin-left:15px; margin-bottom: 20px;}
         .pdfContainer{ max-width:540px; background-color:#ffffff;}
-        .pdfFooterText{ width:520px; background-color:#ffffff; font-size: 9px; margin-left:10px; margin-right:10px; margin-top:20px; border-top: 1px solid #ddd;  display: inline-block; color: #444;}
+        .pdfFooterText{  background-color:#ffffff; font-size: 9px; margin-left:10px; margin-right:10px; margin-top:20px; border-top: 1px solid #ddd; color: #444;}
         .pdfContent p{margin-bottom: 5px; page-break-inside: avoid;}
         .pdfContent h3{margin-top: 20px;}
         .pdfSection{page-break-inside: avoid;}
-        .secondTitle{ margin-top: -25px; margin-bottom: 17px; color:#444; font-size: 16px; border-bottom:1px solid #444}
+        .secondTitle{ margin-top: -15px; margin-bottom: 17px; color:#808080; font-size: 16px; border-bottom:1px solid #808080}
         ul li{font-family: "Open Sans", Arial, "Helvetica Neue", helvetica, sans-serif;}
     </style>
     `

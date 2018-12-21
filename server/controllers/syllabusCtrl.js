@@ -51,9 +51,12 @@ function * getSyllabus (req, res, next) {
         "contents": ""
       },
       "footer": {
-        "height": "22mm",
+        "height": "27mm",
         "contents": {
-          default: `<div class="pdfFooterText" style="text-align: left;"> ${syllabusHTML.footerText}. <div style="text-align: right;">Sida {{page}} av {{pages}}</div></div> `,
+          default: `<div class="row " style="max-width:520px;">
+          <div class="pdfFooterText col-12" style="text-align: left;"> ${syllabusHTML.footerText}. 
+              <span class="" style="text-align:right; float:right"> ${language === 'en' ? "Page" : "Sida"} {{page}} ${language === 'en' ? "of  " : "av  " } {{pages}}</span></div> 
+            </div> `
         }
       },
       "zoomFactor": "1",
