@@ -125,7 +125,7 @@ function topHtml(courseCode){
         body{ background-color:#ffffff; font-size:11px; margin-left:40px; margin-right:40px; line-height: 15px;}
         #kth-logo{ height:80px; margin-left:15px; margin-bottom: 20px;}
         p{font-style: oblique; margin-top: 10px;}
-        em{font-style: oblique;}
+        i, cite, em, dfn { font-weight:600; !important; }
         .pdfContainer{ max-width:540px; background-color:#ffffff;}
         .pdfFooterText{  background-color:#ffffff; font-size: 9px; margin-left:10px; margin-right:10px; margin-top:20px; border-top: 1px solid #ddd; color: #444;}
         .pdfContent p{margin-bottom: 5px; page-break-inside: avoid;}
