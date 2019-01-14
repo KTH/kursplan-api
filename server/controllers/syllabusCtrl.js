@@ -21,7 +21,7 @@ const BasicAPI = require('kth-node-api-call').BasicAPI
 let koppsApiInternal = new BasicAPI({
   hostname: config.kopps.host,
   basePath: '/api/kopps/internal/',
-  https: false,//config.kopps.https,
+  https: false,//config.kopps.https, TODO!!!
   json: true,
   // Kopps is a public API and needs no API-key
   defaultTimeout: config.kopps.defaultTimeout
@@ -38,7 +38,7 @@ function * getSyllabus (req, res, next) {
     let syllabus = {}
     const syllabuskoppsAPI_course_tot = yield koppsApiInternal.getAsync(`syllabuses/${courseCode}/${semester}?lang=${language}`)
     syllabus = syllabuskoppsAPI_course_tot.body
-    console.log("syllabus",syllabus)
+    //console.log("syllabus",syllabus)
     const syllabusHTML = generateHTML(syllabus, semester, language)
 
     const pdfConfig = {
