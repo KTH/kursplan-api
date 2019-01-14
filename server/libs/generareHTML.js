@@ -25,8 +25,9 @@ module.exports = function (syllabusObject, semester, lang = 'sv'){
         <h2 class="secondTitle">
             <span property="teach:courseTitle">${titleData.course_other_title}</span>
         </h2>
-        ${englishTranlationLine} 
+       
         <p>${validFromHtml(selectedSyllabus, language, syllabusObject.course.courseCode, "title") }</p>
+        ${englishTranlationLine} 
          `
 
     const keyData ={
@@ -39,8 +40,8 @@ module.exports = function (syllabusObject, semester, lang = 'sv'){
     const keyInformation = `
         <p>
             <b>${i18n.messages[language].courseInformation.course_grade_label}:</b> ${keyData.course_grade_scale}<br/>
-            ${courseLevel}
-            <b>${keyData.course_level_code !== 'PREPARATORY' && keyData.course_level_code !== 'RESEARCH' ? i18n.messages[language].courseInformation.course_main_subject : "" }</b> ${keyData.course_main_subject}
+            <b>${i18n.messages[language].courseInformation.course_level_code}:</b> ${keyData.course_level_code.length > 0 ? i18n.messages[language].courseInformation.course_level_code_label[keyData.course_level_code] : ""}<br/>
+            <b>${keyData.course_level_code === 'BASIC' || keyData.course_level_code === 'ADVANCED' ? i18n.messages[language].courseInformation.course_main_subject : "" }</b> ${keyData.course_main_subject}
         </p>
         `
 
@@ -123,6 +124,8 @@ function topHtml(courseCode){
     const style = `<style>
         body{ background-color:#ffffff; font-size:11px; margin-left:40px; margin-right:40px; line-height: 15px;}
         #kth-logo{ height:80px; margin-left:15px; margin-bottom: 20px;}
+        p{font-style: oblique; margin-top: 10px;}
+        em{font-style: oblique;}
         .pdfContainer{ max-width:540px; background-color:#ffffff;}
         .pdfFooterText{  background-color:#ffffff; font-size: 9px; margin-left:10px; margin-right:10px; margin-top:20px; border-top: 1px solid #ddd; color: #444;}
         .pdfContent p{margin-bottom: 5px; page-break-inside: avoid;}
@@ -130,6 +133,7 @@ function topHtml(courseCode){
         .pdfSection{page-break-inside: avoid;}
         .secondTitle{ margin-top: 15px; margin-bottom: 17px; color:#808080; font-size: 16px; border-bottom:1px solid #808080}
         ul li{font-family: "Open Sans", Arial, "Helvetica Neue", helvetica, sans-serif;}
+       
     </style>
     `
     return `<!DOCTYPE html>

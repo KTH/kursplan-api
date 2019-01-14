@@ -81,7 +81,7 @@ module.exports = {
     course_examiners:"Examiner",
     course_recruitment_text:"Abstract",
     course_ethical: "Ethical approach",
-    course_ethical_text: "<ul><li>All members of a group are responsible for the group's work.</li><li>In any assessment, every student shall honestly disclose any help received and sources used.</li><li>In an oral assessment, every student shall be able to present and answer questions about the entire assignment and solution.</li><ul>",
+    course_ethical_text: "<li>All members of a group are responsible for the group's work.</li><li>In any assessment, every student shall honestly disclose any help received and sources used.</li><li>In an oral assessment, every student shall be able to present and answer questions about the entire assignment and solution.</li>",
     course_grade_label: "Grading scale",
     course_language_default_text: "Language of instruction is specified in the course offering information in the course and programme directory."
   },
