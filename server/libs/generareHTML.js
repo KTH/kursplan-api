@@ -19,7 +19,7 @@ module.exports = function (syllabusObject, semester, lang = 'sv'){
     const englishTranlationLine = language == 0 ? '<p>This is a translation of the Swedish, legally binding, course syllabus.</p>':''
     const titleHTML = `
         <h1><span property="aiiso:code">${titleData.course_code}</span>
-            <span property="teach:courseTitle"> ${titleData.course_title},</span>
+            <span property="teach:courseTitle"> ${titleData.course_title}</span>
             <span content=${titleData.course_credits} datatype="xsd:decimal" property="teach:ects"> ${language === 0 ? titleData.course_credits : titleData.course_credits.toString().replace('.',',') }&nbsp;${language === 0 ? "credits" : "hp"} </span>
         </h1>
         <h2 class="secondTitle">
@@ -35,10 +35,11 @@ module.exports = function (syllabusObject, semester, lang = 'sv'){
         course_main_subject: syllabusObject.mainSubjects ?  Array.isArray(syllabusObject.mainSubjects) ? syllabusObject.mainSubjects.toString() : isValidData(syllabusObject.mainSubjects) : EMPTY
     }
 
+    const courseLevel =  keyData.course_level_code.length > 0 ? `<b>${i18n.messages[language].courseInformation.course_level_code}:</b> ${i18n.messages[language].courseInformation.course_level_code_label[keyData.course_level_code]}<br/>` : ""
     const keyInformation = `
         <p>
             <b>${i18n.messages[language].courseInformation.course_grade_label}:</b> ${keyData.course_grade_scale}<br/>
-            <b>${i18n.messages[language].courseInformation.course_level_code}:</b> ${i18n.messages[language].courseInformation.course_level_code_label[keyData.course_level_code]}<br/>
+            ${courseLevel}
             <b>${keyData.course_level_code !== 'PREPARATORY' && keyData.course_level_code !== 'RESEARCH' ? i18n.messages[language].courseInformation.course_main_subject : "" }</b> ${keyData.course_main_subject}
         </p>
         `
@@ -127,7 +128,7 @@ function topHtml(courseCode){
         .pdfContent p{margin-bottom: 5px; page-break-inside: avoid;}
         .pdfContent h3{margin-top: 20px;}
         .pdfSection{page-break-inside: avoid;}
-        .secondTitle{ margin-top: -15px; margin-bottom: 17px; color:#808080; font-size: 16px; border-bottom:1px solid #808080}
+        .secondTitle{ margin-top: 15px; margin-bottom: 17px; color:#808080; font-size: 16px; border-bottom:1px solid #808080}
         ul li{font-family: "Open Sans", Arial, "Helvetica Neue", helvetica, sans-serif;}
     </style>
     `

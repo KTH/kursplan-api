@@ -38,9 +38,9 @@ function * getSyllabus (req, res, next) {
     let syllabus = {}
     const syllabuskoppsAPI_course_tot = yield koppsApiInternal.getAsync(`syllabuses/${courseCode}/${semester}?lang=${language}`)
     syllabus = syllabuskoppsAPI_course_tot.body
-   
+    console.log("syllabus",syllabus)
     const syllabusHTML = generateHTML(syllabus, semester, language)
- //   console.log("syllabus",syllabusHTML)
+
     const pdfConfig = {
       "format": "A4",        
       "orientation": "portrait", 
