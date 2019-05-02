@@ -78,13 +78,6 @@ require('./authentication')
 server.use(passport.initialize())
 server.use(passport.session())
 
-/* ************************
- * ******* DATABASE *******
- * ************************
- */
-// Just connect the database
-require('./database').connect()
-
 /* **********************************
  * ******* APPLICATION ROUTES *******
  * **********************************
@@ -127,8 +120,8 @@ const paths = getPaths()
 
 // Api enpoints
 apiRoute.register(paths.api.checkAPIkey, System.checkAPIKey)
-//apiRoute.register(paths.api.getDataById, Syllabus.getData)
-//apiRoute.register(paths.api.postDataById, Syllabus.postData)
+// apiRoute.register(paths.api.getDataById, Syllabus.getData)
+// apiRoute.register(paths.api.postDataById, Syllabus.postData)
 apiRoute.register(paths.api.getSyllabusByCourseCode, Syllabus.getSyllabus)
 server.use('/', apiRoute.getRouter())
 

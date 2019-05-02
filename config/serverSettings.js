@@ -7,15 +7,13 @@
  * *************************************************
  *
  */
-const { getEnv, unpackMongodbConfig, unpackKOPPSConfig, unpackApiKeysConfig, devDefaults } = require('kth-node-configuration')
+const { getEnv, unpackKOPPSConfig, unpackApiKeysConfig, devDefaults } = require('kth-node-configuration')
 const { safeGet } = require('safe-utils')
 
 // DEFAULT SETTINGS used for dev, if you want to override these for you local environment, use env-vars in .env
 const devPrefixPath = devDefaults('/api/kursplan')
 const devSsl = devDefaults(false)
 const devPort = devDefaults(3001)
-const devMongodb = devDefaults('mongodb://localhost:27017/kursplan')
-
 // EXAMPLE: const devApiKeys = devDefaults('?name=devClient&apiKey=SET_YOUR_API_KEY&scope=write&scope=read')
 const devApiKeys = devDefaults('?name=devClient&apiKey=5678&scope=write&scope=read')
 const devKOPPSURI = devDefaults('https://kopps-r.referens.sys.kth.se/api/kopps/v2/?defaultTimeout=60000')
@@ -37,9 +35,6 @@ module.exports = {
 
   // API keys
   api_keys: unpackApiKeysConfig('KURSPLAN_API_KEYS', devApiKeys),
-
-  // Services
-  db: unpackMongodbConfig('KURSPLAN_MONGODB_URI', devMongodb),
 
   // Logging
   logging: {
