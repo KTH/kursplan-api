@@ -18,7 +18,7 @@ const devMongodb = devDefaults('mongodb://localhost:27017/kursplan')
 
 // EXAMPLE: const devApiKeys = devDefaults('?name=devClient&apiKey=SET_YOUR_API_KEY&scope=write&scope=read')
 const devApiKeys = devDefaults('?name=devClient&apiKey=5678&scope=write&scope=read')
-const devKOPPSURI = devDefaults('https://kopps-r.referens.sys.kth.se/api/kopps/v2/?defaultTimeout=60000')
+const devKOPPSURI = devDefaults('https://api-r.referens.sys.kth.se/api/kopps/v2/?defaultTimeout=60000')
 // END DEFAULT SETTINGS
 
 module.exports = {

@@ -10,6 +10,7 @@ const co = require('co')
 const { safeGet } = require('safe-utils')
 const generateHTML = require('../libs/generareHTML')
 
+
 module.exports = {
   getSyllabus: co.wrap(getSyllabus)
 }
@@ -20,8 +21,8 @@ const BasicAPI = require('kth-node-api-call').BasicAPI
 
 let koppsApiInternal = new BasicAPI({
   hostname: config.kopps.host,
-  basePath: '/api/kopps/internal/',
-  https: false,//config.kopps.https, TODO!!!
+  basePath: config.kopps.basePath,
+  https: config.kopps.https,
   json: true,
   // Kopps is a public API and needs no API-key
   defaultTimeout: config.kopps.defaultTimeout
