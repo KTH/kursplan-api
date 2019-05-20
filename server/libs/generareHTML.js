@@ -1,5 +1,6 @@
 'use strict'
 const i18n = require('../../i18n')
+const log = require('kth-node-log')
 const EMPTY = ''
 
 module.exports = function (syllabusObject, semester, lang = 'sv') {
@@ -72,7 +73,7 @@ module.exports = function (syllabusObject, semester, lang = 'sv') {
     }
   })
 
-  console.log('!!pageContentHtml: OK !!')
+  log.info('!!pageContentHtml: OK !!')
   const pageContentHtml = topHtml(titleData.course_code, language) + titleHTML + keyInformation + bodyHTML + bottomHtml()
   const footerText = validFromHtml(selectedSyllabus, language, syllabusObject.course.courseCode, 'footer')
   return { pageContentHtml, footerText }
@@ -110,7 +111,7 @@ function getExamObject (dataObject, grades, language = 0) {
                         </li>`
     }
   }
-  console.log('!!getExamObject is ok!!')
+  log.info('!!getExamObject is ok!!')
   return examString
 }
 
@@ -134,7 +135,7 @@ function topHtml (courseCode, lan) {
     </style>
     `
   return `<!DOCTYPE html>
-        <html lan=>
+        <html lang=${lan}>
         <head>
             <title>KTH | ${courseCode}</title>
             <meta charset="utf-8">
@@ -161,7 +162,7 @@ function getSelectedSyllabus (syllabusObject, semester = '20101', language = 0) 
     if (Number(syllabuses[i].validFromTerm.term) === Number(semester)) {
       selectedSyllabus.edition = syllabuses[i].edition
       selectedSyllabus.index = count
-      selectedSyllabus.semesterNumber = syllabuses[i].validFromTerm.term.toString().substring(4, 5),
+      selectedSyllabus.semesterNumber = syllabuses[i].validFromTerm.term.toString().substring(4, 5)
       selectedSyllabus.year = syllabuses[i].validFromTerm.term.toString().substring(2, 4)
     }
     count++
