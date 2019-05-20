@@ -73,7 +73,7 @@ module.exports = function (syllabusObject, semester, lang = 'sv') {
     }
   })
 
-  log.info('!!pageContentHtml: OK !!')
+  log.info('Kursplan: pageContentHtml: OK ')
   const pageContentHtml = topHtml(titleData.course_code, language) + titleHTML + keyInformation + bodyHTML + bottomHtml()
   const footerText = validFromHtml(selectedSyllabus, language, syllabusObject.course.courseCode, 'footer')
   return { pageContentHtml, footerText }
@@ -111,7 +111,7 @@ function getExamObject (dataObject, grades, language = 0) {
                         </li>`
     }
   }
-  log.info('!!getExamObject is ok!!')
+  log.info('Kursplan: getExamObject is ok')
   return examString
 }
 
