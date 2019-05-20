@@ -74,7 +74,7 @@ module.exports = function (syllabusObject, semester, lang = 'sv') {
   })
 
   log.info('Kursplan: pageContentHtml: OK ')
-  const pageContentHtml = topHtml(titleData.course_code, language) + titleHTML + keyInformation + bodyHTML + bottomHtml()
+  const pageContentHtml = topHtml(titleData.course_code, lang) + titleHTML + keyInformation + bodyHTML + bottomHtml()
   const footerText = validFromHtml(selectedSyllabus, language, syllabusObject.course.courseCode, 'footer')
   return { pageContentHtml, footerText }
 }
