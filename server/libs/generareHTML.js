@@ -6,29 +6,35 @@ const EMPTY = ''
 module.exports = function (syllabusObject, semester, lang = 'sv') {
   const language = lang === 'en' ? 0 : 1
   const selectedSyllabus = getSelectedSyllabus(syllabusObject, semester)
+  const activeSyllabus = syllabusObject.publicSyllabusVersions[selectedSyllabus.index]
+  // console.log('syllabusObject', activeSyllabus)
 
   const titleData = {
     course_code: isValidData(syllabusObject.course.courseCode),
     course_title: isValidData(syllabusObject.course.title),
     course_other_title: isValidData(syllabusObject.course.titleOther),
     course_credits: isValidData(syllabusObject.course.credits),
-    course_valid_from: syllabusObject.publicSyllabusVersions && syllabusObject.publicSyllabusVersions.length > 0 ? isValidData(syllabusObject.publicSyllabusVersions[selectedSyllabus.index].validFromTerm.term).toString().match(/.{1,4}/g) : []
+    course_valid_from: syllabusObject.publicSyllabusVersions && syllabusObject.publicSyllabusVersions.length > 0 ? isValidData(activeSyllabus.validFromTerm.term).toString().match(/.{1,4}/g) : []
   }
   //* * Adding a decimal if it's missing in credits **/
   titleData.course_credits = titleData.course_credits !== EMPTY && titleData.course_credits.toString().indexOf('.') < 0 ? titleData.course_credits + '.0' : titleData.course_credits
+  const englishTranlationLine = language === 0 ? '<p>This is a translation of the Swedish, legally binding, course syllabus.</p>' : ''
 
-  const englishTranlationLine = language == 0 ? '<p>This is a translation of the Swedish, legally binding, course syllabus.</p>' : ''
   const titleHTML = `
-        <h1><span property="aiiso:code">${titleData.course_code}</span>
-            <span property="teach:courseTitle"> ${titleData.course_title}</span>
-            <span content=${titleData.course_credits} datatype="xsd:decimal" property="teach:ects"> ${language === 0 ? titleData.course_credits : titleData.course_credits.toString().replace('.', ',')}&nbsp;${language === 0 ? 'credits' : 'hp'} </span>
-        </h1>
-        <h2 class="secondTitle">
-            <span property="teach:courseTitle">${titleData.course_other_title}</span>
-        </h2>
-       
-        <p>${validFromHtml(selectedSyllabus, language, syllabusObject.course.courseCode, 'title')}</p>
-        ${englishTranlationLine} 
+    <h1><span property="aiiso:code">${titleData.course_code}</span>
+      <span property="teach:courseTitle"> ${titleData.course_title}</span>
+      <span content=${titleData.course_credits} datatype="xsd:decimal" property="teach:ects"> ${language === 0 ? titleData.course_credits : titleData.course_credits.toString().replace('.', ',')}&nbsp;${language === 0 ? 'credits' : syllabusObject.course.creditUnitAbbr} </span>
+    </h1>
+    <h2 class="secondTitle">
+      <span property="teach:courseTitle">${titleData.course_other_title}</span>
+    </h2>
+    ${englishTranlationLine}
+    <p> ${activeSyllabus.courseSyllabus.discontinuationText} </p> 
+    <h3>${i18n.messages[language].courseInformation.course_establishment}</h3>
+    <p> ${activeSyllabus.courseSyllabus.establishment} </p> 
+    ${activeSyllabus.courseSyllabus.decisionToDiscontinue !== undefined
+    ? '<h3>' + i18n.messages[language].courseInformation.course_decision_to_discontinue + '</h3>' + activeSyllabus.courseSyllabus.decisionToDiscontinue
+    : ''}
          `
 
   const keyData = {
@@ -39,36 +45,38 @@ module.exports = function (syllabusObject, semester, lang = 'sv') {
 
   const courseLevel = keyData.course_level_code.length > 0 ? `<b>${i18n.messages[language].courseInformation.course_level_code}:</b> ${i18n.messages[language].courseInformation.course_level_code_label[keyData.course_level_code]}<br/>` : ''
   const keyInformation = `
-        <p>
-            <b>${i18n.messages[language].courseInformation.course_grade_label}:</b> ${keyData.course_grade_scale}<br/>
-            <b>${i18n.messages[language].courseInformation.course_level_code}:</b> ${keyData.course_level_code.length > 0 ? i18n.messages[language].courseInformation.course_level_code_label[keyData.course_level_code] : ''}<br/>
-            <b>${keyData.course_level_code === 'BASIC' || keyData.course_level_code === 'ADVANCED' ? i18n.messages[language].courseInformation.course_main_subject : ''}</b> ${keyData.course_main_subject}
-        </p>
-        `
+    <h3>${i18n.messages[language].courseInformation.course_grade_label}</h3>
+    <p> ${keyData.course_grade_scale}</p>
+    <h3>${i18n.messages[language].courseInformation.course_level_code}:</h3> 
+    <p>${keyData.course_level_code.length > 0 ? i18n.messages[language].courseInformation.course_level_code_label[keyData.course_level_code] : ''}</p>
+    ${keyData.course_level_code === 'BASIC' || keyData.course_level_code === 'ADVANCED'
+    ? '<h3>' + i18n.messages[language].courseInformation.course_main_subject + '</h3> <p>' + keyData.course_main_subject + '</p>'
+    : ''} 
+    `
 
   const bodyInformation = {
-    course_goals: syllabusObject.publicSyllabusVersions && syllabusObject.publicSyllabusVersions.length > 0 ? isValidData(syllabusObject.publicSyllabusVersions[selectedSyllabus.index].courseSyllabus.goals, language) : EMPTY,
-    course_content: syllabusObject.publicSyllabusVersions && syllabusObject.publicSyllabusVersions.length > 0 ? isValidData(syllabusObject.publicSyllabusVersions[selectedSyllabus.index].courseSyllabus.content, language) : EMPTY,
-    course_disposition: syllabusObject.publicSyllabusVersions && syllabusObject.publicSyllabusVersions.length > 0 ? isValidData(syllabusObject.publicSyllabusVersions[selectedSyllabus.index].courseSyllabus.disposition, language) : EMPTY,
-    course_language: i18n.messages[language].courseInformation.course_language_default_text,
-    course_eligibility: syllabusObject.publicSyllabusVersions && syllabusObject.publicSyllabusVersions.length > 0 ? isValidData(syllabusObject.publicSyllabusVersions[selectedSyllabus.index].courseSyllabus.eligibility, language) : EMPTY,
-    course_literature: syllabusObject.publicSyllabusVersions && syllabusObject.publicSyllabusVersions.length > 0 ? isValidData(syllabusObject.publicSyllabusVersions[selectedSyllabus.index].courseSyllabus.literature, language) : EMPTY,
-    course_literature_comment: syllabusObject.publicSyllabusVersions && syllabusObject.publicSyllabusVersions.length > 0 ? isValidData(syllabusObject.publicSyllabusVersions[selectedSyllabus.index].courseSyllabus.literatureComment, language) : EMPTY,
-    course_required_equipment: syllabusObject.publicSyllabusVersions && syllabusObject.publicSyllabusVersions.length > 0 ? isValidData(syllabusObject.publicSyllabusVersions[selectedSyllabus.index].courseSyllabus.requiredEquipment, language) : EMPTY,
+    course_language: activeSyllabus.courseSyllabus.languageOfInstruction,
+    course_goals: syllabusObject.publicSyllabusVersions && syllabusObject.publicSyllabusVersions.length > 0 ? isValidData(activeSyllabus.courseSyllabus.goals, language) : EMPTY,
+    course_content: syllabusObject.publicSyllabusVersions && syllabusObject.publicSyllabusVersions.length > 0 ? isValidData(activeSyllabus.courseSyllabus.content, language) : EMPTY,
+    course_disposition: syllabusObject.publicSyllabusVersions && syllabusObject.publicSyllabusVersions.length > 0 ? isValidData(activeSyllabus.courseSyllabus.disposition, language) : EMPTY,
+    course_eligibility: syllabusObject.publicSyllabusVersions && syllabusObject.publicSyllabusVersions.length > 0 ? isValidData(activeSyllabus.courseSyllabus.eligibility, language) : EMPTY,
+    course_literature: syllabusObject.publicSyllabusVersions && syllabusObject.publicSyllabusVersions.length > 0 ? isValidData(activeSyllabus.courseSyllabus.literature, language) : EMPTY,
+    course_literature_comment: syllabusObject.publicSyllabusVersions && syllabusObject.publicSyllabusVersions.length > 0 ? isValidData(activeSyllabus.courseSyllabus.literatureComment, language) : EMPTY,
+    course_required_equipment: syllabusObject.publicSyllabusVersions && syllabusObject.publicSyllabusVersions.length > 0 ? isValidData(activeSyllabus.courseSyllabus.requiredEquipment, language) : EMPTY,
     course_examination: getExamObject(syllabusObject.examinationSets[Object.keys(syllabusObject.examinationSets)[0]].examinationRounds, syllabusObject.formattedGradeScales, language),
-    course_examination_comments: syllabusObject.publicSyllabusVersions && syllabusObject.publicSyllabusVersions.length > 0 ? isValidData(syllabusObject.publicSyllabusVersions[selectedSyllabus.index].courseSyllabus.examComments, language) : EMPTY,
-    course_requirments_for_final_grade: syllabusObject.publicSyllabusVersions && syllabusObject.publicSyllabusVersions.length > 0 ? isValidData(syllabusObject.publicSyllabusVersions[selectedSyllabus.index].courseSyllabus.reqsForFinalGrade, language) : EMPTY,
-    course_ethical: i18n.messages[language].courseInformation.course_ethical_text
+    course_examination_comments: syllabusObject.publicSyllabusVersions && syllabusObject.publicSyllabusVersions.length > 0 ? isValidData(activeSyllabus.courseSyllabus.examComments, language) : EMPTY,
+    course_requirments_for_final_grade: syllabusObject.publicSyllabusVersions && syllabusObject.publicSyllabusVersions.length > 0 ? isValidData(activeSyllabus.courseSyllabus.reqsForFinalGrade, language) : EMPTY,
+    course_transitional_reg: syllabusObject.publicSyllabusVersions && syllabusObject.publicSyllabusVersions.length > 0 ? isValidData(activeSyllabus.courseSyllabus.transitionalRegulations, language) : EMPTY,
+    course_ethical: syllabusObject.publicSyllabusVersions && syllabusObject.publicSyllabusVersions.length > 0 ? isValidData(activeSyllabus.courseSyllabus.ethicalApproach, language) : EMPTY,
+    course_additional_regulations: syllabusObject.publicSyllabusVersions && syllabusObject.publicSyllabusVersions.length > 0 ? isValidData(activeSyllabus.courseSyllabus.additionalRegulations, language) : EMPTY
   }
 
   let bodyHTML = ''
   let styleClass = ''
   Object.keys(bodyInformation).forEach(function (key) {
-    if (bodyInformation[key].length > 0 ||
-           key === 'course_literature' || key === 'course_eligibility' ||
+    if (bodyInformation[key].length > 0 || key === 'course_eligibility' ||
            key === 'course_goals' || key === 'course_content' || key === 'course_examination') {
       styleClass = key === 'course_goals' ? 'pdfSection1' : 'pdfSection'
-      // console.log("text length", bodyInformation[key].length)
       bodyHTML += toHeaderAndText(i18n.messages[language].courseInformation[key], bodyInformation[key], styleClass)
     }
   })
