@@ -64,7 +64,7 @@ module.exports = {
     course_examination_comments: '',
     course_examination: 'Examination',
     course_valid_from: 'Giltig från',
-    course_main_subject: 'Huvudområden:',
+    course_main_subject: 'Huvudområden',
     course_language: 'Undervisningsspråk',
     course_required_equipment: 'Utrustning',
     course_level_code: 'Utbildningsnivå',

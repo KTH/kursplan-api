@@ -63,7 +63,7 @@ module.exports = {
     course_examination_comments: '',
     course_examination: 'Examination',
     course_valid_from: 'Valid from',
-    course_main_subject: 'Main field of study:',
+    course_main_subject: 'Main field of study',
     course_language: 'Language of instruction',
     course_required_equipment: 'Equipment',
     course_level_code: 'Education cycle',

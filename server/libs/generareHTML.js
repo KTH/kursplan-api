@@ -43,11 +43,11 @@ module.exports = function (syllabusObject, semester, lang = 'sv') {
     course_main_subject: syllabusObject.mainSubjects ? Array.isArray(syllabusObject.mainSubjects) ? syllabusObject.mainSubjects.toString() : isValidData(syllabusObject.mainSubjects) : EMPTY
   }
 
-  const courseLevel = keyData.course_level_code.length > 0 ? `<b>${i18n.messages[language].courseInformation.course_level_code}:</b> ${i18n.messages[language].courseInformation.course_level_code_label[keyData.course_level_code]}<br/>` : ''
+  // const courseLevel = keyData.course_level_code.length > 0 ? `<b>${i18n.messages[language].courseInformation.course_level_code}:</b> ${i18n.messages[language].courseInformation.course_level_code_label[keyData.course_level_code]}<br/>` : ''
   const keyInformation = `
     <h3>${i18n.messages[language].courseInformation.course_grade_label}</h3>
     <p> ${keyData.course_grade_scale}</p>
-    <h3>${i18n.messages[language].courseInformation.course_level_code}:</h3> 
+    <h3>${i18n.messages[language].courseInformation.course_level_code}</h3> 
     <p>${keyData.course_level_code.length > 0 ? i18n.messages[language].courseInformation.course_level_code_label[keyData.course_level_code] : ''}</p>
     ${keyData.course_level_code === 'BASIC' || keyData.course_level_code === 'ADVANCED'
     ? '<h3>' + i18n.messages[language].courseInformation.course_main_subject + '</h3> <p>' + keyData.course_main_subject + '</p>'
