@@ -17,7 +17,7 @@ module.exports = function (syllabusObject, semester, lang = 'sv') {
     course_valid_from: syllabusObject.publicSyllabusVersions && syllabusObject.publicSyllabusVersions.length > 0 ? isValidData(activeSyllabus.validFromTerm.term).toString().match(/.{1,4}/g) : []
   }
   //* * Adding a decimal if it's missing in credits **/
-  titleData.course_credits = titleData.course_credits !== EMPTY && titleData.coreurse_cdits.toString().indexOf('.') < 0 ? titleData.course_credits + '.0' : titleData.course_credits
+  titleData.course_credits = titleData.course_credits !== EMPTY && titleData.course_credits.toString().indexOf('.') < 0 ? titleData.course_credits + '.0' : titleData.course_credits
   const englishTranlationLine = language === 0 ? '<p>This is a translation of the Swedish, legally binding, course syllabus.</p>' : ''
 
   const titleHTML = `
