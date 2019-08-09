@@ -5,7 +5,6 @@
  * html and configurations for pdf
  */
 
-const Sample = require('../models').sample.Sample
 const co = require('co')
 const { safeGet } = require('safe-utils')
 const generateHTML = require('../libs/generareHTML')

@@ -77,6 +77,9 @@ module.exports = function (syllabusObject, semester, lang = 'sv') {
     if (bodyInformation[key].length > 0 || key === 'course_eligibility' ||
            key === 'course_goals' || key === 'course_content' || key === 'course_examination') {
       styleClass = key === 'course_goals' ? 'pdfSection1' : 'pdfSection'
+      if (key === 'course_literature_comment' && bodyInformation['course_literature'].length === 0) {
+        key = 'course_literature'
+      }
       bodyHTML += toHeaderAndText(i18n.messages[language].courseInformation[key], bodyInformation[key], styleClass)
     }
   })
@@ -92,7 +95,7 @@ function toHeaderAndText (header, text, styleClass) {
   return (
     `<div class="${styleClass}" >
           ${header}
-          <p> ${text} </p> 
+         ${text} 
         </div>`
   )
 }
@@ -143,7 +146,7 @@ function topHtml (courseCode, lan) {
     </style>
     `
   return `<!DOCTYPE html>
-        <html lang=${lan}>
+        <html lang="${lan}">
         <head>
             <title>KTH | ${courseCode}</title>
             <meta charset="utf-8">
