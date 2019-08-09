@@ -96,8 +96,8 @@ function toHeaderAndText (header, text, styleClass) {
   return (
     `<div class="${styleClass}" >
           ${header}
-         ${text} 
-        </div>`
+       <p> ${text} </p> 
+    </div>`
   )
 }
 
