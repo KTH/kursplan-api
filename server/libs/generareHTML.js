@@ -78,9 +78,10 @@ module.exports = function (syllabusObject, semester, lang = 'sv') {
            key === 'course_goals' || key === 'course_content' || key === 'course_examination') {
       styleClass = key === 'course_goals' ? 'pdfSection1' : 'pdfSection'
       if (key === 'course_literature_comment' && bodyInformation['course_literature'].length === 0) {
-        key = 'course_literature'
+        bodyHTML += toHeaderAndText(i18n.messages[language].courseInformation['course_literature'], bodyInformation[key], styleClass)
+      } else {
+        bodyHTML += toHeaderAndText(i18n.messages[language].courseInformation[key], bodyInformation[key], styleClass)
       }
-      bodyHTML += toHeaderAndText(i18n.messages[language].courseInformation[key], bodyInformation[key], styleClass)
     }
   })
 
