@@ -59,6 +59,7 @@ function * getSyllabus (req, res, next) {
       'base': 'https://www.kth.se',
       'type': 'pdf',
       'phantomPath': '/usr/bin/phantomjs',
+      'title': `${syllabusHTML.footerText}`,
       'timeout': 30000
     }
 

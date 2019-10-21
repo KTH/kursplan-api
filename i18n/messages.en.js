@@ -18,7 +18,7 @@ module.exports = {
     /**
      * Message keys
      */
-    service_name: 'Node application name',
+    service_name: 'Course syllabus pdf-converter',
 
     example_message_key: 'This is an english translation of a label',
 
