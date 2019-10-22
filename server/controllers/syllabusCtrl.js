@@ -44,7 +44,7 @@ function * getSyllabus (req, res, next) {
       paginationOffset: 1, // Override the initial pagination number
       'header': {
         'height': '15mm',
-        'contents': ''
+        'contents': 'hello'
       },
       'footer': {
         'height': '27mm',
@@ -59,10 +59,12 @@ function * getSyllabus (req, res, next) {
       'base': 'https://www.kth.se',
       'type': 'pdf',
       'phantomPath': '/usr/bin/phantomjs',
-      'title': `${syllabusHTML.footerText}`,
+      title: `${syllabusHTML.footerText}`,
+      locale: language,
+      lang: language,
       'timeout': 30000
     }
-
+    console.log('syllabusHTML', pdfConfig.title, pdfConfig.locale)
     res.send({ syllabusHTML, pdfConfig })
   } catch (err) {
     next(err)
