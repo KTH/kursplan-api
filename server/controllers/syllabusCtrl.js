@@ -65,6 +65,7 @@ function * getSyllabus (req, res, next) {
       'timeout': 30000
     }
     console.log('syllabusHTML', pdfConfig.title, pdfConfig.locale)
+    res.setHeader('Content-Type', 'text/html')
     res.send({ syllabusHTML, pdfConfig })
   } catch (err) {
     next(err)
