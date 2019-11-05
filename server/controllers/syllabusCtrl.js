@@ -44,7 +44,7 @@ function * getSyllabus (req, res, next) {
       paginationOffset: 1, // Override the initial pagination number
       'header': {
         'height': '15mm',
-        'contents': 'www.kth.se'
+        'contents': '<span style="color:white;display:none;">www.kth.se</span>'
       },
       'footer': {
         'height': '27mm',
