@@ -113,8 +113,16 @@ function getExamObject (dataObject, grades, courseCredits, language = 0) {
   let examString = ''
   if (dataObject.length > 0) {
     for (let exam of dataObject) {
-      //* * Adding a decimal if it's missing in credits **/
-      exam.credits = exam.credits !== EMPTY && exam.credits.toString().indexOf('.') < 0 ? exam.credits + '.0' : exam.credits
+      if (exam.credits) {
+        //* * Adding a decimal if it's missing in credits **/
+        exam.credits =
+          exam.credits !== EMPTY &&
+          exam.credits.toString().indexOf('.') < 0
+            ? exam.credits + '.0'
+            : exam.credits
+      } else {
+        exam.credits = '-'
+      }
 
       examString += `<li>${exam.examCode} - 
                         ${exam.title},
