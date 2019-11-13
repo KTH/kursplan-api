@@ -6,33 +6,43 @@
  */
 
 const co = require('co')
-const { safeGet } = require('safe-utils')
 const generateHTML = require('../libs/generareHTML')
+const redis = require('kth-node-redis')
+const log = require('kth-node-log')
 
 module.exports = {
   getSyllabus: co.wrap(getSyllabus)
 }
 
 const config = require('../configuration').server
-const BasicAPI = require('kth-node-api-call').BasicAPI
+const connections = require('kth-node-api-call').Connections
 
-let koppsApiInternal = new BasicAPI({
-  hostname: config.kopps.host,
-  basePath: config.kopps.basePath,
-  https: config.kopps.https,
-  json: true,
-  // Kopps is a public API and needs no API-key
-  defaultTimeout: config.kopps.defaultTimeout
-})
+const koppsOpts = {
+  log,
+  https: true,
+  redis,
+  cache: config.cache,
+  timeout: 5000,
+  defaultTimeout: config.koppsApi.defaultTimeout,
+  retryOnESOCKETTIMEDOUT: true,
+  useApiKey: false // skip key
+}
+config.koppsApi.doNotCallPathsEndpoint = true // skip checking _paths, because kopps doesnt have it
+config.koppsApi.connected = true
 
-function * getSyllabus (req, res, next) {
+const koppsConfig = {
+  koppsApi: config.koppsApi
+}
+const api = connections.setup(koppsConfig, koppsConfig, koppsOpts)
+
+async function getSyllabus (req, res, next) {
   const courseCode = req.params.courseCode
   const semester = req.params.semester
   const language = req.params.language.length === 2 ? req.params.language : 'sv'
-
+  const koppsApiInternal = api.koppsApi.client
   try {
     let syllabus = {}
-    const syllabuskoppsAPI_course_tot = yield koppsApiInternal.getAsync(`syllabuses/${courseCode}/${semester}?l=${language}`)
+    const syllabuskoppsAPI_course_tot = await koppsApiInternal.getAsync(`${config.koppsApi.basePath}syllabuses/${courseCode}/${semester}?l=${language}`)
     syllabus = syllabuskoppsAPI_course_tot.body
     // console.log("syllabus",syllabus)
     const syllabusHTML = generateHTML(syllabus, semester, language)
