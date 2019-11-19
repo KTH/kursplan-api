@@ -1,155 +1,57 @@
-# Node-api
-## Template project for RESTful API:s
+# Kursplan-api
 
-In an attempt to simplify the process of starting up new
-Node.js based projects, there exists two template projects
-to use as a foundation.
+## API to store information about course syllabuses
 
-The two projects are [node-web][web], a web server with express, and [node-api][api], a RESTful API.
-The node-web project use OpenID Connect and/or CAS as a mechanism for authorisation and authentication.
+This API is made by the _Course Information Project (KIP)_ to support the micro service `kursinformation-web`.
 
-#### Where can I find the template projects?
+### Where can I find all connected projects which depends on this API?
 
-- [https://github.com/KTH/node-api.git][api]
-- [https://github.com/KTH/node-web.git][web]
+- [https://github.com/KTH/kursplan-web.git][web]
+- [https://github.com/KTH/kursinfo-web.git][web]
 
-It's important that we try to make changes that affect the template projects in the template projects themselves
-to make sure that all other projects based on the templates get the good stuff.
+### Where can I find all connected projects which logically connected with this API?
 
-#### How do I use this template project for a project of my own?
+- [https://github.com/KTH/kursinfo-admin-web.git][web]
+- [https://github.com/KTH/kursinfo-web.git][web]
 
-1. Create a new repository on Gita or Github.
-2. Clone the newly created repository locally by using:
+This API is independent and will not break other projects but it is important remember it is logically connected to the bigger picture of course information.
 
-   ```bash
-   git clone git@github.com:KTH/node-api.git NEW_REPOSITORY_NAME
-   ```
-  Make sure that your .git/config file is pointing to the new NEW_REPOSITORY_NAME
+### How to configure the application
 
-3. Navigate to the cloned project directory
-
-### How to configure the applications
+1. Create a `.env` file.
+2. Add an API key for `kursinfo-web`, assign it a strong password, and specifiy a read scope.
 
 ```
-# Logging
-LOGGING_ACCESS_LOG=/Users/hoyce/repos/github/node-api/logs
+KURSPLAN_API_KEYS=?name=kursinfo-web&apiKey=PASSWORDg&scope=read
 ```
 
-Set your basePath property in `swagger.json`:
+2. Add a Redis URI, including password, and other parameters.
 
 ```
-{
-  "swagger": "2.0",
-  "info": {
-  "title": "Node API",
-    "description": "Template API project for Node.js",
-    "version": "1.0.0"
-  },
-  "basePath": "/api/node/v1",
+REDIS_URI=REDIS_ADDRESS:REDIS_PORT,password=REDIS_PASSWORD,ssl=True,abortConnect=False
 ```
 
-Please, remember to set path to match your application.
+3. The `.env` file can also contain other keys. They have sufficient defaults for development, and don’t have to be added. Instead, these keys will be used in `secrets.env` or `docker-stack.yml`.
 
-#### What is `swagger-ui`?
-
-The `swagger-ui` package is simply used to provide a basic UI for
-testing the API. It is not directly required in the code, which
-means running checks like `npm-check` will claim it is unused.
-It cannot be stressed enough, **do not remove this package**!
-
-#### What can I customize?
-
-Follow the instructions for the files and folders below. For
-any files and folders not listed, avoid editing them in a your
-custom project.
-
-- `server/models/`
-
-  Anything in this folder can be edited to fit your project.
-  You can safely remove the `sample.js` file and add your own
-  mongoose-based schemas and models.
-
-- `server/init/routing/sampleRoutes.js`
-
-  This file contains routing config for the sample controller.
-  You can either rename or remove this file. Other files in this
-  folder should only be edited in the template project. The paths
-  for the routes come from the `swagger.json` file.
-
-- `server/controllers/sampleCtrl.js`
-
-  This file contains the sample controller. You can either rename
-  or remove this file. You can add your own controllers to this
-  folder. Remember to add your custom controllers to the `index.js`
-  file.
-
-- `swagger.json`
-
-  This file contains the API configuration and documentation.
-  You should add your own paths to this file. See the [Swagger
-  website][swagger] for documentation on the `swagger.json` format.
-
-- `start.sh` and `stop.sh`
-
-  Make sure to update the project name in these files.
-
-- `package.json`
-
-  Update the project name and add any dependencies you need.
-  Excluding the testing scripts, avoid editing the scripts.
-
-- `server/server.js`
-
-  Add additional startup code to the init callback.
-
-- `test/`
-
-  As explained below, you can completely remove all tests if
-  you like. If you want to use testing in your project, here's
-  the recommended place to put your test files.
-
-- `server/lib/`
-
-  Here you can put custom code that does not fit in any other
-  place. Though do not edit the `routing.js` file.
-
-- `config/`
-
-  Any and all configuration goes here. In particular you must
-  edit the `commonSettings.js` file to match your project's
-  proxy prefix path (i.e. `/api/node`). Other files you may
-  want to edit are the environment specific files for the
-  database connection config. Finally the `localSettings.js`
-  file should never be checked into source control as it's
-  used to contain sensitive information. You can also
-  override other settings in this file.
-
-- `.gitignore`
-
-#### Common errors
-
-When trying to run node-api as a standalone you might encounter the following error:
 ```
-return binding.open(pathModule._makeLong(path), stringToFlags(flags), mode);
+SERVICE_PUBLISH
+# Default value is 'api/kursplan'
+SERVER_SSL
+# Default value is false
+SERVER_PORT
+# Default value is 3001
+SERVER_CERT_FILE
+# Default value is empty string, ''
+SERVER_CERT_PASSPHRASE
+# Default value is empty string, ''
+LOGGING_LEVEL
+# Default value is 'debug'
+LOGGING_ACCESS_LOG
+# Default value is 'true'
+KOPPS_API_CACHE_EXPIRE_TIME
+# Default value is 3600
+KOPPS_URI
+# Default value is 'https://api-r.referens.sys.kth.se/api/kopps/v2/?defaultTimeout=60000'
 ```
-This is because the SSL information is incorrect in localSettings.js. Set ```useSsl: false``` to avoid this.
 
-
-#### Testing
-
-The template project uses a [sample setup][sample-test] for
-tests using [tape][tape]. It is not required to use this test
-harness in your projects. Simply remove the sample code and
-any reference to it in your project's `package.json` file.
-
-Keep in mind that you still need to provide a working npm
-script for `npm test` for the build server. If you don't want
-or need tests, a simple `echo "ok"` will suffice.
-
-[api]: https://github.com/KTH/node-api
-[web]: https://github.com/KTH/node-web
-[tape]: https://github.com/substack/tape
-[sample-test]: test/unit/specs/sampleCtrl-test.js
-[swagger]: http://swagger.io/
-
-...
+There’s also a `.env.in` template file which contains available keys.
