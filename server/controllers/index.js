@@ -1,9 +1,7 @@
-'use strict'
+"use strict";
 
 module.exports = {
-  // Do not remove the System controller!
-  System: require('./systemCtrl'),
-
-  // Replace with actual API controller
-  Syllabus: require('./syllabusCtrl')
-}
+  System: require("./systemCtrl"),
+  Syllabus: require("./syllabusCtrl"),
+  PDF: require("./pdfCtrl"),
+};
