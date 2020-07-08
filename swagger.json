@@ -87,7 +87,6 @@
         "operationId": "getSyllabusPdfByCourseCode",
         "summary": "Create a syllabus PDF for course code and semester in requested language",
         "description": "Retrieves data from Kopps and creates a syllabus PDF for course code and semester in requested language.",
-        "produces": "application/pdf",
         "parameters": [
           {
             "name": "courseCode",

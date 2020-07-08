@@ -1,10 +1,17 @@
 import React from "react";
-import { Document, Page } from "@react-pdf/renderer";
 
-const CourseMemo = ({ data }) => (
-  <Document>
-    <Page />
-  </Document>
-);
+import SyllabusDocument from "./SyllabusDocument";
 
-export default CourseMemo;
+/*
+  Syllabus Components Overview
+  - Syllabus
+    - SyllabusDocument
+      - SyllabusPages
+        - SyllabusContent
+        - SyllabusPageFooter
+  - SyllabusStyles
+  - SyllabusHtmlParser
+*/
+const Syllabus = (props) => <SyllabusDocument {...props} />;
+
+export default Syllabus;

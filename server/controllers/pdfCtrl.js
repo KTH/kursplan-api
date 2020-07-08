@@ -2,9 +2,10 @@
 
 const log = require("kth-node-log");
 
+const getSyllabus = require("../koppsApi").getSyllabus;
 const { createPdf } = require("../libs/pdfRenderer.js");
 
-async function getSyllabus(req, res, next) {
+async function _getSyllabus(req, res, next) {
   const { courseCode, semester } = req.params;
   const language =
     req.params.language.length === 2 ? req.params.language : "sv";
@@ -18,6 +19,7 @@ async function getSyllabus(req, res, next) {
     ", language: ",
     language
   );
+  const syllabus = await getSyllabus(courseCode, semester, language);
   try {
     const contentDisposition = download === "true" ? "attachment" : "inline";
     res.type("application/pdf");
@@ -27,7 +29,7 @@ async function getSyllabus(req, res, next) {
     );
     // eslint-disable-next-line no-console
     console.time("getSyllabus: createPdf");
-    await createPdf(res);
+    await createPdf(res, syllabus, semester, language);
     // eslint-disable-next-line no-console
     console.timeEnd("getSyllabus: createPdf");
     log.debug(
@@ -45,5 +47,5 @@ async function getSyllabus(req, res, next) {
 }
 
 module.exports = {
-  getSyllabus,
+  getSyllabus: _getSyllabus,
 };
