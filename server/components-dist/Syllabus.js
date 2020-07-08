@@ -21,11 +21,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
   - SyllabusStyles
   - SyllabusHtmlParser
 */
-var Syllabus = function Syllabus(_ref) {
-  var data = _ref.data;
-  return /*#__PURE__*/_react["default"].createElement(_SyllabusDocument["default"], {
-    data: data
-  });
+var Syllabus = function Syllabus(props) {
+  return /*#__PURE__*/_react["default"].createElement(_SyllabusDocument["default"], props);
 };
 
 var _default = Syllabus;

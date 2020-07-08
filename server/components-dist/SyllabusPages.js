@@ -28,8 +28,7 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 /* A4 is default page size value, explicitly set for clarity */
-var SyllabusPages = function SyllabusPages(_ref) {
-  var data = _ref.data;
+var SyllabusPages = function SyllabusPages(props) {
   return /*#__PURE__*/_react["default"].createElement(_renderer.Page, {
     size: "A4",
     style: _SyllabusStyles["default"].pages
@@ -38,19 +37,13 @@ var SyllabusPages = function SyllabusPages(_ref) {
     onRender: _pdfUtils.profilerToLog
   }, /*#__PURE__*/_react["default"].createElement(_renderer.View, {
     style: _SyllabusStyles["default"].content
-  }, /*#__PURE__*/_react["default"].createElement(_SyllabusHead["default"], {
-    data: data
-  }), /*#__PURE__*/_react["default"].createElement(_SyllabusContent["default"], {
-    data: data
-  }))), /*#__PURE__*/_react["default"].createElement(_react.Profiler, {
+  }, /*#__PURE__*/_react["default"].createElement(_SyllabusHead["default"], props))), /*#__PURE__*/_react["default"].createElement(_react.Profiler, {
     id: "SyllabusPageFooter",
     onRender: _pdfUtils.profilerToLog
   }, /*#__PURE__*/_react["default"].createElement(_renderer.View, {
     fixed: true,
     style: _SyllabusStyles["default"].footer
-  }, /*#__PURE__*/_react["default"].createElement(_SyllabusPageFooter["default"], {
-    data: data
-  }))));
+  })));
 };
 
 var _default = SyllabusPages;

@@ -8,17 +8,17 @@ import styles from "./SyllabusStyles";
 import { profilerToLog } from "../libs/pdfUtils";
 
 /* A4 is default page size value, explicitly set for clarity */
-const SyllabusPages = ({ data }) => (
+const SyllabusPages = (props) => (
   <Page size="A4" style={styles.pages}>
     <Profiler id="SyllabusContent" onRender={profilerToLog}>
       <View style={styles.content}>
-        <SyllabusHead data={data} />
-        <SyllabusContent data={data} />
+        <SyllabusHead {...props} />
+        {/* <SyllabusContent {...props} /> */}
       </View>
     </Profiler>
     <Profiler id="SyllabusPageFooter" onRender={profilerToLog}>
       <View fixed style={styles.footer}>
-        <SyllabusPageFooter data={data} />
+        {/* <SyllabusPageFooter {...props} /> */}
       </View>
     </Profiler>
   </Page>

@@ -28,20 +28,15 @@ var Section = function Section() {
 };
 
 var SyllabusContent = function SyllabusContent(_ref) {
-  var data = _ref.data;
-  var sections = data.sections || [];
+  var syllabus = _ref.syllabus;
+  var course = syllabus.course;
   return /*#__PURE__*/_react["default"].createElement(_renderer.View, {
     style: _SyllabusStyles["default"].contentContainer
-  }, sections.map(function (section) {
-    return /*#__PURE__*/_react["default"].createElement(_react.Profiler, {
-      key: "profiler-".concat(section.id),
-      id: section.id,
-      onRender: profilerToLog
-    }, /*#__PURE__*/_react["default"].createElement(Section, {
-      key: section.id,
-      section: section
-    }));
-  }));
+  }, /*#__PURE__*/_react["default"].createElement(_react.Profiler, {
+    key: "profiler-syllabus-content",
+    id: "profiler-syllabus-content",
+    onRender: profilerToLog
+  }, /*#__PURE__*/_react["default"].createElement(_renderer.Text, null, course.recruitmentText)), "))}");
 };
 
 var _default = SyllabusContent;

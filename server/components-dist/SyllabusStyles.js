@@ -19,6 +19,22 @@ var styles = _renderer.StyleSheet.create({
   logotype: {
     height: A4.logotype,
     width: A4.logotype
+  },
+  h1: {
+    fontFamily: "Open Sans SemiBold",
+    fontSize: 24,
+    marginTop: 24,
+    marginBottom: 0
+  },
+  h2: {
+    fontFamily: "Open Sans SemiBold",
+    fontSize: 18,
+    marginTop: 18,
+    marginBottom: 6
+  },
+  infoText: {
+    fontFamily: "Open Sans",
+    fontSize: 12
   }
 });
 

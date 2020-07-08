@@ -12,6 +12,6 @@ import SyllabusDocument from "./SyllabusDocument";
   - SyllabusStyles
   - SyllabusHtmlParser
 */
-const Syllabus = ({ data }) => <SyllabusDocument data={data} />;
+const Syllabus = (props) => <SyllabusDocument {...props} />;
 
 export default Syllabus;

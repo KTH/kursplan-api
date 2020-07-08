@@ -10,18 +10,17 @@ const Section = () => {
   return <View />;
 };
 
-const SyllabusContent = ({ data }) => {
-  const sections = data.sections || [];
+const SyllabusContent = ({ syllabus }) => {
+  const { course } = syllabus;
   return (
     <View style={styles.contentContainer}>
-      {sections.map((section) => (
-        <Profiler
-          key={`profiler-${section.id}`}
-          id={section.id}
-          onRender={profilerToLog}
-        >
-          <Section key={section.id} section={section} />
-        </Profiler>
+      <Profiler
+        key={`profiler-syllabus-content`}
+        id={`profiler-syllabus-content`}
+        onRender={profilerToLog}
+      >
+        <Text>{course.recruitmentText}</Text>
+      </Profiler>
       ))}
     </View>
   );

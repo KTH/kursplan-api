@@ -18,8 +18,9 @@ Font.register({
 });
 Font.register({ family: "Georgia", src: "server/fonts/Georgia.ttf" });
 
-const SyllabusDocument = ({ data }) => {
-  const title = `${data.courseCode}-${data.semester}`;
+const SyllabusDocument = ({ syllabus, semester, language }) => {
+  const { course } = syllabus;
+  const title = `${course.courseCode}-${semester}`;
   return (
     <Profiler id="SyllabusDocument" onRender={profilerToLog}>
       <Document
@@ -28,7 +29,11 @@ const SyllabusDocument = ({ data }) => {
         onRender={timer("SyllabusDocument", Date.now())}
       >
         <Profiler id="SyllabusPages" onRender={profilerToLog}>
-          <SyllabusPages data={data} />
+          <SyllabusPages
+            syllabus={syllabus}
+            semester={semester}
+            language={language}
+          />
         </Profiler>
       </Document>
     </Profiler>

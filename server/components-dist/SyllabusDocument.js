@@ -42,8 +42,11 @@ _renderer.Font.register({
 });
 
 var SyllabusDocument = function SyllabusDocument(_ref) {
-  var data = _ref.data;
-  var title = "".concat(data.courseCode, "-").concat(data.semester);
+  var syllabus = _ref.syllabus,
+      semester = _ref.semester,
+      language = _ref.language;
+  var course = syllabus.course;
+  var title = "".concat(course.courseCode, "-").concat(semester);
   return /*#__PURE__*/_react["default"].createElement(_react.Profiler, {
     id: "SyllabusDocument",
     onRender: _pdfUtils.profilerToLog
@@ -55,7 +58,9 @@ var SyllabusDocument = function SyllabusDocument(_ref) {
     id: "SyllabusPages",
     onRender: _pdfUtils.profilerToLog
   }, /*#__PURE__*/_react["default"].createElement(_SyllabusPages["default"], {
-    data: data
+    syllabus: syllabus,
+    semester: semester,
+    language: language
   }))));
 };
 
