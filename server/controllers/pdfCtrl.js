@@ -5,7 +5,9 @@ const log = require("kth-node-log");
 const { createPdf } = require("../libs/pdfRenderer.js");
 
 async function getSyllabus(req, res, next) {
-  const { courseCode, semester, language } = req.params;
+  const { courseCode, semester } = req.params;
+  const language =
+    req.params.language.length === 2 ? req.params.language : "sv";
   const { download } = req.query;
   log.debug(
     "getSyllabus: Received request for PDF with courseCode: ",
