@@ -6,7 +6,7 @@
     "version": "1.0.0"
   },
   "basePath": "/api/kursplan",
-  "produces": ["application/json"],
+  "produces": ["application/json", "application/pdf"],
   "paths": {
     "/_checkAPIkey": {
       "get": {
@@ -87,6 +87,7 @@
         "operationId": "getSyllabusPdfByCourseCode",
         "summary": "Create a syllabus PDF for course code and semester in requested language",
         "description": "Retrieves data from Kopps and creates a syllabus PDF for course code and semester in requested language.",
+        "produces": "application/pdf",
         "parameters": [
           {
             "name": "courseCode",
@@ -106,6 +107,13 @@
             "name": "language",
             "in": "path",
             "description": "Language for the response, 'sv': Swedish, 'en': English, default is 'sv'",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "documentName",
+            "in": "query",
+            "description": "Desired name for PDF document. File suffix pdf will be added.",
             "required": false,
             "type": "string"
           },
