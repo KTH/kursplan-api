@@ -7,14 +7,26 @@ exports["default"] = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _renderer = require("@react-pdf/renderer");
+var _SyllabusDocument = _interopRequireDefault(require("./SyllabusDocument"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-var CourseMemo = function CourseMemo(_ref) {
+/*
+  Syllabus Components Overview
+  - Syllabus
+    - SyllabusDocument
+      - SyllabusPages
+        - SyllabusContent
+        - SyllabusPageFooter
+  - SyllabusStyles
+  - SyllabusHtmlParser
+*/
+var Syllabus = function Syllabus(_ref) {
   var data = _ref.data;
-  return /*#__PURE__*/_react["default"].createElement(_renderer.Document, null, /*#__PURE__*/_react["default"].createElement(_renderer.Page, null));
+  return /*#__PURE__*/_react["default"].createElement(_SyllabusDocument["default"], {
+    data: data
+  });
 };
 
-var _default = CourseMemo;
+var _default = Syllabus;
 exports["default"] = _default;

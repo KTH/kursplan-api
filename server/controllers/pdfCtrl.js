@@ -27,7 +27,7 @@ async function getSyllabus(req, res, next) {
     );
     // eslint-disable-next-line no-console
     console.time("getSyllabus: createPdf");
-    await createPdf(res);
+    await createPdf(res, { courseCode, semester });
     // eslint-disable-next-line no-console
     console.timeEnd("getSyllabus: createPdf");
     log.debug(
