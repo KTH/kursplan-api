@@ -11,6 +11,8 @@ var _renderer = require("@react-pdf/renderer");
 
 var _SyllabusStyles = _interopRequireDefault(require("./SyllabusStyles"));
 
+var _i18n = _interopRequireDefault(require("../../i18n"));
+
 var _pdfConstants = require("../libs/pdfConstants");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
@@ -28,25 +30,43 @@ var englishTranslationText = function englishTranslationText(language) {
 
 var SyllabusHead = function SyllabusHead(_ref) {
   var syllabus = _ref.syllabus,
+      activeSyllabus = _ref.activeSyllabus,
       language = _ref.language;
+  var languageIndex = language === "en" ? 0 : 1;
   var course = syllabus.course;
   var courseCode = course.courseCode,
       title = course.title,
       credits = course.credits,
       creditUnitAbbr = course.creditUnitAbbr,
       titleOther = course.titleOther;
-  var creditsLabel = formatCredits(credits, creditUnitAbbr, language);
-  var translationLabel = englishTranslationText(language);
+  var courseSyllabus = activeSyllabus.courseSyllabus;
+  var discontinuationText = courseSyllabus.discontinuationText,
+      establishment = courseSyllabus.establishment,
+      decisionToDiscontinue = courseSyllabus.decisionToDiscontinue;
+  var creditsText = formatCredits(credits, creditUnitAbbr, language);
+  var translationText = englishTranslationText(language);
+  var establishmentHeader = _i18n["default"].messages[languageIndex].courseInformation.course_establishment;
+  var discontinuationHeader = _i18n["default"].messages[languageIndex].courseInformation.course_decision_to_discontinue;
   return /*#__PURE__*/_react["default"].createElement(_renderer.View, null, /*#__PURE__*/_react["default"].createElement(_renderer.Image, {
     style: _SyllabusStyles["default"].logotype,
     src: _pdfConstants.logotypePath
   }), /*#__PURE__*/_react["default"].createElement(_renderer.Text, {
     style: _SyllabusStyles["default"].h1
-  }, "".concat(courseCode, " ").concat(title, " ").concat(creditsLabel)), /*#__PURE__*/_react["default"].createElement(_renderer.Text, {
-    style: _SyllabusStyles["default"].h2
+  }, "".concat(courseCode, " ").concat(title, " ").concat(creditsText)), /*#__PURE__*/_react["default"].createElement(_renderer.Text, {
+    style: _SyllabusStyles["default"].subHeader
   }, "".concat(titleOther)), /*#__PURE__*/_react["default"].createElement(_renderer.Text, {
-    style: _SyllabusStyles["default"].infoText
-  }, "".concat(translationLabel)));
+    style: _SyllabusStyles["default"].bodyText
+  }, "".concat(translationText)), /*#__PURE__*/_react["default"].createElement(_renderer.Text, {
+    style: _SyllabusStyles["default"].bodyText
+  }, "".concat(discontinuationText)), /*#__PURE__*/_react["default"].createElement(_renderer.Text, {
+    style: _SyllabusStyles["default"].h2
+  }, "".concat(establishmentHeader)), /*#__PURE__*/_react["default"].createElement(_renderer.Text, {
+    style: _SyllabusStyles["default"].bodyText
+  }, "".concat(establishment)), decisionToDiscontinue && /*#__PURE__*/_react["default"].createElement(_renderer.View, null, /*#__PURE__*/_react["default"].createElement(_renderer.Text, {
+    style: _SyllabusStyles["default"].h2
+  }, "".concat(discontinuationHeader)), /*#__PURE__*/_react["default"].createElement(_renderer.Text, {
+    style: _SyllabusStyles["default"].bodyText
+  }, "".concat(decisionToDiscontinue))));
 };
 
 var _default = SyllabusHead;

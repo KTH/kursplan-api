@@ -4,6 +4,7 @@ import { View, Text, Image } from "@react-pdf/renderer";
 // import parse from "./SyllabusHtmlParser";
 import styles from "./SyllabusStyles";
 
+import i18n from "../../i18n";
 import { logotypePath } from "../libs/pdfConstants";
 
 const formatCredits = (credits, creditUnitAbbr, language) => {
@@ -18,18 +19,40 @@ const englishTranslationText = (language) =>
     ? "This is a translation of the Swedish, legally binding, course syllabus."
     : "";
 
-const SyllabusHead = ({ syllabus, language }) => {
+const SyllabusHead = ({ syllabus, activeSyllabus, language }) => {
+  const languageIndex = language === "en" ? 0 : 1;
   const { course } = syllabus;
   const { courseCode, title, credits, creditUnitAbbr, titleOther } = course;
-  const creditsLabel = formatCredits(credits, creditUnitAbbr, language);
-  const translationLabel = englishTranslationText(language);
+  const { courseSyllabus } = activeSyllabus;
+  const {
+    discontinuationText,
+    establishment,
+    decisionToDiscontinue,
+  } = courseSyllabus;
+
+  const creditsText = formatCredits(credits, creditUnitAbbr, language);
+  const translationText = englishTranslationText(language);
+  const establishmentHeader =
+    i18n.messages[languageIndex].courseInformation.course_establishment;
+  const discontinuationHeader =
+    i18n.messages[languageIndex].courseInformation
+      .course_decision_to_discontinue;
 
   return (
     <View>
       <Image style={styles.logotype} src={logotypePath} />
-      <Text style={styles.h1}>{`${courseCode} ${title} ${creditsLabel}`}</Text>
-      <Text style={styles.h2}>{`${titleOther}`}</Text>
-      <Text style={styles.infoText}>{`${translationLabel}`}</Text>
+      <Text style={styles.h1}>{`${courseCode} ${title} ${creditsText}`}</Text>
+      <Text style={styles.subHeader}>{`${titleOther}`}</Text>
+      <Text style={styles.bodyText}>{`${translationText}`}</Text>
+      <Text style={styles.bodyText}>{`${discontinuationText}`}</Text>
+      <Text style={styles.h2}>{`${establishmentHeader}`}</Text>
+      <Text style={styles.bodyText}>{`${establishment}`}</Text>
+      {decisionToDiscontinue && (
+        <View>
+          <Text style={styles.h2}>{`${discontinuationHeader}`}</Text>
+          <Text style={styles.bodyText}>{`${decisionToDiscontinue}`}</Text>
+        </View>
+      )}
     </View>
   );
 };
