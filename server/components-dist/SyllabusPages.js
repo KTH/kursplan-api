@@ -13,6 +13,8 @@ var _renderer = require("@react-pdf/renderer");
 
 var _SyllabusHead = _interopRequireDefault(require("./SyllabusHead"));
 
+var _SyllabusKeyInformation = _interopRequireDefault(require("./SyllabusKeyInformation"));
+
 var _SyllabusContent = _interopRequireDefault(require("./SyllabusContent"));
 
 var _SyllabusPageFooter = _interopRequireDefault(require("./SyllabusPageFooter"));
@@ -71,6 +73,10 @@ var SyllabusPages = function SyllabusPages(_ref) {
   }, /*#__PURE__*/_react["default"].createElement(_renderer.View, {
     style: _SyllabusStyles["default"].content
   }, /*#__PURE__*/_react["default"].createElement(_SyllabusHead["default"], {
+    syllabus: syllabus,
+    activeSyllabus: activeSyllabus,
+    language: language
+  }), /*#__PURE__*/_react["default"].createElement(_SyllabusKeyInformation["default"], {
     syllabus: syllabus,
     activeSyllabus: activeSyllabus,
     language: language
