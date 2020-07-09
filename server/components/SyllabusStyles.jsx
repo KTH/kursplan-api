@@ -19,7 +19,12 @@ const styles = StyleSheet.create({
     marginTop: 18,
     marginBottom: 6,
   },
-  infoText: {
+  subHeader: {
+    fontFamily: "Open Sans SemiBold",
+    fontSize: 14,
+    color: "gray",
+  },
+  bodyText: {
     fontFamily: "Open Sans",
     fontSize: 12,
   },
