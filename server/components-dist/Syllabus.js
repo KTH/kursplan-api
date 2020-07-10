@@ -16,7 +16,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
   - Syllabus
     - SyllabusDocument
       - SyllabusPages
-        - SyllabusContent
+        - SyllabusHead
+        - SyllabusKeyInformation
+        - SyllabusBody
         - SyllabusPageFooter
   - SyllabusStyles
   - SyllabusHtmlParser

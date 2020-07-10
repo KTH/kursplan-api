@@ -3,7 +3,7 @@ import { Page, View } from "@react-pdf/renderer";
 
 import SyllabusHead from "./SyllabusHead";
 import SyllabusKeyInformation from "./SyllabusKeyInformation";
-import SyllabusContent from "./SyllabusContent";
+import SyllabusBody from "./SyllabusBody";
 import SyllabusPageFooter from "./SyllabusPageFooter";
 import styles from "./SyllabusStyles";
 import { profilerToLog } from "../libs/pdfUtils";
@@ -58,7 +58,11 @@ const SyllabusPages = ({ syllabus, semester, language }) => {
             activeSyllabus={activeSyllabus}
             language={language}
           />
-          {/* <SyllabusContent {...props} /> */}
+          <SyllabusBody
+            syllabus={syllabus}
+            activeSyllabus={activeSyllabus}
+            language={language}
+          />
         </View>
       </Profiler>
       <Profiler id="SyllabusPageFooter" onRender={profilerToLog}>

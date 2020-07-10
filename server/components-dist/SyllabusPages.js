@@ -15,7 +15,7 @@ var _SyllabusHead = _interopRequireDefault(require("./SyllabusHead"));
 
 var _SyllabusKeyInformation = _interopRequireDefault(require("./SyllabusKeyInformation"));
 
-var _SyllabusContent = _interopRequireDefault(require("./SyllabusContent"));
+var _SyllabusBody = _interopRequireDefault(require("./SyllabusBody"));
 
 var _SyllabusPageFooter = _interopRequireDefault(require("./SyllabusPageFooter"));
 
@@ -77,6 +77,10 @@ var SyllabusPages = function SyllabusPages(_ref) {
     activeSyllabus: activeSyllabus,
     language: language
   }), /*#__PURE__*/_react["default"].createElement(_SyllabusKeyInformation["default"], {
+    syllabus: syllabus,
+    activeSyllabus: activeSyllabus,
+    language: language
+  }), /*#__PURE__*/_react["default"].createElement(_SyllabusBody["default"], {
     syllabus: syllabus,
     activeSyllabus: activeSyllabus,
     language: language

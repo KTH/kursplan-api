@@ -12,7 +12,7 @@ var _pdfConstants = require("../libs/pdfConstants");
 var A4 = _pdfConstants.pageMeasurements.A4;
 
 var styles = _renderer.StyleSheet.create({
-  contentContainer: {
+  bodyContainer: {
     fontFamily: "Georgia",
     fontSize: "12pt"
   },
