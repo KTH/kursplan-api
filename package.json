@@ -25,6 +25,7 @@
     "event-stream": "^4.0.1",
     "express": "^4.16.4",
     "express-handlebars": "^3.0.0",
+    "html-react-parser": "^0.13.0",
     "kth-node-access-log": "github:KTH/kth-node-access-log#v1.0.0",
     "kth-node-api-call": "^2.0.0",
     "kth-node-api-common": "^0.1.5",

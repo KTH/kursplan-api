@@ -11,9 +11,13 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _renderer = require("@react-pdf/renderer");
 
+var _SyllabusStyles = _interopRequireDefault(require("./SyllabusStyles"));
+
+var _SyllabusHtmlParser = _interopRequireDefault(require("./SyllabusHtmlParser"));
+
 var _i18n = _interopRequireDefault(require("../../i18n"));
 
-var _SyllabusStyles = _interopRequireDefault(require("./SyllabusStyles"));
+var _pdfUtils = _interopRequireDefault(require("../libs/pdfUtils"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -35,10 +39,7 @@ function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o =
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-var _require = require("../libs/pdfUtils"),
-    profilerToLog = _require.profilerToLog; // Copied logic from generareHTML
-
-
+// Copied logic from generareHTML
 var getExamObject = function getExamObject(dataObject, grades, courseCredits) {
   var language = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 0;
   var examString = "";
@@ -123,7 +124,7 @@ var Section = function Section(_ref4) {
     style: _SyllabusStyles["default"].h2
   }, sectionHeader), /*#__PURE__*/_react["default"].createElement(_renderer.Text, {
     style: _SyllabusStyles["default"].bodyText
-  }, sectionContent));
+  }, (0, _SyllabusHtmlParser["default"])(sectionContent)));
 };
 
 var SyllabusBody = function SyllabusBody(_ref5) {
@@ -138,7 +139,7 @@ var SyllabusBody = function SyllabusBody(_ref5) {
   }, /*#__PURE__*/_react["default"].createElement(_react.Profiler, {
     key: "profiler-syllabus-body",
     id: "profiler-syllabus-body",
-    onRender: profilerToLog
+    onRender: _pdfUtils["default"]
   }, sections));
 };
 

@@ -1,10 +1,11 @@
 import React, { Profiler } from "react";
 import { View, Text } from "@react-pdf/renderer";
 
-import i18n from "../../i18n";
 import styles from "./SyllabusStyles";
+import parse from "./SyllabusHtmlParser";
 
-const { profilerToLog } = require("../libs/pdfUtils");
+import i18n from "../../i18n";
+import profilerToLog from "../libs/pdfUtils";
 
 // Copied logic from generareHTML
 const getExamObject = (dataObject, grades, courseCredits, language = 0) => {
@@ -88,7 +89,7 @@ const Section = ({ id, content, languageIndex }) => {
   return (
     <View>
       <Text style={styles.h2}>{sectionHeader}</Text>
-      <Text style={styles.bodyText}>{sectionContent}</Text>
+      <Text style={styles.bodyText}>{parse(sectionContent)}</Text>
     </View>
   );
 };
