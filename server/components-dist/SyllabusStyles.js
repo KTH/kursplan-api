@@ -20,6 +20,17 @@ var styles = _renderer.StyleSheet.create({
     height: A4.logotype,
     width: A4.logotype
   },
+  pages: {
+    padding: A4.pageMargin,
+    flexDirection: "column"
+  },
+  content: {
+    flexGrow: 1,
+    padding: "0 0 10mm 0"
+  },
+  footer: {
+    flexGrow: 0
+  },
   h1: {
     fontFamily: "Open Sans SemiBold",
     fontSize: 24,
@@ -40,6 +51,24 @@ var styles = _renderer.StyleSheet.create({
   bodyText: {
     fontFamily: "Open Sans",
     fontSize: 12
+  },
+  pageFooter: {
+    fontFamily: "Open Sans",
+    fontSize: 12,
+    flexDirection: "row",
+    borderTop: "1px solid black",
+    paddingTop: "6pt"
+  },
+  pageFooterLeft: {
+    flexGrow: 0,
+    flexDirection: "column",
+    fontSize: 12,
+    textAlign: "left"
+  },
+  pageFooterRight: {
+    flexGrow: 1,
+    fontSize: 12,
+    textAlign: "right"
   }
 });
 

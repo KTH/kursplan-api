@@ -67,7 +67,11 @@ const SyllabusPages = ({ syllabus, semester, language }) => {
       </Profiler>
       <Profiler id="SyllabusPageFooter" onRender={profilerToLog}>
         <View fixed style={styles.footer}>
-          {/* <SyllabusPageFooter {...props} /> */}
+          <SyllabusPageFooter
+            syllabus={syllabus}
+            semester={semester}
+            language={language}
+          />
         </View>
       </Profiler>
     </Page>

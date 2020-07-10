@@ -90,7 +90,11 @@ var SyllabusPages = function SyllabusPages(_ref) {
   }, /*#__PURE__*/_react["default"].createElement(_renderer.View, {
     fixed: true,
     style: _SyllabusStyles["default"].footer
-  })));
+  }, /*#__PURE__*/_react["default"].createElement(_SyllabusPageFooter["default"], {
+    syllabus: syllabus,
+    semester: semester,
+    language: language
+  }))));
 };
 
 var _default = SyllabusPages;
