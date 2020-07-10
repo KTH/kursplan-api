@@ -15,7 +15,7 @@ var _SyllabusHead = _interopRequireDefault(require("./SyllabusHead"));
 
 var _SyllabusKeyInformation = _interopRequireDefault(require("./SyllabusKeyInformation"));
 
-var _SyllabusContent = _interopRequireDefault(require("./SyllabusContent"));
+var _SyllabusBody = _interopRequireDefault(require("./SyllabusBody"));
 
 var _SyllabusPageFooter = _interopRequireDefault(require("./SyllabusPageFooter"));
 
@@ -80,13 +80,21 @@ var SyllabusPages = function SyllabusPages(_ref) {
     syllabus: syllabus,
     activeSyllabus: activeSyllabus,
     language: language
+  }), /*#__PURE__*/_react["default"].createElement(_SyllabusBody["default"], {
+    syllabus: syllabus,
+    activeSyllabus: activeSyllabus,
+    language: language
   }))), /*#__PURE__*/_react["default"].createElement(_react.Profiler, {
     id: "SyllabusPageFooter",
     onRender: _pdfUtils.profilerToLog
   }, /*#__PURE__*/_react["default"].createElement(_renderer.View, {
     fixed: true,
     style: _SyllabusStyles["default"].footer
-  })));
+  }, /*#__PURE__*/_react["default"].createElement(_SyllabusPageFooter["default"], {
+    syllabus: syllabus,
+    semester: semester,
+    language: language
+  }))));
 };
 
 var _default = SyllabusPages;

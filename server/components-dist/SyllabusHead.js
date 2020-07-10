@@ -55,9 +55,13 @@ var SyllabusHead = function SyllabusHead(_ref) {
   }, "".concat(courseCode, " ").concat(title, " ").concat(creditsText)), /*#__PURE__*/_react["default"].createElement(_renderer.Text, {
     style: _SyllabusStyles["default"].subHeader
   }, "".concat(titleOther)), /*#__PURE__*/_react["default"].createElement(_renderer.Text, {
-    style: _SyllabusStyles["default"].bodyText
+    style: [_SyllabusStyles["default"].bodyText, {
+      paddingBottom: 12
+    }]
   }, "".concat(translationText)), /*#__PURE__*/_react["default"].createElement(_renderer.Text, {
-    style: _SyllabusStyles["default"].bodyText
+    style: [_SyllabusStyles["default"].bodyText, {
+      paddingBottom: 12
+    }]
   }, "".concat(discontinuationText)), /*#__PURE__*/_react["default"].createElement(_renderer.Text, {
     style: _SyllabusStyles["default"].h2
   }, "".concat(establishmentHeader)), /*#__PURE__*/_react["default"].createElement(_renderer.Text, {

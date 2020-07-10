@@ -7,7 +7,9 @@ import SyllabusDocument from "./SyllabusDocument";
   - Syllabus
     - SyllabusDocument
       - SyllabusPages
-        - SyllabusContent
+        - SyllabusHead
+        - SyllabusKeyInformation
+        - SyllabusBody
         - SyllabusPageFooter
   - SyllabusStyles
   - SyllabusHtmlParser
