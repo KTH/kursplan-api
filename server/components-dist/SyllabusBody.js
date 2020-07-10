@@ -120,7 +120,9 @@ var Section = function Section(_ref4) {
   var sectionHeader = _i18n["default"].messages[languageIndex].courseInformation[id];
   var sectionContent = content; // TODO: Parse HTML
 
-  return /*#__PURE__*/_react["default"].createElement(_renderer.View, null, /*#__PURE__*/_react["default"].createElement(_renderer.Text, {
+  return /*#__PURE__*/_react["default"].createElement(_renderer.View, {
+    wrap: false
+  }, /*#__PURE__*/_react["default"].createElement(_renderer.Text, {
     style: _SyllabusStyles["default"].h2
   }, sectionHeader), /*#__PURE__*/_react["default"].createElement(_renderer.Text, {
     style: _SyllabusStyles["default"].bodyText

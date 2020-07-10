@@ -50,13 +50,15 @@ var getURL = function getURL(value) {
 
 var components = {
   p: function p(domNode) {
-    return /*#__PURE__*/_react["default"].createElement(_renderer.Text, null, (0, _htmlReactParser.domToReact)(domNode.children, htmlParseOptions));
+    return /*#__PURE__*/_react["default"].createElement(_renderer.Text, {
+      style: _SyllabusStyles["default"].p
+    }, (0, _htmlReactParser.domToReact)(domNode.children, htmlParseOptions));
   },
   ul: function ul(domNode) {
     return /*#__PURE__*/_react["default"].createElement(_renderer.View, null, (0, _htmlReactParser.domToReact)(domNode.children, htmlParseOptions));
   },
   li: function li(domNode) {
-    return /*#__PURE__*/_react["default"].createElement(_renderer.Text, null, domNode.prev ? "\n\u2022 " : "\u2022 ", (0, _htmlReactParser.domToReact)(domNode.children, htmlParseOptions));
+    return /*#__PURE__*/_react["default"].createElement(_renderer.Text, null, "\n\u2022 ", (0, _htmlReactParser.domToReact)(domNode.children, htmlParseOptions));
   },
   a: function a(domNode) {
     return /*#__PURE__*/_react["default"].createElement(_renderer.Link, {

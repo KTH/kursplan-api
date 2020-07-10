@@ -87,7 +87,7 @@ const Section = ({ id, content, languageIndex }) => {
   const sectionHeader = i18n.messages[languageIndex].courseInformation[id];
   const sectionContent = content; // TODO: Parse HTML
   return (
-    <View>
+    <View wrap={false}>
       <Text style={styles.h2}>{sectionHeader}</Text>
       <Text style={styles.bodyText}>{parse(sectionContent)}</Text>
     </View>

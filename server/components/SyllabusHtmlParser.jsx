@@ -28,14 +28,18 @@ const getURL = (value) => {
 // End borrowed from https://github.com/diegomura/react-pdf/
 
 const components = {
-  p: (domNode) => <Text>{domToReact(domNode.children, htmlParseOptions)}</Text>,
+  p: (domNode) => (
+    <Text style={styles.p}>
+      {domToReact(domNode.children, htmlParseOptions)}
+    </Text>
+  ),
   ul: (domNode) => (
     <View>{domToReact(domNode.children, htmlParseOptions)}</View>
   ),
   li: (domNode) => (
     <Text>
       {/* TODO: Bullet and spacing should maybe be CSS instead */}
-      {domNode.prev ? `\n• ` : `• `}
+      {`\n• `}
       {domToReact(domNode.children, htmlParseOptions)}
     </Text>
   ),
