@@ -42,7 +42,7 @@
     "passport": "^0.4.0",
     "react": "^16.13.1",
     "safe-utils": "0.2.1",
-    "swagger-ui": "^2.1.5"
+    "swagger-ui": "^3.23.11"
   },
   "devDependencies": {
     "concurrently": "^2.2.0",
