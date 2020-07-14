@@ -11,18 +11,6 @@ var _SyllabusDocument = _interopRequireDefault(require("./SyllabusDocument"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-/*
-  Syllabus Components Overview
-  - Syllabus
-    - SyllabusDocument
-      - SyllabusPages
-        - SyllabusHead
-        - SyllabusKeyInformation
-        - SyllabusBody
-        - SyllabusPageFooter
-  - SyllabusStyles
-  - SyllabusHtmlParser
-*/
 var Syllabus = function Syllabus(props) {
   return /*#__PURE__*/_react["default"].createElement(_SyllabusDocument["default"], props);
 };

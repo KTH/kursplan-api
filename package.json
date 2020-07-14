@@ -36,7 +36,6 @@
     "kth-node-monitor": "^1.1.6",
     "kth-node-redis": "^3.1.6",
     "kth-node-server": "^3.1.1",
-    "mongoose": "^5.9.24",
     "passport": "^0.4.0",
     "react": "^16.13.1",
     "safe-utils": "0.2.1",
