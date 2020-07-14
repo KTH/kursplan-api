@@ -29,9 +29,11 @@
             }
           }
         },
-        "security": {
-          "api_key": ["read"]
-        }
+        "security": [
+          {
+            "api_key": ["read"]
+          }
+        ]
       }
     },
     "/v1/syllabus/{courseCode}/{semester}/{language}": {
@@ -77,9 +79,11 @@
             }
           }
         },
-        "security": {
-          "api_key": ["read"]
-        }
+        "security": [
+          {
+            "api_key": ["read"]
+          }
+        ]
       }
     },
     "/v1/syllabus/pdf/{courseCode}/{semester}/{language}": {
@@ -139,9 +143,11 @@
             }
           }
         },
-        "security": {
-          "api_key": ["read"]
-        }
+        "security": [
+          {
+            "api_key": ["read"]
+          }
+        ]
       }
     }
   },
