@@ -1,11 +1,8 @@
 "use strict";
 
-const config = require("../configuration").server;
-
 const packageFile = require("../../package.json");
 const getPaths = require("kth-node-express-routing").getPaths;
 
-const api = require("../koppsApi").koppsApi;
 const Promise = require("bluebird");
 const registry = require("component-registry").globalRegistry;
 const { IHealthCheck } = require("kth-node-monitor").interfaces;
@@ -57,16 +54,6 @@ function getMonitor(req, res) {
   // The property statusCode should be standard HTTP status codes.
   const localSystems = Promise.resolve({ statusCode: 200, message: "OK" });
 
-  const apiConfig = config.nodeApi;
-
-  // Check APIs
-  const subSystems = Object.keys(api).map((apiKey) => {
-    const apiHealthUtil = registry.getUtility(IHealthCheck, "kth-node-api");
-    return apiHealthUtil.status(api[apiKey], {
-      required: false,
-    });
-  });
-
   /* -- You will normally not change anything below this line -- */
 
   // Determine system health based on the results of the checks above. Expects
@@ -75,7 +62,7 @@ function getMonitor(req, res) {
     IHealthCheck,
     "kth-node-system-check"
   );
-  const systemStatus = systemHealthUtil.status(localSystems, subSystems);
+  const systemStatus = systemHealthUtil.status(localSystems);
 
   systemStatus
     .then((status) => {
