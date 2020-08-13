@@ -1,5 +1,6 @@
 import React, { Profiler } from "react";
 import { View, Text } from "@react-pdf/renderer";
+import stripHtml from "string-strip-html";
 
 import styles from "./SyllabusStyles";
 import parse from "./SyllabusHtmlParser";
@@ -85,9 +86,10 @@ const renderSections = (syllabus, activeSyllabus, languageIndex) => {
 const Section = ({ id, content, languageIndex }) => {
   if (!content) return null;
   const sectionHeader = i18n.messages[languageIndex].courseInformation[id];
-  const sectionContent = content; // TODO: Parse HTML
+  const sectionContent = content;
+  const textFitsOnPage = stripHtml(sectionContent).length > 3500;
   return (
-    <View>
+    <View wrap={textFitsOnPage}>
       <Text style={styles.h2}>{sectionHeader}</Text>
       <Text style={styles.bodyText}>{parse(sectionContent)}</Text>
     </View>
