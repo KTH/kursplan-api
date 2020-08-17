@@ -67,6 +67,20 @@ var styles = _renderer.StyleSheet.create({
   p: {
     paddingBottom: 12
   },
+  ul: {
+    paddingLeft: 12
+  },
+  ol: {
+    paddingLeft: 18
+  },
+  ulItem: {
+    textIndent: -9,
+    marginBottom: 6
+  },
+  olItem: {
+    textIndent: -18,
+    marginBottom: 6
+  },
   subHeader: {
     fontFamily: "Open Sans SemiBold",
     fontSize: 18,

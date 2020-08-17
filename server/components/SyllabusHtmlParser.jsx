@@ -34,15 +34,30 @@ const components = {
     </View>
   ),
   ul: (domNode) => (
-    <View>{domToReact(domNode.children, htmlParseOptions)}</View>
-  ),
-  li: (domNode) => (
-    <Text>
-      {/* TODO: Bullet and spacing should maybe be CSS instead */}
-      {`\n• `}
+    <View style={styles.ul}>
       {domToReact(domNode.children, htmlParseOptions)}
-    </Text>
+    </View>
   ),
+  ol: (domNode) => (
+    <View style={styles.ol}>
+      {domToReact(domNode.children, htmlParseOptions)}
+    </View>
+  ),
+  li: (domNode) => {
+    let number;
+    if (domNode.parent && domNode.parent.name === "ol") {
+      number = domNode.parent.counter;
+      // eslint-disable-next-line no-param-reassign
+      domNode.parent.counter += 1;
+    }
+    return (
+      <Text style={number ? styles.olItem : styles.ulItem}>
+        {/* TODO: Bullet and spacing should maybe be CSS instead */}
+        {number ? `${number < 10 ? "\xa0" + number : number}. ` : " • "}
+        {domToReact(domNode.children, htmlParseOptions)}
+      </Text>
+    );
+  },
   a: (domNode) => (
     <Link src={getURL(domNode.attribs.href)}>
       {getURL(domNode.attribs.href)}
@@ -53,11 +68,15 @@ const components = {
 
 const htmlParseOptions = {
   replace: (domNode) => {
-    if (domNode.type === "text") {
-      return <Text>{domNode.data}</Text>;
+    const node = domNode;
+    if (node.type === "text") {
+      return <Text>{node.data}</Text>;
     }
-    const component = components[domNode.name] || components.default;
-    return component(domNode);
+    if (node.name === "ol") {
+      node.counter = 1;
+    }
+    const component = components[node.name] || components.default;
+    return component(node);
   },
 };
 

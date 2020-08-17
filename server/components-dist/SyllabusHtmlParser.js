@@ -55,10 +55,27 @@ var components = {
     }, (0, _htmlReactParser.domToReact)(domNode.children, htmlParseOptions));
   },
   ul: function ul(domNode) {
-    return /*#__PURE__*/_react["default"].createElement(_renderer.View, null, (0, _htmlReactParser.domToReact)(domNode.children, htmlParseOptions));
+    return /*#__PURE__*/_react["default"].createElement(_renderer.View, {
+      style: _SyllabusStyles["default"].ul
+    }, (0, _htmlReactParser.domToReact)(domNode.children, htmlParseOptions));
+  },
+  ol: function ol(domNode) {
+    return /*#__PURE__*/_react["default"].createElement(_renderer.View, {
+      style: _SyllabusStyles["default"].ol
+    }, (0, _htmlReactParser.domToReact)(domNode.children, htmlParseOptions));
   },
   li: function li(domNode) {
-    return /*#__PURE__*/_react["default"].createElement(_renderer.Text, null, "\n\u2022 ", (0, _htmlReactParser.domToReact)(domNode.children, htmlParseOptions));
+    var number;
+
+    if (domNode.parent && domNode.parent.name === "ol") {
+      number = domNode.parent.counter; // eslint-disable-next-line no-param-reassign
+
+      domNode.parent.counter += 1;
+    }
+
+    return /*#__PURE__*/_react["default"].createElement(_renderer.Text, {
+      style: number ? _SyllabusStyles["default"].olItem : _SyllabusStyles["default"].ulItem
+    }, number ? "".concat(number < 10 ? "\xa0" + number : number, ". ") : " • ", (0, _htmlReactParser.domToReact)(domNode.children, htmlParseOptions));
   },
   a: function a(domNode) {
     return /*#__PURE__*/_react["default"].createElement(_renderer.Link, {
@@ -71,12 +88,18 @@ var components = {
 };
 var htmlParseOptions = {
   replace: function replace(domNode) {
-    if (domNode.type === "text") {
-      return /*#__PURE__*/_react["default"].createElement(_renderer.Text, null, domNode.data);
+    var node = domNode;
+
+    if (node.type === "text") {
+      return /*#__PURE__*/_react["default"].createElement(_renderer.Text, null, node.data);
     }
 
-    var component = components[domNode.name] || components["default"];
-    return component(domNode);
+    if (node.name === "ol") {
+      node.counter = 1;
+    }
+
+    var component = components[node.name] || components["default"];
+    return component(node);
   }
 };
 
