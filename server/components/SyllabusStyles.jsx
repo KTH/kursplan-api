@@ -53,6 +53,9 @@ const styles = StyleSheet.create({
   b: {
     fontFamily: "Open Sans SemiBold",
   },
+  strong: {
+    fontFamily: "Open Sans SemiBold",
+  },
   i: {
     fontFamily: "Open Sans Italic",
   },
