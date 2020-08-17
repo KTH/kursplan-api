@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, Image } from "@react-pdf/renderer";
 
-// import parse from "./SyllabusHtmlParser";
+import parse from "./SyllabusHtmlParser";
 import styles from "./SyllabusStyles";
 
 import i18n from "../../i18n";
@@ -50,7 +50,7 @@ const SyllabusHead = ({ syllabus, activeSyllabus, language }) => {
         style={[styles.bodyText, { paddingBottom: 12 }]}
       >{`${discontinuationText}`}</Text>
       <Text style={styles.h2}>{`${establishmentHeader}`}</Text>
-      <Text style={styles.bodyText}>{`${establishment}`}</Text>
+      <Text style={styles.bodyText}>{parse(establishment)}</Text>
       {decisionToDiscontinue && (
         <View>
           <Text style={styles.h2}>{`${discontinuationHeader}`}</Text>

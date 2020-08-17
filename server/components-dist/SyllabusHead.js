@@ -9,6 +9,8 @@ var _react = _interopRequireDefault(require("react"));
 
 var _renderer = require("@react-pdf/renderer");
 
+var _SyllabusHtmlParser = _interopRequireDefault(require("./SyllabusHtmlParser"));
+
 var _SyllabusStyles = _interopRequireDefault(require("./SyllabusStyles"));
 
 var _i18n = _interopRequireDefault(require("../../i18n"));
@@ -17,7 +19,6 @@ var _pdfConstants = require("../libs/pdfConstants");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-// import parse from "./SyllabusHtmlParser";
 var formatCredits = function formatCredits(credits, creditUnitAbbr, language) {
   var localeCredits = language === "sv" ? credits.toString().replace(".", ",") : credits;
   var creditUnit = language === "sv" ? creditUnitAbbr : "credits";
@@ -66,7 +67,7 @@ var SyllabusHead = function SyllabusHead(_ref) {
     style: _SyllabusStyles["default"].h2
   }, "".concat(establishmentHeader)), /*#__PURE__*/_react["default"].createElement(_renderer.Text, {
     style: _SyllabusStyles["default"].bodyText
-  }, "".concat(establishment)), decisionToDiscontinue && /*#__PURE__*/_react["default"].createElement(_renderer.View, null, /*#__PURE__*/_react["default"].createElement(_renderer.Text, {
+  }, (0, _SyllabusHtmlParser["default"])(establishment)), decisionToDiscontinue && /*#__PURE__*/_react["default"].createElement(_renderer.View, null, /*#__PURE__*/_react["default"].createElement(_renderer.Text, {
     style: _SyllabusStyles["default"].h2
   }, "".concat(discontinuationHeader)), /*#__PURE__*/_react["default"].createElement(_renderer.Text, {
     style: _SyllabusStyles["default"].bodyText
