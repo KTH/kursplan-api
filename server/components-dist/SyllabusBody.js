@@ -126,7 +126,7 @@ var Section = function Section(_ref4) {
     wrap: textFitsOnPage
   }, /*#__PURE__*/_react["default"].createElement(_renderer.Text, {
     style: _SyllabusStyles["default"].h2
-  }, sectionHeader), /*#__PURE__*/_react["default"].createElement(_renderer.Text, {
+  }, sectionHeader), /*#__PURE__*/_react["default"].createElement(_renderer.View, {
     style: _SyllabusStyles["default"].bodyText
   }, (0, _SyllabusHtmlParser["default"])(sectionContent)));
 };

@@ -91,7 +91,7 @@ const Section = ({ id, content, languageIndex }) => {
   return (
     <View wrap={textFitsOnPage}>
       <Text style={styles.h2}>{sectionHeader}</Text>
-      <Text style={styles.bodyText}>{parse(sectionContent)}</Text>
+      <View style={styles.bodyText}>{parse(sectionContent)}</View>
     </View>
   );
 };

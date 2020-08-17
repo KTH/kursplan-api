@@ -29,9 +29,9 @@ const getURL = (value) => {
 
 const components = {
   p: (domNode) => (
-    <Text style={styles.p}>
+    <View style={styles.p}>
       {domToReact(domNode.children, htmlParseOptions)}
-    </Text>
+    </View>
   ),
   ul: (domNode) => (
     <View>{domToReact(domNode.children, htmlParseOptions)}</View>

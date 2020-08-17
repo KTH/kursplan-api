@@ -50,7 +50,7 @@ var getURL = function getURL(value) {
 
 var components = {
   p: function p(domNode) {
-    return /*#__PURE__*/_react["default"].createElement(_renderer.Text, {
+    return /*#__PURE__*/_react["default"].createElement(_renderer.View, {
       style: _SyllabusStyles["default"].p
     }, (0, _htmlReactParser.domToReact)(domNode.children, htmlParseOptions));
   },
