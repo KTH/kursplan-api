@@ -103,13 +103,30 @@ var htmlParseOptions = {
   }
 };
 
+var removeExcessWhitespace = function removeExcessWhitespace(html) {
+  return html.replace(/\u0020{2,}/g, " ");
+};
+
 var replaceLineBreaks = function replaceLineBreaks(html) {
   return html.replace(/\n/g, "").replace(/<br>|<br.?\/>/g, "\n");
 };
 
+var addListElement = function addListElement(html) {
+  if (html.startsWith("<li>")) {
+    var indexOfLastCloseListItem = html.lastIndexOf("</li>");
+
+    if (indexOfLastCloseListItem !== -1) {
+      return "<ul>" + html.slice(0, indexOfLastCloseListItem + 5) + "</ul>" + html.slice(indexOfLastCloseListItem + 5);
+    }
+  }
+
+  return html;
+};
+
 var htmlParser = function htmlParser(rawHtml) {
   console.time("htmlParser: replaceLineBreaks");
-  var html = replaceLineBreaks(rawHtml);
+  var html = addListElement(removeExcessWhitespace(replaceLineBreaks(rawHtml)));
+  console.log(html);
   console.timeEnd("htmlParser: replaceLineBreaks");
   console.time("htmlParser: parse");
   var parsedHtml = (0, _htmlReactParser["default"])(html, htmlParseOptions);

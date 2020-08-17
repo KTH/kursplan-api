@@ -80,12 +80,32 @@ const htmlParseOptions = {
   },
 };
 
+const removeExcessWhitespace = (html) => html.replace(/\u0020{2,}/g, "\u0020");
+
 const replaceLineBreaks = (html) =>
   html.replace(/\n/g, "").replace(/<br>|<br.?\/>/g, "\n");
 
+const addListElement = (html) => {
+  if (html.startsWith("<li>")) {
+    const indexOfLastCloseListItem = html.lastIndexOf("</li>");
+    if (indexOfLastCloseListItem !== -1) {
+      return (
+        "<ul>" +
+        html.slice(0, indexOfLastCloseListItem + 5) +
+        "</ul>" +
+        html.slice(indexOfLastCloseListItem + 5)
+      );
+    }
+  }
+  return html;
+};
+
 const htmlParser = (rawHtml) => {
   console.time("htmlParser: replaceLineBreaks");
-  const html = replaceLineBreaks(rawHtml);
+  const html = addListElement(
+    removeExcessWhitespace(replaceLineBreaks(rawHtml))
+  );
+  console.log(html);
   console.timeEnd("htmlParser: replaceLineBreaks");
   console.time("htmlParser: parse");
   const parsedHtml = parse(html, htmlParseOptions);
