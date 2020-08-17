@@ -25,6 +25,11 @@ _renderer.Font.register({
 });
 
 _renderer.Font.register({
+  family: "Open Sans Italic",
+  src: "server/fonts/OpenSans-Italic.ttf"
+});
+
+_renderer.Font.register({
   family: "Georgia",
   src: "server/fonts/Georgia.ttf"
 });
@@ -66,6 +71,15 @@ var styles = _renderer.StyleSheet.create({
   },
   p: {
     paddingBottom: 12
+  },
+  em: {
+    fontFamily: "Open Sans SemiBold"
+  },
+  b: {
+    fontFamily: "Open Sans SemiBold"
+  },
+  i: {
+    fontFamily: "Open Sans Italic"
   },
   ul: {
     paddingLeft: 12

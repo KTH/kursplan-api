@@ -48,10 +48,24 @@ var getURL = function getURL(value) {
 }; // End borrowed from https://github.com/diegomura/react-pdf/
 
 
+var inlineElementsPresent = function inlineElementsPresent(nodes) {
+  var inlineElementTags = ["em", "strong", "i"];
+  return nodes && nodes.some(function (node) {
+    return inlineElementTags.includes(node.name);
+  });
+};
+
 var components = {
   p: function p(domNode) {
-    return /*#__PURE__*/_react["default"].createElement(_renderer.View, {
+    return inlineElementsPresent(domNode.children) ? /*#__PURE__*/_react["default"].createElement(_renderer.View, {
       style: _SyllabusStyles["default"].p
+    }, /*#__PURE__*/_react["default"].createElement(_renderer.Text, null, (0, _htmlReactParser.domToReact)(domNode.children, htmlParseOptions))) : /*#__PURE__*/_react["default"].createElement(_renderer.View, {
+      style: _SyllabusStyles["default"].p
+    }, (0, _htmlReactParser.domToReact)(domNode.children, htmlParseOptions));
+  },
+  em: function em(domNode) {
+    return /*#__PURE__*/_react["default"].createElement(_renderer.Text, {
+      style: _SyllabusStyles["default"].em
     }, (0, _htmlReactParser.domToReact)(domNode.children, htmlParseOptions));
   },
   ul: function ul(domNode) {
@@ -126,7 +140,6 @@ var addListElement = function addListElement(html) {
 var htmlParser = function htmlParser(rawHtml) {
   console.time("htmlParser: replaceLineBreaks");
   var html = addListElement(removeExcessWhitespace(replaceLineBreaks(rawHtml)));
-  console.log(html);
   console.timeEnd("htmlParser: replaceLineBreaks");
   console.time("htmlParser: parse");
   var parsedHtml = (0, _htmlReactParser["default"])(html, htmlParseOptions);

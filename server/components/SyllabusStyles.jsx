@@ -14,6 +14,10 @@ Font.register({
   family: "Open Sans Bold",
   src: "server/fonts/OpenSans-Bold.ttf",
 });
+Font.register({
+  family: "Open Sans Italic",
+  src: "server/fonts/OpenSans-Italic.ttf",
+});
 Font.register({ family: "Georgia", src: "server/fonts/Georgia.ttf" });
 
 const { A4 } = pageMeasurements;
@@ -42,6 +46,15 @@ const styles = StyleSheet.create({
   },
   p: {
     paddingBottom: 12,
+  },
+  em: {
+    fontFamily: "Open Sans SemiBold",
+  },
+  b: {
+    fontFamily: "Open Sans SemiBold",
+  },
+  i: {
+    fontFamily: "Open Sans Italic",
   },
   ul: { paddingLeft: 12 },
   ol: { paddingLeft: 18 },

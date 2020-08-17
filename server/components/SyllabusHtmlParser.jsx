@@ -27,11 +27,27 @@ const getURL = (value) => {
 };
 // End borrowed from https://github.com/diegomura/react-pdf/
 
+const inlineElementsPresent = (nodes) => {
+  const inlineElementTags = ["em", "strong", "i"];
+  return nodes && nodes.some((node) => inlineElementTags.includes(node.name));
+};
+
 const components = {
-  p: (domNode) => (
-    <View style={styles.p}>
+  p: (domNode) => {
+    return inlineElementsPresent(domNode.children) ? (
+      <View style={styles.p}>
+        <Text>{domToReact(domNode.children, htmlParseOptions)}</Text>
+      </View>
+    ) : (
+      <View style={styles.p}>
+        {domToReact(domNode.children, htmlParseOptions)}
+      </View>
+    );
+  },
+  em: (domNode) => (
+    <Text style={styles.em}>
       {domToReact(domNode.children, htmlParseOptions)}
-    </View>
+    </Text>
   ),
   ul: (domNode) => (
     <View style={styles.ul}>
@@ -105,7 +121,6 @@ const htmlParser = (rawHtml) => {
   const html = addListElement(
     removeExcessWhitespace(replaceLineBreaks(rawHtml))
   );
-  console.log(html);
   console.timeEnd("htmlParser: replaceLineBreaks");
   console.time("htmlParser: parse");
   const parsedHtml = parse(html, htmlParseOptions);
