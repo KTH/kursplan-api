@@ -62,7 +62,7 @@ const htmlParseOptions = {
 };
 
 const replaceLineBreaks = (html) =>
-  html.replace(/\n/g, "").replace(/<br>|<br.*\/>/, "\n");
+  html.replace(/\n/g, "").replace(/<br>|<br.?\/>/g, "\n");
 
 const htmlParser = (rawHtml) => {
   console.time("htmlParser: replaceLineBreaks");
