@@ -100,13 +100,13 @@ var sectionData = function sectionData(syllabus, activeSyllabus, languageIndex) 
 
 var renderSections = function renderSections(syllabus, activeSyllabus, languageIndex) {
   var sectionsContent = sectionData(syllabus, activeSyllabus, languageIndex);
-  console.log("sectionsContent", sectionsContent);
   return Object.entries(sectionsContent).map(function (_ref2) {
     var _ref3 = _slicedToArray(_ref2, 2),
         id = _ref3[0],
         content = _ref3[1];
 
     return /*#__PURE__*/_react["default"].createElement(Section, {
+      key: id,
       id: id,
       content: content,
       languageIndex: languageIndex
@@ -118,17 +118,21 @@ var Section = function Section(_ref4) {
   var id = _ref4.id,
       content = _ref4.content,
       languageIndex = _ref4.languageIndex;
-  if (!content && id !== "course_eligibility") return null;
+
+  if (!content && id !== "course_eligibility" && id !== "course_goals" && id !== "course_content" && id !== "course_examination") {
+    return null;
+  }
+
   var sectionHeader = _i18n["default"].messages[languageIndex].courseInformation[id];
   var sectionContent = content;
   var textFitsOnPage = (0, _stringStripHtml["default"])(sectionContent).length > 3500;
   return /*#__PURE__*/_react["default"].createElement(_renderer.View, {
     wrap: textFitsOnPage
-  }, /*#__PURE__*/_react["default"].createElement(_renderer.Text, {
+  }, sectionHeader ? /*#__PURE__*/_react["default"].createElement(_renderer.Text, {
     style: _SyllabusStyles["default"].h2
-  }, sectionHeader), /*#__PURE__*/_react["default"].createElement(_renderer.View, {
+  }, sectionHeader) : /*#__PURE__*/_react["default"].createElement(_react.Fragment, null), sectionContent ? /*#__PURE__*/_react["default"].createElement(_renderer.View, {
     style: _SyllabusStyles["default"].bodyText
-  }, (0, _SyllabusHtmlParser["default"])(sectionContent)));
+  }, (0, _SyllabusHtmlParser["default"])(sectionContent)) : /*#__PURE__*/_react["default"].createElement(_react.Fragment, null));
 };
 
 var SyllabusBody = function SyllabusBody(_ref5) {
@@ -141,7 +145,6 @@ var SyllabusBody = function SyllabusBody(_ref5) {
   return /*#__PURE__*/_react["default"].createElement(_renderer.View, {
     style: _SyllabusStyles["default"].bodyContainer
   }, /*#__PURE__*/_react["default"].createElement(_react.Profiler, {
-    key: "profiler-syllabus-body",
     id: "profiler-syllabus-body",
     onRender: _pdfUtils["default"]
   }, sections));

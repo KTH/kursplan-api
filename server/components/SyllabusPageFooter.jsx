@@ -9,7 +9,6 @@ const getSelectedSyllabus = (
   semester = "20101",
   language = 0
 ) => {
-  console.log(syllabusObject, semester, language);
   let count = 0;
   let selectedSyllabus = {};
   const syllabuses = syllabusObject.publicSyllabusVersions;

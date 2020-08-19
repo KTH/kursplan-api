@@ -1,4 +1,4 @@
-import React, { Profiler } from "react";
+import React, { Profiler, Fragment } from "react";
 import { View, Text } from "@react-pdf/renderer";
 import stripHtml from "string-strip-html";
 
@@ -77,21 +77,37 @@ const sectionData = (syllabus, activeSyllabus, languageIndex) =>
 
 const renderSections = (syllabus, activeSyllabus, languageIndex) => {
   const sectionsContent = sectionData(syllabus, activeSyllabus, languageIndex);
-  console.log("sectionsContent", sectionsContent);
   return Object.entries(sectionsContent).map(([id, content]) => (
-    <Section id={id} content={content} languageIndex={languageIndex} />
+    <Section key={id} id={id} content={content} languageIndex={languageIndex} />
   ));
 };
 
 const Section = ({ id, content, languageIndex }) => {
-  if (!content && id !== "course_eligibility") return null;
+  if (
+    !content &&
+    id !== "course_eligibility" &&
+    id !== "course_goals" &&
+    id !== "course_content" &&
+    id !== "course_examination"
+  ) {
+    return null;
+  }
+
   const sectionHeader = i18n.messages[languageIndex].courseInformation[id];
   const sectionContent = content;
   const textFitsOnPage = stripHtml(sectionContent).length > 3500;
   return (
     <View wrap={textFitsOnPage}>
-      <Text style={styles.h2}>{sectionHeader}</Text>
-      <View style={styles.bodyText}>{parse(sectionContent)}</View>
+      {sectionHeader ? (
+        <Text style={styles.h2}>{sectionHeader}</Text>
+      ) : (
+        <Fragment />
+      )}
+      {sectionContent ? (
+        <View style={styles.bodyText}>{parse(sectionContent)}</View>
+      ) : (
+        <Fragment />
+      )}
     </View>
   );
 };
@@ -102,11 +118,7 @@ const SyllabusBody = ({ syllabus, activeSyllabus, language }) => {
   const sections = renderSections(syllabus, activeSyllabus, languageIndex);
   return (
     <View style={styles.bodyContainer}>
-      <Profiler
-        key={`profiler-syllabus-body`}
-        id={`profiler-syllabus-body`}
-        onRender={profilerToLog}
-      >
+      <Profiler id={`profiler-syllabus-body`} onRender={profilerToLog}>
         {sections}
       </Profiler>
     </View>

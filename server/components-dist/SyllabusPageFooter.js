@@ -18,7 +18,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 var getSelectedSyllabus = function getSelectedSyllabus(syllabusObject) {
   var semester = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "20101";
   var language = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
-  console.log(syllabusObject, semester, language);
   var count = 0;
   var selectedSyllabus = {};
   var syllabuses = syllabusObject.publicSyllabusVersions;
