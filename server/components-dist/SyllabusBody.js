@@ -71,12 +71,6 @@ var getExamObject = function getExamObject(dataObject, grades, courseCredits) {
   }
 
   return examString;
-};
-
-var getLiterature = function getLiterature(_ref) {
-  var literature = _ref.literature,
-      literatureComment = _ref.literatureComment;
-  return literature ? literature : literatureComment;
 }; // Copied logic from generareHTML
 
 
@@ -87,7 +81,8 @@ var sectionData = function sectionData(syllabus, activeSyllabus, languageIndex) 
     course_content: activeSyllabus.courseSyllabus.content || "",
     course_disposition: activeSyllabus.courseSyllabus.disposition || "",
     course_eligibility: activeSyllabus.courseSyllabus.eligibility || "",
-    course_literature: getLiterature(activeSyllabus.courseSyllabus),
+    course_literature: activeSyllabus.courseSyllabus.literature || "",
+    course_literature_comments: activeSyllabus.courseSyllabus.literatureComment || "",
     course_required_equipment: activeSyllabus.courseSyllabus.requiredEquipment || "",
     course_examination: getExamObject(syllabus.examinationSets[Object.keys(syllabus.examinationSets)[0]].examinationRounds, syllabus.formattedGradeScales, syllabus.course.creditUnitAbbr, languageIndex),
     course_examination_comments: activeSyllabus.courseSyllabus.examComments || "",
@@ -100,10 +95,10 @@ var sectionData = function sectionData(syllabus, activeSyllabus, languageIndex) 
 
 var renderSections = function renderSections(syllabus, activeSyllabus, languageIndex) {
   var sectionsContent = sectionData(syllabus, activeSyllabus, languageIndex);
-  return Object.entries(sectionsContent).map(function (_ref2) {
-    var _ref3 = _slicedToArray(_ref2, 2),
-        id = _ref3[0],
-        content = _ref3[1];
+  return Object.entries(sectionsContent).map(function (_ref) {
+    var _ref2 = _slicedToArray(_ref, 2),
+        id = _ref2[0],
+        content = _ref2[1];
 
     return /*#__PURE__*/_react["default"].createElement(Section, {
       key: id,
@@ -114,12 +109,12 @@ var renderSections = function renderSections(syllabus, activeSyllabus, languageI
   });
 };
 
-var Section = function Section(_ref4) {
-  var id = _ref4.id,
-      content = _ref4.content,
-      languageIndex = _ref4.languageIndex;
+var Section = function Section(_ref3) {
+  var id = _ref3.id,
+      content = _ref3.content,
+      languageIndex = _ref3.languageIndex;
 
-  if (!content && id !== "course_eligibility" && id !== "course_goals" && id !== "course_content" && id !== "course_examination") {
+  if (!content && id !== "course_eligibility" && id !== "course_goals" && id !== "course_content" && id !== "course_examination" && id !== "course_literature") {
     return null;
   }
 
@@ -135,10 +130,10 @@ var Section = function Section(_ref4) {
   }, (0, _SyllabusHtmlParser["default"])(sectionContent)) : /*#__PURE__*/_react["default"].createElement(_react.Fragment, null));
 };
 
-var SyllabusBody = function SyllabusBody(_ref5) {
-  var syllabus = _ref5.syllabus,
-      activeSyllabus = _ref5.activeSyllabus,
-      language = _ref5.language;
+var SyllabusBody = function SyllabusBody(_ref4) {
+  var syllabus = _ref4.syllabus,
+      activeSyllabus = _ref4.activeSyllabus,
+      language = _ref4.language;
   var course = syllabus.course;
   var languageIndex = language === "en" ? 0 : 1;
   var sections = renderSections(syllabus, activeSyllabus, languageIndex);
