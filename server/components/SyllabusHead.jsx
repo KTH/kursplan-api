@@ -8,8 +8,12 @@ import i18n from "../../i18n";
 import { logotypePath } from "../libs/pdfConstants";
 
 const formatCredits = (credits, creditUnitAbbr, language) => {
+  const decimals = credits % 1 !== 0;
+  const decimalCredits = decimals ? credits : Number(credits).toFixed(1);
   const localeCredits =
-    language === "sv" ? credits.toString().replace(".", ",") : credits;
+    language === "sv"
+      ? decimalCredits.toString().replace(".", ",")
+      : decimalCredits;
   const creditUnit = language === "sv" ? creditUnitAbbr : "credits";
   return `${localeCredits} ${creditUnit}`;
 };

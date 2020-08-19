@@ -20,7 +20,9 @@ var _pdfConstants = require("../libs/pdfConstants");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var formatCredits = function formatCredits(credits, creditUnitAbbr, language) {
-  var localeCredits = language === "sv" ? credits.toString().replace(".", ",") : credits;
+  var decimals = credits % 1 !== 0;
+  var decimalCredits = decimals ? credits : Number(credits).toFixed(1);
+  var localeCredits = language === "sv" ? decimalCredits.toString().replace(".", ",") : decimalCredits;
   var creditUnit = language === "sv" ? creditUnitAbbr : "credits";
   return "".concat(localeCredits, " ").concat(creditUnit);
 };
