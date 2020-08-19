@@ -121,9 +121,7 @@ var Section = function Section(_ref3) {
   var sectionHeader = _i18n["default"].messages[languageIndex].courseInformation[id];
   var sectionContent = content;
   var textFitsOnPage = (0, _stringStripHtml["default"])(sectionContent).length > 3500;
-  return /*#__PURE__*/_react["default"].createElement(_renderer.View, {
-    wrap: textFitsOnPage
-  }, sectionHeader ? /*#__PURE__*/_react["default"].createElement(_renderer.Text, {
+  return /*#__PURE__*/_react["default"].createElement(_renderer.View, null, sectionHeader ? /*#__PURE__*/_react["default"].createElement(_renderer.Text, {
     style: _SyllabusStyles["default"].h2
   }, sectionHeader) : /*#__PURE__*/_react["default"].createElement(_react.Fragment, null), sectionContent ? /*#__PURE__*/_react["default"].createElement(_renderer.View, {
     style: _SyllabusStyles["default"].bodyText

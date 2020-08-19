@@ -97,7 +97,7 @@ const Section = ({ id, content, languageIndex }) => {
   const sectionContent = content;
   const textFitsOnPage = stripHtml(sectionContent).length > 3500;
   return (
-    <View wrap={textFitsOnPage}>
+    <View>
       {sectionHeader ? (
         <Text style={styles.h2}>{sectionHeader}</Text>
       ) : (
