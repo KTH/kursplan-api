@@ -84,7 +84,7 @@ const renderSections = (syllabus, activeSyllabus, languageIndex) => {
 };
 
 const Section = ({ id, content, languageIndex }) => {
-  if (!content) return null;
+  if (!content && id !== "course_eligibility") return null;
   const sectionHeader = i18n.messages[languageIndex].courseInformation[id];
   const sectionContent = content;
   const textFitsOnPage = stripHtml(sectionContent).length > 3500;

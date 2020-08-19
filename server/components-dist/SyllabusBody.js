@@ -118,7 +118,7 @@ var Section = function Section(_ref4) {
   var id = _ref4.id,
       content = _ref4.content,
       languageIndex = _ref4.languageIndex;
-  if (!content) return null;
+  if (!content && id !== "course_eligibility") return null;
   var sectionHeader = _i18n["default"].messages[languageIndex].courseInformation[id];
   var sectionContent = content;
   var textFitsOnPage = (0, _stringStripHtml["default"])(sectionContent).length > 3500;
