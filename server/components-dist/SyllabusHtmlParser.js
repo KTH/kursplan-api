@@ -68,6 +68,21 @@ var components = {
       style: _SyllabusStyles["default"].em
     }, (0, _htmlReactParser.domToReact)(domNode.children, htmlParseOptions));
   },
+  strong: function strong(domNode) {
+    return /*#__PURE__*/_react["default"].createElement(_renderer.Text, {
+      style: _SyllabusStyles["default"].strong
+    }, (0, _htmlReactParser.domToReact)(domNode.children, htmlParseOptions));
+  },
+  i: function i(domNode) {
+    return /*#__PURE__*/_react["default"].createElement(_renderer.Text, {
+      style: _SyllabusStyles["default"].i
+    }, (0, _htmlReactParser.domToReact)(domNode.children, htmlParseOptions));
+  },
+  b: function b(domNode) {
+    return /*#__PURE__*/_react["default"].createElement(_renderer.Text, {
+      style: _SyllabusStyles["default"].b
+    }, (0, _htmlReactParser.domToReact)(domNode.children, htmlParseOptions));
+  },
   ul: function ul(domNode) {
     return /*#__PURE__*/_react["default"].createElement(_renderer.View, {
       style: _SyllabusStyles["default"].ul

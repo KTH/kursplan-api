@@ -49,6 +49,21 @@ const components = {
       {domToReact(domNode.children, htmlParseOptions)}
     </Text>
   ),
+  strong: (domNode) => (
+    <Text style={styles.strong}>
+      {domToReact(domNode.children, htmlParseOptions)}
+    </Text>
+  ),
+  i: (domNode) => (
+    <Text style={styles.i}>
+      {domToReact(domNode.children, htmlParseOptions)}
+    </Text>
+  ),
+  b: (domNode) => (
+    <Text style={styles.b}>
+      {domToReact(domNode.children, htmlParseOptions)}
+    </Text>
+  ),
   ul: (domNode) => (
     <View style={styles.ul}>
       {domToReact(domNode.children, htmlParseOptions)}
