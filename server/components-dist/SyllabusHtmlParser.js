@@ -49,7 +49,7 @@ var getURL = function getURL(value) {
 
 
 var inlineElementsPresent = function inlineElementsPresent(nodes) {
-  var inlineElementTags = ["em", "strong", "i", "b"];
+  var inlineElementTags = ["em", "strong", "i", "b", "a"];
   return nodes && nodes.some(function (node) {
     return inlineElementTags.includes(node.name);
   });
@@ -92,9 +92,10 @@ var components = {
     }, number ? "".concat(number < 10 ? "\xa0" + number : number, ". ") : " • ", (0, _htmlReactParser.domToReact)(domNode.children, htmlParseOptions));
   },
   a: function a(domNode) {
+    console.log(domNode);
     return /*#__PURE__*/_react["default"].createElement(_renderer.Link, {
       src: getURL(domNode.attribs.href)
-    }, getURL(domNode.attribs.href));
+    }, (0, _htmlReactParser.domToReact)(domNode.children, htmlParseOptions));
   },
   "default": function _default() {
     return /*#__PURE__*/_react["default"].createElement(_react.Fragment, null);

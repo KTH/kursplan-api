@@ -28,7 +28,7 @@ const getURL = (value) => {
 // End borrowed from https://github.com/diegomura/react-pdf/
 
 const inlineElementsPresent = (nodes) => {
-  const inlineElementTags = ["em", "strong", "i", "b"];
+  const inlineElementTags = ["em", "strong", "i", "b", "a"];
   return nodes && nodes.some((node) => inlineElementTags.includes(node.name));
 };
 
@@ -74,11 +74,14 @@ const components = {
       </Text>
     );
   },
-  a: (domNode) => (
-    <Link src={getURL(domNode.attribs.href)}>
-      {getURL(domNode.attribs.href)}
-    </Link>
-  ),
+  a: (domNode) => {
+    console.log(domNode);
+    return (
+      <Link src={getURL(domNode.attribs.href)}>
+        {domToReact(domNode.children, htmlParseOptions)}
+      </Link>
+    );
+  },
   default: () => <Fragment />,
 };
 
