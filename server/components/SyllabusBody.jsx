@@ -41,6 +41,13 @@ const getExamObject = (dataObject, grades, courseCredits, language = 0) => {
   return examString;
 };
 
+const getLiterature = ({ literature, literatureComment }) => {
+  let literatureContent = "";
+  literatureContent += literature || "";
+  literatureContent += literatureComment || "";
+  return literatureContent;
+};
+
 // Copied logic from generareHTML
 const sectionData = (syllabus, activeSyllabus, languageIndex) =>
   activeSyllabus
@@ -50,9 +57,7 @@ const sectionData = (syllabus, activeSyllabus, languageIndex) =>
         course_content: activeSyllabus.courseSyllabus.content || "",
         course_disposition: activeSyllabus.courseSyllabus.disposition || "",
         course_eligibility: activeSyllabus.courseSyllabus.eligibility || "",
-        course_literature: activeSyllabus.courseSyllabus.literature || "",
-        course_literature_comments:
-          activeSyllabus.courseSyllabus.literatureComment || "",
+        course_literature: getLiterature(activeSyllabus.courseSyllabus),
         course_required_equipment:
           activeSyllabus.courseSyllabus.requiredEquipment || "",
         course_examination: getExamObject(
@@ -87,8 +92,7 @@ const Section = ({ id, content, languageIndex }) => {
     id !== "course_eligibility" &&
     id !== "course_goals" &&
     id !== "course_content" &&
-    id !== "course_examination" &&
-    id !== "course_literature"
+    id !== "course_examination"
   ) {
     return null;
   }
