@@ -104,6 +104,10 @@ const htmlParseOptions = {
   replace: (domNode) => {
     const node = domNode;
     if (node.type === "text") {
+      if (node.next && node.next.name === "p") {
+        // Handle HTML where a text node is followed by a paragraph element
+        return <Text style={styles.p}>{node.data}</Text>;
+      }
       return <Text>{node.data}</Text>;
     }
     if (node.name === "ol") {

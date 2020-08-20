@@ -121,6 +121,13 @@ var htmlParseOptions = {
     var node = domNode;
 
     if (node.type === "text") {
+      if (node.next && node.next.name === "p") {
+        // Handle HTML where a text node is followed by a paragraph element
+        return /*#__PURE__*/_react["default"].createElement(_renderer.Text, {
+          style: _SyllabusStyles["default"].p
+        }, node.data);
+      }
+
       return /*#__PURE__*/_react["default"].createElement(_renderer.Text, null, node.data);
     }
 
