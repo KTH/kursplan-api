@@ -121,7 +121,7 @@ const SyllabusBody = ({ syllabus, activeSyllabus, language }) => {
   const languageIndex = language === "en" ? 0 : 1;
   const sections = renderSections(syllabus, activeSyllabus, languageIndex);
   return (
-    <View style={styles.bodyContainer}>
+    <View>
       <Profiler id={`profiler-syllabus-body`} onRender={profilerToLog}>
         {sections}
       </Profiler>

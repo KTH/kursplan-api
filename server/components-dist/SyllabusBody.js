@@ -143,9 +143,7 @@ var SyllabusBody = function SyllabusBody(_ref5) {
   var course = syllabus.course;
   var languageIndex = language === "en" ? 0 : 1;
   var sections = renderSections(syllabus, activeSyllabus, languageIndex);
-  return /*#__PURE__*/_react["default"].createElement(_renderer.View, {
-    style: _SyllabusStyles["default"].bodyContainer
-  }, /*#__PURE__*/_react["default"].createElement(_react.Profiler, {
+  return /*#__PURE__*/_react["default"].createElement(_renderer.View, null, /*#__PURE__*/_react["default"].createElement(_react.Profiler, {
     id: "profiler-syllabus-body",
     onRender: _pdfUtils["default"]
   }, sections));

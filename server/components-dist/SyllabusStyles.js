@@ -34,18 +34,25 @@ _renderer.Font.register({
   src: "server/fonts/Georgia.ttf"
 });
 
+_renderer.Font.register({
+  family: "Georgia Italic",
+  src: "server/fonts/Georgia-Italic.ttf"
+});
+
+_renderer.Font.register({
+  family: "Georgia Bold",
+  src: "server/fonts/Georgia-Bold.ttf"
+});
+
 var A4 = _pdfConstants.pageMeasurements.A4;
 
 var styles = _renderer.StyleSheet.create({
-  bodyContainer: {
-    fontFamily: "Georgia",
-    fontSize: "12pt"
-  },
   logotype: {
     height: A4.logotype,
     width: A4.logotype
   },
   pages: {
+    fontFamily: "Georgia",
     paddingHorizontal: A4.pageMargin,
     paddingTop: A4.pageMargin,
     flexDirection: "column"
@@ -73,16 +80,16 @@ var styles = _renderer.StyleSheet.create({
     paddingBottom: 12
   },
   em: {
-    fontFamily: "Open Sans SemiBold"
+    fontFamily: "Georgia Bold"
   },
   b: {
-    fontFamily: "Open Sans SemiBold"
+    fontFamily: "Georgia Bold"
   },
   strong: {
-    fontFamily: "Open Sans SemiBold"
+    fontFamily: "Georgia Bold"
   },
   i: {
-    fontFamily: "Open Sans Italic"
+    fontFamily: "Georgia Italic"
   },
   ul: {
     paddingLeft: 12
@@ -99,7 +106,6 @@ var styles = _renderer.StyleSheet.create({
     marginBottom: 6
   },
   subHeader: {
-    fontFamily: "Open Sans SemiBold",
     fontSize: 18,
     color: "#808080",
     marginTop: 30,
@@ -108,7 +114,6 @@ var styles = _renderer.StyleSheet.create({
     marginBottom: 12
   },
   bodyText: {
-    fontFamily: "Open Sans",
     fontSize: 12
   },
   pageFooter: {

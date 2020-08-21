@@ -19,13 +19,18 @@ Font.register({
   src: "server/fonts/OpenSans-Italic.ttf",
 });
 Font.register({ family: "Georgia", src: "server/fonts/Georgia.ttf" });
+Font.register({
+  family: "Georgia Italic",
+  src: "server/fonts/Georgia-Italic.ttf",
+});
+Font.register({ family: "Georgia Bold", src: "server/fonts/Georgia-Bold.ttf" });
 
 const { A4 } = pageMeasurements;
 
 const styles = StyleSheet.create({
-  bodyContainer: { fontFamily: "Georgia", fontSize: "12pt" },
   logotype: { height: A4.logotype, width: A4.logotype },
   pages: {
+    fontFamily: "Georgia",
     paddingHorizontal: A4.pageMargin,
     paddingTop: A4.pageMargin,
     flexDirection: "column",
@@ -48,16 +53,16 @@ const styles = StyleSheet.create({
     paddingBottom: 12,
   },
   em: {
-    fontFamily: "Open Sans SemiBold",
+    fontFamily: "Georgia Bold",
   },
   b: {
-    fontFamily: "Open Sans SemiBold",
+    fontFamily: "Georgia Bold",
   },
   strong: {
-    fontFamily: "Open Sans SemiBold",
+    fontFamily: "Georgia Bold",
   },
   i: {
-    fontFamily: "Open Sans Italic",
+    fontFamily: "Georgia Italic",
   },
   ul: { paddingLeft: 12 },
   ol: { paddingLeft: 18 },
@@ -65,7 +70,6 @@ const styles = StyleSheet.create({
   olItem: { textIndent: -18, marginBottom: 6 },
 
   subHeader: {
-    fontFamily: "Open Sans SemiBold",
     fontSize: 18,
     color: "#808080",
     marginTop: 30,
@@ -74,7 +78,6 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   bodyText: {
-    fontFamily: "Open Sans",
     fontSize: 12,
   },
   pageFooter: {
