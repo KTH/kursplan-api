@@ -48,12 +48,8 @@ const SyllabusHead = ({ syllabus, activeSyllabus, language }) => {
       <Text style={styles.h1}>{`${courseCode} ${title} ${creditsText}`}</Text>
       <Text style={styles.subHeader}>{`${titleOther}`}</Text>
       <View style={styles.disclaimer}>
-        {translationText && (
-          <Text style={styles.p}>{`${translationText}`}</Text>
-        )}
-        {discontinuationText && (
-          <Text style={styles.p}>{`${discontinuationText}`}</Text>
-        )}
+        <Text style={styles.p}>{`${translationText}`}</Text>
+        <Text style={styles.p}>{`${discontinuationText}`}</Text>
       </View>
       <Text style={styles.h2}>{`${establishmentHeader}`}</Text>
       <Text style={styles.bodyText}>{parse(establishment)}</Text>
