@@ -31,6 +31,7 @@ const styles = StyleSheet.create({
   logotype: { height: A4.logotype, width: A4.logotype },
   pages: {
     fontFamily: "Georgia",
+    fontSize: 12,
     paddingHorizontal: A4.pageMargin,
     paddingTop: A4.pageMargin,
     flexDirection: "column",
@@ -68,18 +69,6 @@ const styles = StyleSheet.create({
   ol: { paddingLeft: 18 },
   ulItem: { textIndent: -9, marginBottom: 6 },
   olItem: { textIndent: -18, marginBottom: 6 },
-
-  subHeader: {
-    fontSize: 18,
-    color: "#808080",
-    marginTop: 30,
-    borderBottomColor: "#808080",
-    borderBottomWidth: 1.33,
-    marginBottom: 12,
-  },
-  bodyText: {
-    fontSize: 12,
-  },
   pageFooter: {
     fontFamily: "Open Sans",
     fontSize: 9,
@@ -99,6 +88,16 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     fontSize: 9,
     textAlign: "right",
+  },
+  subHeader: {
+    fontFamily: "Open Sans SemiBold",
+    fontSize: 14,
+    marginTop: 12,
+    marginBottom: 12,
+  },
+  disclaimer: {
+    marginTop: 24,
+    marginBottom: 12,
   },
 });
 

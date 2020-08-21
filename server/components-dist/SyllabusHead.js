@@ -57,15 +57,13 @@ var SyllabusHead = function SyllabusHead(_ref) {
     style: _SyllabusStyles["default"].h1
   }, "".concat(courseCode, " ").concat(title, " ").concat(creditsText)), /*#__PURE__*/_react["default"].createElement(_renderer.Text, {
     style: _SyllabusStyles["default"].subHeader
-  }, "".concat(titleOther)), /*#__PURE__*/_react["default"].createElement(_renderer.Text, {
-    style: [_SyllabusStyles["default"].bodyText, {
-      paddingBottom: 12
-    }]
-  }, "".concat(translationText)), /*#__PURE__*/_react["default"].createElement(_renderer.Text, {
-    style: [_SyllabusStyles["default"].bodyText, {
-      paddingBottom: 12
-    }]
-  }, "".concat(discontinuationText)), /*#__PURE__*/_react["default"].createElement(_renderer.Text, {
+  }, "".concat(titleOther)), /*#__PURE__*/_react["default"].createElement(_renderer.View, {
+    style: _SyllabusStyles["default"].disclaimer
+  }, translationText && /*#__PURE__*/_react["default"].createElement(_renderer.Text, {
+    style: _SyllabusStyles["default"].p
+  }, "".concat(translationText)), discontinuationText && /*#__PURE__*/_react["default"].createElement(_renderer.Text, {
+    style: _SyllabusStyles["default"].p
+  }, "".concat(discontinuationText))), /*#__PURE__*/_react["default"].createElement(_renderer.Text, {
     style: _SyllabusStyles["default"].h2
   }, "".concat(establishmentHeader)), /*#__PURE__*/_react["default"].createElement(_renderer.Text, {
     style: _SyllabusStyles["default"].bodyText

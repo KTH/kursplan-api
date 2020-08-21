@@ -47,12 +47,14 @@ const SyllabusHead = ({ syllabus, activeSyllabus, language }) => {
       <Image style={styles.logotype} src={logotypePath} />
       <Text style={styles.h1}>{`${courseCode} ${title} ${creditsText}`}</Text>
       <Text style={styles.subHeader}>{`${titleOther}`}</Text>
-      <Text
-        style={[styles.bodyText, { paddingBottom: 12 }]}
-      >{`${translationText}`}</Text>
-      <Text
-        style={[styles.bodyText, { paddingBottom: 12 }]}
-      >{`${discontinuationText}`}</Text>
+      <View style={styles.disclaimer}>
+        {translationText && (
+          <Text style={styles.p}>{`${translationText}`}</Text>
+        )}
+        {discontinuationText && (
+          <Text style={styles.p}>{`${discontinuationText}`}</Text>
+        )}
+      </View>
       <Text style={styles.h2}>{`${establishmentHeader}`}</Text>
       <Text style={styles.bodyText}>{parse(establishment)}</Text>
       {decisionToDiscontinue && (
