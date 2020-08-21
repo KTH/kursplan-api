@@ -108,7 +108,7 @@ var styles = _renderer.StyleSheet.create({
   },
   pageFooter: {
     fontFamily: "Open Sans",
-    fontSize: 9,
+    fontSize: 12,
     flexDirection: "row",
     borderTopColor: "#808080",
     borderTopWidth: 1.33,
@@ -118,12 +118,12 @@ var styles = _renderer.StyleSheet.create({
   pageFooterLeft: {
     flexGrow: 0,
     flexDirection: "column",
-    fontSize: 9,
+    fontSize: 12,
     textAlign: "left"
   },
   pageFooterRight: {
     flexGrow: 1,
-    fontSize: 9,
+    fontSize: 12,
     textAlign: "right"
   },
   subHeader: {
