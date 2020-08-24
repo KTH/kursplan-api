@@ -144,7 +144,7 @@ addPaths(
 const authByApiKey = passport.authenticate("apikey", { session: false });
 
 // Application specific API enpoints
-const { Syllabus, PDF } = require("./controllers");
+const { PDF } = require("./controllers");
 const ApiRouter = require("kth-node-express-routing").ApiRouter;
 const apiRoute = ApiRouter(authByApiKey);
 const paths = getPaths();
@@ -153,8 +153,7 @@ const paths = getPaths();
 apiRoute.register(paths.api.checkAPIkey, System.checkAPIKey);
 // apiRoute.register(paths.api.getDataById, Syllabus.getData)
 // apiRoute.register(paths.api.postDataById, Syllabus.postData)
-apiRoute.register(paths.api.getSyllabusByCourseCode, Syllabus.getSyllabus);
-apiRoute.register(paths.api.getSyllabusPdfByCourseCode, PDF.getSyllabus);
+apiRoute.register(paths.api.getSyllabusByCourseCode, PDF.getSyllabus);
 server.use("/", apiRoute.getRouter());
 
 // Catch not found and errors
