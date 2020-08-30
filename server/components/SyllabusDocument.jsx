@@ -13,6 +13,7 @@ const SyllabusDocument = ({ syllabus, semester, language }) => {
         title={title}
         author="KTH"
         onRender={timer("SyllabusDocument", Date.now())}
+        lang={language === "en" ? "en-US" : "sv-SE"}
       >
         <Profiler id="SyllabusPages" onRender={profilerToLog}>
           <SyllabusPages

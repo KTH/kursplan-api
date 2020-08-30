@@ -33,7 +33,8 @@ var SyllabusDocument = function SyllabusDocument(_ref) {
   }, /*#__PURE__*/_react["default"].createElement(_renderer.Document, {
     title: title,
     author: "KTH",
-    onRender: (0, _pdfUtils.timer)("SyllabusDocument", Date.now())
+    onRender: (0, _pdfUtils.timer)("SyllabusDocument", Date.now()),
+    lang: language === "en" ? "en-US" : "sv-SE"
   }, /*#__PURE__*/_react["default"].createElement(_react.Profiler, {
     id: "SyllabusPages",
     onRender: _pdfUtils.profilerToLog
