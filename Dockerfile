@@ -17,6 +17,7 @@ RUN cp -a /npm/node_modules /application && \
 # Copy files used by Gulp.
 COPY ["config", "config"]
 COPY ["i18n", "i18n"]
+COPY ["lib", "lib"]
 COPY ["package.json", "package.json"]
 
 # Copy source files, so changes does not trigger gulp.
