@@ -107,7 +107,7 @@ var components = {
     }, number ? "".concat(number < 10 ? "\xa0" + number : number, ". ") : " • ", (0, _htmlReactParser.domToReact)(domNode.children, htmlParseOptions));
   },
   a: function a(domNode) {
-    console.log(domNode);
+    //console.log(domNode);
     return /*#__PURE__*/_react["default"].createElement(_renderer.Link, {
       src: getURL(domNode.attribs.href)
     }, (0, _htmlReactParser.domToReact)(domNode.children, htmlParseOptions));
@@ -161,12 +161,12 @@ var addListElement = function addListElement(html) {
 };
 
 var htmlParser = function htmlParser(rawHtml) {
-  console.time("htmlParser: replaceLineBreaks");
-  var html = addListElement(removeExcessWhitespace(replaceLineBreaks(rawHtml)));
-  console.timeEnd("htmlParser: replaceLineBreaks");
-  console.time("htmlParser: parse");
-  var parsedHtml = (0, _htmlReactParser["default"])(html, htmlParseOptions);
-  console.timeEnd("htmlParser: parse");
+  // console.time("htmlParser: replaceLineBreaks");
+  var html = addListElement(removeExcessWhitespace(replaceLineBreaks(rawHtml))); // console.timeEnd("htmlParser: replaceLineBreaks");
+  // console.time("htmlParser: parse");
+
+  var parsedHtml = (0, _htmlReactParser["default"])(html, htmlParseOptions); // console.timeEnd("htmlParser: parse");
+
   return parsedHtml;
 };
 

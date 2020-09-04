@@ -90,7 +90,7 @@ const components = {
     );
   },
   a: (domNode) => {
-    console.log(domNode);
+    //console.log(domNode);
     return (
       <Link src={getURL(domNode.attribs.href)}>
         {domToReact(domNode.children, htmlParseOptions)}
@@ -139,14 +139,14 @@ const addListElement = (html) => {
 };
 
 const htmlParser = (rawHtml) => {
-  console.time("htmlParser: replaceLineBreaks");
+  // console.time("htmlParser: replaceLineBreaks");
   const html = addListElement(
     removeExcessWhitespace(replaceLineBreaks(rawHtml))
   );
-  console.timeEnd("htmlParser: replaceLineBreaks");
-  console.time("htmlParser: parse");
+  // console.timeEnd("htmlParser: replaceLineBreaks");
+  // console.time("htmlParser: parse");
   const parsedHtml = parse(html, htmlParseOptions);
-  console.timeEnd("htmlParser: parse");
+  // console.timeEnd("htmlParser: parse");
   return parsedHtml;
 };
 

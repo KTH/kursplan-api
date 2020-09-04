@@ -28,10 +28,10 @@ async function _getSyllabus(req, res, next) {
       `${contentDisposition}; filename=${fileName}.pdf`
     );
     // eslint-disable-next-line no-console
-    console.time("getSyllabus: createPdf");
+    // console.time("getSyllabus: createPdf");
     await createPdf(res, syllabus, semester, language);
     // eslint-disable-next-line no-console
-    console.timeEnd("getSyllabus: createPdf");
+    // console.timeEnd("getSyllabus: createPdf");
     log.debug(
       "getSyllabus: Responded to request for PDF with courseCode: ",
       courseCode,
