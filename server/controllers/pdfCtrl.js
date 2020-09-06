@@ -28,6 +28,7 @@ async function _getSyllabus(req, res, next) {
       `${contentDisposition}; filename=${fileName}.pdf`
     );
     const pdf = await createPdf(syllabus, semester, language);
+    console.log("pdf", pdf);
     pdf.pipe(res);
 
     log.debug(
