@@ -21,6 +21,13 @@ async function _getSyllabus(req, res, next) {
   );
   const syllabus = await getSyllabus(courseCode, semester, language);
   try {
+    if (syllabus == null) {
+      log.info(
+        `Could not get a syllabus for ${courseCode}, ${semester}, ${language}.`
+      );
+      throw `NoSyllabusException`;
+    }
+
     const contentDisposition = download === "true" ? "attachment" : "inline";
     res.type("application/pdf");
     res.set(
