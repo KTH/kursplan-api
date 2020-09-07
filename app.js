@@ -14,6 +14,20 @@ const config = require('./server/configuration').server
 const server = require('./server/server')
 const log = require('kth-node-log')
 
+// catches uncaught exceptions
+process.on('uncaughtException', (err, origin) => {
+  log.error('APPLICATION EXIT - uncaught exception in ', packageFile.name)
+  log.error(`Uncaught Exception, origin (${origin})`, { err })
+  process.exit(1)
+})
+
+// catches unhandled promise rejections
+process.on('unhandledRejection', reason => {
+  // This line below provokes an uncaughtException and will be caught few lines
+  // above
+  throw reason
+})
+
 /* ****************************
  * ******* SERVER START *******
  * ****************************
