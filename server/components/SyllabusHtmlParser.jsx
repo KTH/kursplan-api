@@ -120,7 +120,7 @@ const htmlParseOptions = {
 
 const removeExcessWhitespace = (html) => html.replace(/\u0020{2,}/g, "\u0020");
 
-const replaceLineBreaks = (html) =>
+const replaceLineBreaks = (html = "") =>
   html.replace(/\n/g, "").replace(/<br>|<br.?\/>/g, "\n");
 
 const addListElement = (html) => {

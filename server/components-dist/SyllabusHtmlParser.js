@@ -144,7 +144,8 @@ var removeExcessWhitespace = function removeExcessWhitespace(html) {
   return html.replace(/\u0020{2,}/g, " ");
 };
 
-var replaceLineBreaks = function replaceLineBreaks(html) {
+var replaceLineBreaks = function replaceLineBreaks() {
+  var html = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
   return html.replace(/\n/g, "").replace(/<br>|<br.?\/>/g, "\n");
 };
 

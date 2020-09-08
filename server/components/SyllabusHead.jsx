@@ -23,16 +23,13 @@ const englishTranslationText = (language) =>
     ? "This is a translation of the Swedish, legally binding, course syllabus."
     : "";
 
-const SyllabusHead = ({ syllabus, activeSyllabus, language }) => {
+const SyllabusHead = ({ syllabus, activeSyllabus = {}, language }) => {
   const languageIndex = language === "en" ? 0 : 1;
   const { course } = syllabus;
   const { courseCode, title, credits, creditUnitAbbr, titleOther } = course;
   const { courseSyllabus } = activeSyllabus;
-  const {
-    discontinuationText,
-    establishment,
-    decisionToDiscontinue,
-  } = courseSyllabus;
+  const { discontinuationText, establishment, decisionToDiscontinue } =
+    courseSyllabus || {};
 
   const creditsText = formatCredits(credits, creditUnitAbbr, language);
   const translationText = englishTranslationText(language);

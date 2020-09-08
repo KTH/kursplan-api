@@ -33,7 +33,8 @@ var englishTranslationText = function englishTranslationText(language) {
 
 var SyllabusHead = function SyllabusHead(_ref) {
   var syllabus = _ref.syllabus,
-      activeSyllabus = _ref.activeSyllabus,
+      _ref$activeSyllabus = _ref.activeSyllabus,
+      activeSyllabus = _ref$activeSyllabus === void 0 ? {} : _ref$activeSyllabus,
       language = _ref.language;
   var languageIndex = language === "en" ? 0 : 1;
   var course = syllabus.course;
@@ -43,9 +44,12 @@ var SyllabusHead = function SyllabusHead(_ref) {
       creditUnitAbbr = course.creditUnitAbbr,
       titleOther = course.titleOther;
   var courseSyllabus = activeSyllabus.courseSyllabus;
-  var discontinuationText = courseSyllabus.discontinuationText,
-      establishment = courseSyllabus.establishment,
-      decisionToDiscontinue = courseSyllabus.decisionToDiscontinue;
+
+  var _ref2 = courseSyllabus || {},
+      discontinuationText = _ref2.discontinuationText,
+      establishment = _ref2.establishment,
+      decisionToDiscontinue = _ref2.decisionToDiscontinue;
+
   var creditsText = formatCredits(credits, creditUnitAbbr, language);
   var translationText = englishTranslationText(language);
   var establishmentHeader = _i18n["default"].messages[languageIndex].courseInformation.course_establishment;
