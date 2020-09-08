@@ -9,28 +9,41 @@ var _renderer = require("@react-pdf/renderer");
 
 var _pdfConstants = require("../libs/pdfConstants");
 
-// Font.register({
-//   family: "Open Sans",
-//   src: "server/fonts/OpenSans-Regular.ttf",
-// });
-// Font.register({
-//   family: "Open Sans SemiBold",
-//   src: "server/fonts/OpenSans-SemiBold.ttf",
-// });
-// Font.register({
-//   family: "Open Sans Bold",
-//   src: "server/fonts/OpenSans-Bold.ttf",
-// });
-// Font.register({
-//   family: "Open Sans Italic",
-//   src: "server/fonts/OpenSans-Italic.ttf",
-// });
-// Font.register({ family: "Georgia", src: "server/fonts/Georgia.ttf" });
-// Font.register({
-//   family: "Georgia Italic",
-//   src: "server/fonts/Georgia-Italic.ttf",
-// });
-// Font.register({ family: "Georgia Bold", src: "server/fonts/Georgia-Bold.ttf" });
+_renderer.Font.register({
+  family: "Open Sans",
+  src: "server/fonts/OpenSans-Regular.ttf"
+});
+
+_renderer.Font.register({
+  family: "Open Sans SemiBold",
+  src: "server/fonts/OpenSans-SemiBold.ttf"
+});
+
+_renderer.Font.register({
+  family: "Open Sans Bold",
+  src: "server/fonts/OpenSans-Bold.ttf"
+});
+
+_renderer.Font.register({
+  family: "Open Sans Italic",
+  src: "server/fonts/OpenSans-Italic.ttf"
+});
+
+_renderer.Font.register({
+  family: "Georgia",
+  src: "server/fonts/Georgia.ttf"
+});
+
+_renderer.Font.register({
+  family: "Georgia Italic",
+  src: "server/fonts/Georgia-Italic.ttf"
+});
+
+_renderer.Font.register({
+  family: "Georgia Bold",
+  src: "server/fonts/Georgia-Bold.ttf"
+});
+
 var A4 = _pdfConstants.pageMeasurements.A4;
 
 var styles = _renderer.StyleSheet.create({
@@ -39,7 +52,7 @@ var styles = _renderer.StyleSheet.create({
     width: A4.logotype
   },
   pages: {
-    // fontFamily: "Georgia",
+    fontFamily: "Georgia",
     fontSize: 12,
     paddingHorizontal: A4.pageMargin,
     paddingTop: A4.pageMargin,
@@ -53,13 +66,13 @@ var styles = _renderer.StyleSheet.create({
     flexGrow: 0
   },
   h1: {
-    // fontFamily: "Open Sans SemiBold",
+    fontFamily: "Open Sans SemiBold",
     fontSize: 32,
     marginTop: 24,
     marginBottom: 0
   },
   h2: {
-    // fontFamily: "Open Sans SemiBold",
+    fontFamily: "Open Sans SemiBold",
     fontSize: 18,
     marginTop: 18,
     marginBottom: 6
@@ -67,13 +80,17 @@ var styles = _renderer.StyleSheet.create({
   p: {
     paddingBottom: 12
   },
-  em: {// fontFamily: "Georgia Bold",
+  em: {
+    fontFamily: "Georgia Bold"
   },
-  b: {// fontFamily: "Georgia Bold",
+  b: {
+    fontFamily: "Georgia Bold"
   },
-  strong: {// fontFamily: "Georgia Bold",
+  strong: {
+    fontFamily: "Georgia Bold"
   },
-  i: {// fontFamily: "Georgia Italic",
+  i: {
+    fontFamily: "Georgia Italic"
   },
   ul: {
     paddingLeft: 12
@@ -90,7 +107,7 @@ var styles = _renderer.StyleSheet.create({
     marginBottom: 6
   },
   pageFooter: {
-    // fontFamily: "Open Sans",
+    fontFamily: "Open Sans",
     fontSize: 12,
     flexDirection: "row",
     borderTopColor: "#808080",
@@ -110,7 +127,7 @@ var styles = _renderer.StyleSheet.create({
     textAlign: "right"
   },
   subHeader: {
-    // fontFamily: "Open Sans SemiBold",
+    fontFamily: "Open Sans SemiBold",
     fontSize: 14,
     marginTop: 12,
     marginBottom: 12
