@@ -2,8 +2,7 @@
 
 const log = require("kth-node-log");
 
-// const getSyllabus = require("../koppsApi").getSyllabus;
-const syllabus = require("./__mocks__/koppsApiResponse");
+const getSyllabus = require("../koppsApi").getSyllabus;
 const { createPdf } = require("../libs/pdfRenderer.js");
 
 async function _getSyllabus(req, res, next) {
@@ -20,7 +19,7 @@ async function _getSyllabus(req, res, next) {
     ", language: ",
     language
   );
-  // const syllabus = await getSyllabus(courseCode, semester, language);
+  const syllabus = await getSyllabus(courseCode, semester, language);
   try {
     if (syllabus == null) {
       log.info(
