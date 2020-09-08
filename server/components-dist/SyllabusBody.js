@@ -19,8 +19,6 @@ var _SyllabusHtmlParser = _interopRequireDefault(require("./SyllabusHtmlParser")
 
 var _i18n = _interopRequireDefault(require("../../i18n"));
 
-var _pdfUtils = _interopRequireDefault(require("../libs/pdfUtils"));
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
@@ -143,10 +141,7 @@ var SyllabusBody = function SyllabusBody(_ref5) {
   var course = syllabus.course;
   var languageIndex = language === "en" ? 0 : 1;
   var sections = renderSections(syllabus, activeSyllabus, languageIndex);
-  return /*#__PURE__*/_react["default"].createElement(_renderer.View, null, /*#__PURE__*/_react["default"].createElement(_react.Profiler, {
-    id: "profiler-syllabus-body",
-    onRender: _pdfUtils["default"]
-  }, sections));
+  return /*#__PURE__*/_react["default"].createElement(_renderer.View, null, sections);
 };
 
 var _default = SyllabusBody;

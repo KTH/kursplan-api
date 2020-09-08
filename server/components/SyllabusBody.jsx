@@ -1,4 +1,4 @@
-import React, { Profiler, Fragment } from "react";
+import React, { Fragment } from "react";
 import { View, Text } from "@react-pdf/renderer";
 import stripHtml from "string-strip-html";
 
@@ -6,7 +6,6 @@ import styles from "./SyllabusStyles";
 import parse from "./SyllabusHtmlParser";
 
 import i18n from "../../i18n";
-import profilerToLog from "../libs/pdfUtils";
 
 // Copied logic from generareHTML
 const getExamObject = (dataObject, grades, courseCredits, language = 0) => {
@@ -120,13 +119,7 @@ const SyllabusBody = ({ syllabus, activeSyllabus, language }) => {
   const { course } = syllabus;
   const languageIndex = language === "en" ? 0 : 1;
   const sections = renderSections(syllabus, activeSyllabus, languageIndex);
-  return (
-    <View>
-      <Profiler id={`profiler-syllabus-body`} onRender={profilerToLog}>
-        {sections}
-      </Profiler>
-    </View>
-  );
+  return <View>{sections}</View>;
 };
 
 export default SyllabusBody;
