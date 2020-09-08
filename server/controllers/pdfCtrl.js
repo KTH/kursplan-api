@@ -4,7 +4,6 @@ const log = require("kth-node-log");
 
 const getSyllabus = require("../koppsApi").getSyllabus;
 const { createPdf } = require("../libs/pdfRenderer.js");
-const PDFDocument = require("@react-pdf/pdfkit").default;
 
 async function _getSyllabus(req, res, next) {
   const { courseCode, semester } = req.params;
@@ -35,23 +34,8 @@ async function _getSyllabus(req, res, next) {
       "Content-Disposition",
       `${contentDisposition}; filename=${fileName}.pdf`
     );
-    // const pdf = await createPdf(syllabus, semester, language);
-    const pdf = new PDFDocument({ autoFirstPage: false, lang: language });
-    pdf.addPage();
-    const { course } = syllabus;
-    const { title, recruitmentText } = course || {};
-    pdf.fontSize(24);
-    pdf.text(title, { width: 410, align: "center" });
-    pdf.fontSize(16);
-    pdf.text(recruitmentText, {
-      columns: 3,
-      columnGap: 15,
-      height: 100,
-      width: 465,
-      align: "justify",
-    });
+    const pdf = await createPdf(syllabus, semester, language);
     pdf.pipe(res);
-    pdf.end();
 
     log.debug(
       "getSyllabus: Responded to request for PDF with courseCode: ",
