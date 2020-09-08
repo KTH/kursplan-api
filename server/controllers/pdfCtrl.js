@@ -4,6 +4,7 @@ const log = require("kth-node-log");
 
 // const getSyllabus = require("../koppsApi").getSyllabus;
 const syllabus = require("./__mocks__/koppsApiResponse");
+const { createPdf } = require("../libs/pdfRenderer.js");
 
 async function _getSyllabus(req, res, next) {
   const { courseCode, semester } = req.params;
@@ -34,7 +35,6 @@ async function _getSyllabus(req, res, next) {
       "Content-Disposition",
       `${contentDisposition}; filename=${fileName}.pdf`
     );
-    const { createPdf } = require("../libs/pdfRenderer.js");
     const pdf = await createPdf(syllabus, semester, language);
     pdf.pipe(res);
 
