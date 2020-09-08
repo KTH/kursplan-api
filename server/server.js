@@ -153,7 +153,8 @@ const paths = getPaths();
 apiRoute.register(paths.api.checkAPIkey, System.checkAPIKey);
 // apiRoute.register(paths.api.getDataById, Syllabus.getData)
 // apiRoute.register(paths.api.postDataById, Syllabus.postData)
-apiRoute.register(paths.api.getSyllabusByCourseCode, PDF.getSyllabus);
+// apiRoute.register(paths.api.getSyllabusByCourseCode, PDF.getSyllabus);
+apiRoute.register(paths.api.getSyllabusByCourseCode, System.monitor);
 server.use("/", apiRoute.getRouter());
 
 // Catch not found and errors
