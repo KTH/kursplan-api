@@ -25,7 +25,7 @@
   "dependencies": {
     "@babel/runtime": "^7.6.2",
     "@react-pdf/fontkit": "^1.13.0",
-    "@react-pdf/pdfkit": "file:../pdfkit-1.5.1-beta.0",
+    "@react-pdf/pdfkit": "file:../../pdfkit-1.5.1-beta.0",
     "@react-pdf/png-js": "^1.0.0",
     "@react-pdf/textkit": "^0.3.7",
     "abs-svg-path": "^0.1.1",
