@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { View, Text, Image } from "@react-pdf/renderer";
 
 import parse from "./SyllabusHtmlParser";
@@ -50,11 +50,13 @@ const SyllabusHead = ({ syllabus, activeSyllabus = {}, language }) => {
       </View>
       <Text style={styles.h2}>{`${establishmentHeader}`}</Text>
       <Text style={styles.bodyText}>{parse(establishment)}</Text>
-      {decisionToDiscontinue && (
+      {decisionToDiscontinue ? (
         <View>
           <Text style={styles.h2}>{`${discontinuationHeader}`}</Text>
           <Text style={styles.bodyText}>{`${decisionToDiscontinue}`}</Text>
         </View>
+      ) : (
+        <Fragment />
       )}
     </View>
   );
