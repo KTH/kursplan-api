@@ -15,6 +15,7 @@ module.exports = {
 };
 
 const getSyllabus = require("../koppsApi").getSyllabus;
+// const syllabus = require("../__mocks__/mockKoppsResponse");
 
 async function _getSyllabus(req, res, next) {
   const courseCode = req.params.courseCode;
