@@ -17,10 +17,7 @@
         "tags": ["system"],
         "responses": {
           "200": {
-            "description": "An empty response",
-            "schema": {
-              "$ref": "#/definitions/UserList"
-            }
+            "description": "An empty response"
           },
           "default": {
             "description": "Unexpected error",
