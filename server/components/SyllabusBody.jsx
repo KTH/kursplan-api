@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import { View, Text } from "@react-pdf/renderer";
+import stripHtml from "string-strip-html";
 
 import styles from "./SyllabusStyles";
 import parse from "./SyllabusHtmlParser";
@@ -97,6 +98,7 @@ const Section = ({ id, content, languageIndex }) => {
 
   const sectionHeader = i18n.messages[languageIndex].courseInformation[id];
   const sectionContent = content;
+  const textFitsOnPage = stripHtml(sectionContent).length > 3500;
   return (
     <View>
       {sectionHeader ? (
