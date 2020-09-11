@@ -11,8 +11,6 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _renderer = require("@react-pdf/renderer");
 
-var _stringStripHtml = _interopRequireDefault(require("string-strip-html"));
-
 var _SyllabusStyles = _interopRequireDefault(require("./SyllabusStyles"));
 
 var _SyllabusHtmlParser = _interopRequireDefault(require("./SyllabusHtmlParser"));
@@ -126,7 +124,6 @@ var Section = function Section(_ref4) {
 
   var sectionHeader = _i18n["default"].messages[languageIndex].courseInformation[id];
   var sectionContent = content;
-  var textFitsOnPage = (0, _stringStripHtml["default"])(sectionContent).length > 3500;
   return /*#__PURE__*/_react["default"].createElement(_renderer.View, null, sectionHeader ? /*#__PURE__*/_react["default"].createElement(_renderer.Text, {
     style: _SyllabusStyles["default"].h2
   }, sectionHeader) : /*#__PURE__*/_react["default"].createElement(_react.Fragment, null), sectionContent ? /*#__PURE__*/_react["default"].createElement(_renderer.View, {
