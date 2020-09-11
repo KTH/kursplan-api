@@ -27,7 +27,6 @@ This API is independent and will not break other projects but it is important re
 - [kurs-pm-web](https://github.com/KTH/kurs-pm-web)
 - [node-api](https://github.com/KTH/node-api)
 - [Swagger](https://swagger.io/)
-- [PhantomJS](https://phantomjs.org/)
 - [React-pdf](https://react-pdf.org/)
 - [html-react-parser](https://github.com/remarkablemark/html-react-parser)
 
