@@ -12,10 +12,10 @@
     "start-debug": "cross-env NODE_ENV=development nodemon -- --inspect app.js"
   },
   "dependencies": {
-    "@babel/cli": "^7.12.1",
-    "@babel/core": "^7.12.3",
-    "@babel/preset-env": "^7.12.1",
-    "@babel/preset-react": "^7.12.5",
+    "@babel/cli": "^7.12.7",
+    "@babel/core": "^7.12.7",
+    "@babel/preset-env": "^7.12.7",
+    "@babel/preset-react": "^7.12.7",
     "@react-pdf/renderer": "file:./lib/@react-pdf/renderer-2.0.0-alpha.15/renderer",
     "bluebird": "^3.5.3",
     "body-parser": "^1.15.2",
@@ -24,7 +24,7 @@
     "dotenv": "^8.2.0",
     "express": "^4.16.4",
     "express-handlebars": "^5.2.0",
-    "html-react-parser": "^0.14.1",
+    "html-react-parser": "^0.14.2",
     "kth-node-access-log": "^0.2.2",
     "kth-node-api-call": "^3.0.12",
     "kth-node-api-common": "^1.0.1",
@@ -39,7 +39,7 @@
     "passport": "^0.4.0",
     "react": "^16.14.0",
     "safe-utils": "0.2.1",
-    "swagger-ui-dist": "^3.36.2"
+    "swagger-ui-dist": "^3.37.0"
   },
   "devDependencies": {
     "cross-env": "^7.0.2",
