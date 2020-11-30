@@ -1,5 +1,3 @@
-const { PassThrough } = require('stream')
-
 jest.mock('kth-node-log', () => {
   return {
     init: jest.fn(),
@@ -23,19 +21,16 @@ function buildReq(overrides = {}) {
 }
 
 function buildRes(overrides = {}) {
-  const passThrough = new PassThrough()
   const res = {
-    status: jest.fn(() => res).mockName('status'),
-    type: jest.fn(() => res).mockName('type'),
-    send: jest.fn(() => res).mockName('send'),
-    set: jest.fn(() => res).mockName('set'),
-    write: (data) => {
-      passThrough.write(data)
-    },
-    on: passThrough.on,
-    once: passThrough.once,
-    end: passThrough.end,
-    emit: passThrough.emit,
+    status: jest.fn().mockReturnValue(res).mockName('status'),
+    type: jest.fn().mockReturnValue(res).mockName('type'),
+    send: jest.fn().mockReturnValue(res).mockName('send'),
+    set: jest.fn().mockReturnValue(res).mockName('set'),
+    write: jest.fn().mockName('write'),
+    on: jest.fn().mockName('on'),
+    once: jest.fn().mockName('once'),
+    end: jest.fn().mockName('end'),
+    emit: jest.fn().mockName('emit'),
     ...overrides
   }
   return res
