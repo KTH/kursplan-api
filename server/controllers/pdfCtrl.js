@@ -22,7 +22,7 @@ async function _getSyllabus(req, res, next) {
   try {
     if (syllabus == null) {
       log.info(`Could not get a syllabus for ${courseCode}, ${semester}, ${language}.`)
-      throw 'NoSyllabusException'
+      throw new Error('NoSyllabusException')
     }
 
     const contentDisposition = download === 'true' ? 'attachment' : 'inline'
@@ -41,6 +41,7 @@ async function _getSyllabus(req, res, next) {
     )
   } catch (err) {
     log.error('getSyllabus: Failed request for PDF, error:', { err })
+    // eslint-disable-next-line no-console
     console.log('err', err)
     next(err)
   }

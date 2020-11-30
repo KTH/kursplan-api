@@ -1,6 +1,6 @@
-"use strict";
+'use strict'
 
 module.exports = {
-  System: require("./systemCtrl"),
-  PDF: require("./pdfCtrl"),
-};
+  System: require('./systemCtrl'),
+  PDF: require('./pdfCtrl')
+}
