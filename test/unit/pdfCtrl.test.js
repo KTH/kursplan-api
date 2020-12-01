@@ -62,6 +62,7 @@ describe('Test functions of pdfCtrl.js', () => {
     const next = buildNext()
 
     await getSyllabus(req, res, next)
+    expect(res.on).toHaveBeenCalled()
     done()
   })
 })
