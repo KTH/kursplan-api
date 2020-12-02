@@ -4,4 +4,6 @@ const mockKoppsResponse = require('./kopps-response.json')
 
 const getSyllabus = jest.fn(() => mockKoppsResponse).mockName('getSyllabus')
 
-export { getSyllabus }
+module.exports = {
+  getSyllabus
+}
