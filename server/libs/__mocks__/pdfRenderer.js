@@ -7,4 +7,6 @@ const createPdf = jest
   })
   .mockName('createPdf')
 
-export { createPdf }
+module.exports = {
+  createPdf
+}

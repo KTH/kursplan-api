@@ -21,19 +21,21 @@ function buildReq(overrides = {}) {
 }
 
 function buildRes(overrides = {}) {
-  const res = {
-    status: jest.fn().mockReturnValue(res).mockName('status'),
-    type: jest.fn().mockReturnValue(res).mockName('type'),
-    send: jest.fn().mockReturnValue(res).mockName('send'),
-    set: jest.fn().mockReturnValue(res).mockName('set'),
-    write: jest.fn().mockName('write'),
-    on: jest.fn().mockName('on'),
-    once: jest.fn().mockName('once'),
-    end: jest.fn().mockName('end'),
-    emit: jest.fn().mockName('emit'),
-    ...overrides
-  }
-  return res
+  const res = {}
+  const status = jest.fn().mockReturnValue(res).mockName('status')
+  const type = jest.fn().mockReturnValue(res).mockName('type')
+  const send = jest.fn().mockReturnValue(res).mockName('send')
+  const set = jest.fn().mockReturnValue(res).mockName('set')
+  res.status = status
+  res.type = type
+  res.send = send
+  res.set = set
+  res.write = jest.fn().mockName('write')
+  res.on = jest.fn().mockName('on')
+  res.once = jest.fn().mockName('once')
+  res.end = jest.fn().mockName('end')
+  res.emit = jest.fn().mockName('emit')
+  return { ...res, ...overrides }
 }
 
 function buildNext(impl) {
