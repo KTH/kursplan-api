@@ -9,6 +9,7 @@
     "test": "NODE_ENV=test jest test/unit/*.js",
     "test:watch": "NODE_ENV=test jest test/unit/*.js --watch",
     "test-unit-in-docker": "ID=$(docker build -q .) && LOCAL_IMAGE_ID=$ID docker-compose -f docker-compose-unit-tests.yml up --abort-on-container-exit --always-recreate-deps",
+    "test-integration-in-docker": "ID=$(docker build -q .) && LOCAL_IMAGE_ID=$ID docker-compose -f docker-compose-integration-tests.yml up --force-recreate --abort-on-container-exit --always-recreate-deps",
     "build": "babel server/components --out-dir server/components-dist",
     "start": "NODE_ENV=production node app.js",
     "start-dev": "cross-env NODE_ENV=development nodemon app.js",
