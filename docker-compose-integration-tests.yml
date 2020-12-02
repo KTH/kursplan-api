@@ -1,0 +1,29 @@
+version: '3.2'
+
+services:
+  #############################################
+  # Start http://api:3000/
+  #############################################
+  api:
+    # if not --build and kursplan-api already exists in
+    # your local computers registry 'image' is used.
+    image: $LOCAL_IMAGE_ID
+
+    environment:
+      NODE_ENV: 'development'
+      SERVICE_PUBLISH: '/api/kursplan'
+      SERVER_PORT: 3000
+
+    ports:
+      - 3000
+
+  #############################################
+  # Start the client running tests
+  # agains http://api:3000/
+  #############################################
+  integration-tests:
+    # Build client image and run tests
+    # from inside that.
+    build: ./test/integration
+    depends_on:
+      - api
