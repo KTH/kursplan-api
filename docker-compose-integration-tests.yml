@@ -10,9 +10,14 @@ services:
     image: $LOCAL_IMAGE_ID
 
     environment:
-      NODE_ENV: 'development'
       SERVICE_PUBLISH: '/api/kursplan'
       SERVER_PORT: 3000
+      API_KEYS_2: '?name=kursplan&apiKey=&scope=read'
+      API_KEYS_1: '?name=kursinfo&apiKey=&scope=read'
+      API_KEYS_0: '?name=kursinfo-web&apiKey=&scope=read'
+      KURSPLAN_API_KEYS: '?name=kursplan&apiKey=&scope=read'
+      REDIS_URI: 'redis://localhost:6379/'
+      LOGGING_ACCESS_LOG: 'true'
 
     ports:
       - 3000
