@@ -41,8 +41,6 @@ async function _getSyllabus(req, res, next) {
     )
   } catch (err) {
     log.error('getSyllabus: Failed request for PDF, error:', { err })
-    // eslint-disable-next-line no-console
-    console.log('err', err)
     next(err)
   }
 }
