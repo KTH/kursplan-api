@@ -133,6 +133,10 @@ var htmlParseOptions = {
     var component = components[node.name] || components["default"];
     return component(node);
   }
+}; // TODO: Use a lib to do this instead
+
+var replaceCharacters = function replaceCharacters(html) {
+  return html.replace(/&#8208;/g, '-');
 };
 
 var removeExcessWhitespace = function removeExcessWhitespace(html) {
@@ -158,7 +162,7 @@ var addListElement = function addListElement(html) {
 
 var htmlParser = function htmlParser(rawHtml) {
   // console.time("htmlParser: replaceLineBreaks");
-  var html = addListElement(removeExcessWhitespace(replaceLineBreaks(rawHtml))); // console.timeEnd("htmlParser: replaceLineBreaks");
+  var html = addListElement(replaceCharacters(removeExcessWhitespace(replaceLineBreaks(rawHtml)))); // console.timeEnd("htmlParser: replaceLineBreaks");
   // console.time("htmlParser: parse");
 
   var parsedHtml = (0, _htmlReactParser["default"])(html, htmlParseOptions); // console.timeEnd("htmlParser: parse");
