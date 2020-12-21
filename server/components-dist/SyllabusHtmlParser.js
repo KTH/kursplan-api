@@ -33,10 +33,10 @@ var isSrcId = function isSrcId(src) {
 exports.isSrcId = isSrcId;
 
 var getURL = function getURL(value) {
-  if (!value) return "";
+  if (!value) return '';
   if (isSrcId(value)) return value; // don't modify it if it is an id
 
-  if (typeof value === "string" && !value.match(PROTOCOL_REGEXP)) {
+  if (typeof value === 'string' && !value.match(PROTOCOL_REGEXP)) {
     return "https://kth.se".concat(value); // Fix internal links, like profiles
   }
 
@@ -45,7 +45,7 @@ var getURL = function getURL(value) {
 
 
 var inlineElementsPresent = function inlineElementsPresent(nodes) {
-  var inlineElementTags = ["em", "strong", "i", "b", "a"];
+  var inlineElementTags = ['em', 'strong', 'i', 'b', 'a'];
   return nodes && nodes.some(function (node) {
     return inlineElementTags.includes(node.name);
   });
@@ -92,7 +92,7 @@ var components = {
   li: function li(domNode) {
     var number;
 
-    if (domNode.parent && domNode.parent.name === "ol") {
+    if (domNode.parent && domNode.parent.name === 'ol') {
       number = domNode.parent.counter; // eslint-disable-next-line no-param-reassign
 
       domNode.parent.counter += 1;
@@ -100,24 +100,23 @@ var components = {
 
     return /*#__PURE__*/_react["default"].createElement(_renderer.Text, {
       style: number ? _SyllabusStyles["default"].olItem : _SyllabusStyles["default"].ulItem
-    }, number ? "".concat(number < 10 ? "\xa0" + number : number, ". ") : " • ", (0, _htmlReactParser.domToReact)(domNode.children, htmlParseOptions));
+    }, number ? "".concat(number < 10 ? '\xa0' + number : number, ". ") : ' • ', (0, _htmlReactParser.domToReact)(domNode.children, htmlParseOptions));
   },
   a: function a(domNode) {
-    //console.log(domNode);
     return /*#__PURE__*/_react["default"].createElement(_renderer.Link, {
       src: getURL(domNode.attribs.href)
     }, (0, _htmlReactParser.domToReact)(domNode.children, htmlParseOptions));
   },
   "default": function _default() {
-    return /*#__PURE__*/_react["default"].createElement(_react.Fragment, null);
+    return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null);
   }
 };
 var htmlParseOptions = {
   replace: function replace(domNode) {
     var node = domNode;
 
-    if (node.type === "text") {
-      if (node.next && node.next.name === "p") {
+    if (node.type === 'text') {
+      if (node.next && node.next.name === 'p') {
         // Handle HTML where a text node is followed by a paragraph element
         return /*#__PURE__*/_react["default"].createElement(_renderer.Text, {
           style: _SyllabusStyles["default"].p
@@ -127,7 +126,7 @@ var htmlParseOptions = {
       return /*#__PURE__*/_react["default"].createElement(_renderer.Text, null, node.data);
     }
 
-    if (node.name === "ol") {
+    if (node.name === 'ol') {
       node.counter = 1;
     }
 
@@ -141,16 +140,16 @@ var removeExcessWhitespace = function removeExcessWhitespace(html) {
 };
 
 var replaceLineBreaks = function replaceLineBreaks() {
-  var html = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
-  return html.replace(/\n/g, "").replace(/<br>|<br.?\/>/g, "\n");
+  var html = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+  return html.replace(/\n|\r/g, '').replace(/<br>|<br.?\/>/g, '\n');
 };
 
 var addListElement = function addListElement(html) {
-  if (html.startsWith("<li>")) {
-    var indexOfLastCloseListItem = html.lastIndexOf("</li>");
+  if (html.startsWith('<li>')) {
+    var indexOfLastCloseListItem = html.lastIndexOf('</li>');
 
     if (indexOfLastCloseListItem !== -1) {
-      return "<ul>" + html.slice(0, indexOfLastCloseListItem + 5) + "</ul>" + html.slice(indexOfLastCloseListItem + 5);
+      return '<ul>' + html.slice(0, indexOfLastCloseListItem + 5) + '</ul>' + html.slice(indexOfLastCloseListItem + 5);
     }
   }
 
