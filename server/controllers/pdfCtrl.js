@@ -21,8 +21,9 @@ async function _getSyllabus(req, res, next) {
   const syllabus = await getSyllabus(courseCode, semester, language)
   try {
     if (syllabus == null) {
-      log.info(`Could not get a syllabus for ${courseCode}, ${semester}, ${language}.`)
-      throw new Error('NoSyllabusException')
+      log.debug(`Could not get a syllabus for ${courseCode}, ${semester}, ${language}.`)
+      res.sendStatus(404)
+      return
     }
 
     const contentDisposition = download === 'true' ? 'attachment' : 'inline'
