@@ -1,5 +1,7 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -12,8 +14,6 @@ var _renderer = require("@react-pdf/renderer");
 var _SyllabusStyles = _interopRequireDefault(require("./SyllabusStyles"));
 
 var _i18n = _interopRequireDefault(require("../../i18n"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var getSelectedSyllabus = function getSelectedSyllabus(syllabusObject) {
   var semester = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "20101";

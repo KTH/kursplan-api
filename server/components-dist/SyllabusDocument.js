@@ -1,5 +1,7 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -12,8 +14,6 @@ var _renderer = require("@react-pdf/renderer");
 var _SyllabusPages = _interopRequireDefault(require("./SyllabusPages"));
 
 var _pdfUtils = require("../libs/pdfUtils");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var SyllabusDocument = function SyllabusDocument(_ref) {
   var syllabus = _ref.syllabus,

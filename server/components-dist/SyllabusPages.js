@@ -1,5 +1,7 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -18,8 +20,6 @@ var _SyllabusBody = _interopRequireDefault(require("./SyllabusBody"));
 var _SyllabusPageFooter = _interopRequireDefault(require("./SyllabusPageFooter"));
 
 var _SyllabusStyles = _interopRequireDefault(require("./SyllabusStyles"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 // Logic copied from generareHTML
 var getSelectedSyllabus = function getSelectedSyllabus(syllabusObject) {
