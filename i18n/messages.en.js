@@ -1,5 +1,5 @@
 module.exports = {
-  shortNames: [ 'en' ],
+  shortNames: ['en'],
   longNameSe: 'Engelska',
   longNameEn: 'English',
   messages: {
@@ -12,7 +12,7 @@ module.exports = {
      * Error messages
      */
 
-    error_not_found: 'Sorry, we can\'t find your requested page',
+    error_not_found: "Sorry, we can't find your requested page",
     error_generic: 'Something went wrong on the server, please try again later.',
 
     /**
@@ -82,9 +82,11 @@ module.exports = {
     course_examiners: 'Examiner',
     course_recruitment_text: 'Abstract',
     course_ethical: 'Ethical approach',
-    course_ethical_text: "<li>All members of a group are responsible for the group's work.</li><li>In any assessment, every student shall honestly disclose any help received and sources used.</li><li>In an oral assessment, every student shall be able to present and answer questions about the entire assignment and solution.</li>",
+    course_ethical_text:
+      "<li>All members of a group are responsible for the group's work.</li><li>In any assessment, every student shall honestly disclose any help received and sources used.</li><li>In an oral assessment, every student shall be able to present and answer questions about the entire assignment and solution.</li>",
     course_grade_label: 'Grading scale',
-    course_language_default_text: 'Language of instruction is specified in the course offering information in the course and programme directory.',
+    course_language_default_text:
+      'Language of instruction is specified in the course offering information in the course and programme directory.',
     course_establishment: 'Establishment',
     course_decision_to_discontinue: 'Decision to discontinue this course',
     course_transitional_reg: 'Transitional regulations',
@@ -104,7 +106,7 @@ module.exports = {
     round_application_code: 'Application code',
     round_max_seats: 'Number of places',
     round_part_of_programme: 'Part of programme',
-    round_responsibles: 'Course responsible',
+    round_responsibles: 'Course coordinator',
     round_end_date: 'End date',
     round_start_date: 'Start date',
     round_teacher: 'Teacher',
