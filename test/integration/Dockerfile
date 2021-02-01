@@ -1,4 +1,6 @@
-FROM kthse/kth-os:3.12.0
-RUN apk update && apk add curl bash
-COPY basic.sh basic.sh
-CMD [ "/bin/bash", "./basic.sh" ]
+FROM kthse/kth-nodejs:14.0.0
+
+COPY ["check-_paths.js", "check-_paths.js"]
+COPY ["check-_paths.json", "check-_paths.json"]
+
+CMD ["node", "check-_paths.js", "http://api:3000/api/kursplan"]
