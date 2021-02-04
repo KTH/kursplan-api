@@ -1,34 +1,25 @@
-version: '3.2'
+version: '3.7'
 
 services:
-  #############################################
-  # Start http://api:3000/
-  #############################################
   api:
-    # if not --build and kursplan-api already exists in
-    # your local computers registry 'image' is used.
     image: $LOCAL_IMAGE_ID
 
     environment:
       SERVICE_PUBLISH: '/api/kursplan'
       SERVER_PORT: 3000
-      API_KEYS_2: '?name=kursplan&apiKey=&scope=read'
-      API_KEYS_1: '?name=kursinfo&apiKey=&scope=read'
-      API_KEYS_0: '?name=kursinfo-web&apiKey=&scope=read'
-      KURSPLAN_API_KEYS: '?name=kursplan&apiKey=&scope=read'
+      API_KEYS_2: '?name=test&apiKey=1234&scope=read'
+      API_KEYS_1: '?name=test&apiKey=1234&scope=read'
+      API_KEYS_0: '?name=test&apiKey=1234&scope=read'
+      KURSPLAN_API_KEYS: '?name=test&apiKey=1234&scope=read'
       REDIS_URI: 'redis://localhost:6379/'
-      LOGGING_ACCESS_LOG: 'true'
 
-    ports:
-      - 3000
-
-  #############################################
-  # Start the client running tests
-  # agains http://api:3000/
-  #############################################
-  integration-tests:
-    # Build client image and run tests
-    # from inside that.
+  integration:
     build: ./test/integration
+    environment:
+      INTEGRATION_TEST_BASEURL: 'http://api:3000/api/kursplan'
+      INTEGRATION_TEST_SUCCESS_DELAY: '${SUCCESS_DELAY:-0}'
+      INTEGRATION_TEST_FAILURE_DELAY: '${FAILURE_DELAY:-0}'
+      WAIT_HOSTS: 'api:3000'
+      WAIT_HOSTS_TIMEOUT: 30
     depends_on:
       - api

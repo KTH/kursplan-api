@@ -10,7 +10,7 @@
     "test:watch": "NODE_ENV=test jest test/unit/*.js --watch",
     "test:check-_paths": "node test/integration/check-_paths.js http://localhost:3001/api/kursplan",
     "test:unit": "ID=$(docker build -q .) && LOCAL_IMAGE_ID=$ID docker-compose -f docker-compose-unit-tests.yml up --abort-on-container-exit --always-recreate-deps",
-    "test:integration": "ID=$(docker build -q .) && LOCAL_IMAGE_ID=$ID docker-compose -f docker-compose-integration-tests.yml up --abort-on-container-exit --build --remove-orphans",
+    "test:docker:integration": "docker build --progress plain -t kursplan-api-integration . && bash -c 'LOCAL_IMAGE_ID=kursplan-api-integration SUCCESS_DELAY=5000 docker-compose -f docker-compose-integration-tests.yml up --abort-on-container-exit --build --remove-orphans'",
     "build": "babel server/components --out-dir server/components-dist",
     "start": "NODE_ENV=production node app.js",
     "start-dev": "cross-env NODE_ENV=development nodemon app.js",
