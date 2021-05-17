@@ -36,7 +36,7 @@ This API is independent and will not break other projects but it is important re
 
 ### Secrets for Development
 
-Secrets during local development are ALWAYS stored in a `.env`-file in the root of your project. This file should be in .gitignore. It needs to contain at least ldap connection URI and password in order for authentication to work properly.
+Secrets during local development are ALWAYS stored in a `.env`-file in the root of your project. This file should be in .gitignore.
 
 ```
 API_KEYS_0=?name=kursinfo-web&apiKey=[generate a password for public pages]&scope=read
