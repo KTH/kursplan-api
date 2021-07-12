@@ -48,7 +48,7 @@ describe('Test functions of pdfCtrl.js', () => {
     jest.clearAllMocks()
   })
 
-  test('path getSyllabus responds', async (done) => {
+  test('path getSyllabus responds', async () => {
     const courseCode = ''
     const semester = ''
     const language = ''
@@ -65,6 +65,5 @@ describe('Test functions of pdfCtrl.js', () => {
 
     await getSyllabus(req, res, next)
     expect(res.on).toHaveBeenCalled()
-    done()
   })
 })
