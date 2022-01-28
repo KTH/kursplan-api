@@ -7,7 +7,7 @@ var _typeof = require("@babel/runtime/helpers/typeof");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = exports.isSrcId = void 0;
+exports.isSrcId = exports["default"] = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
