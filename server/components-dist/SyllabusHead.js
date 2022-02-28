@@ -81,7 +81,7 @@ var SyllabusHead = function SyllabusHead(_ref) {
     style: _SyllabusStyles["default"].h2
   }, "".concat(discontinuationHeader)), /*#__PURE__*/_react["default"].createElement(_renderer.Text, {
     style: _SyllabusStyles["default"].bodyText
-  }, "".concat(decisionToDiscontinue))) : /*#__PURE__*/_react["default"].createElement(_react.Fragment, null));
+  }, (0, _SyllabusHtmlParser["default"])(decisionToDiscontinue))) : /*#__PURE__*/_react["default"].createElement(_react.Fragment, null));
 };
 
 var _default = SyllabusHead;

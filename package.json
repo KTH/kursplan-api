@@ -7,6 +7,7 @@
   "private": true,
   "scripts": {
     "test": "NODE_ENV=test jest test/unit/*.js",
+    "test-win": "cross-env NODE_ENV=test jest",
     "test:watch": "NODE_ENV=test jest test/unit/*.js --watch",
     "test:check-_paths": "node test/integration/check-_paths.js http://localhost:3001/api/kursplan",
     "test:unit": "ID=$(docker build -q .) && LOCAL_IMAGE_ID=$ID docker-compose -f docker-compose-unit-tests.yml up --abort-on-container-exit --always-recreate-deps",
