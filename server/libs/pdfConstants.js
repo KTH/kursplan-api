@@ -9,7 +9,7 @@ const pageMeasurements = {
   },
 };
 
-const EMPTY = ["This course does not belong to any Main field of study", "Denna kurs tillhör inget huvudområde"];
+const EMPTY = ["This course does not belong to any Main field of study.", "Denna kurs tillhör inget huvudområde."];
 const NOT_AVAILABLE = "N/A";
 const LANGUAGE = { en: "English", sv: "Svenska" };
 
