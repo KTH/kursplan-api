@@ -1,5 +1,7 @@
 "use strict";
 
+var _pdfConstants = require("../libs/pdfConstants");
+
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
@@ -33,9 +35,9 @@ var showMainSubject = function showMainSubject(course) {
   return educationalLevelCode === "BASIC" || educationalLevelCode === "ADVANCED";
 };
 
-var getMainSubjectText = function getMainSubjectText(syllabus) {
+var getMainSubjectText = function getMainSubjectText(syllabus, languageIndex) {
   if (syllabus.mainSubjects && Array.isArray(syllabus.mainSubjects)) {
-    return syllabus.mainSubjects.toString();
+    return syllabus.mainSubjects.length == 0 ? _pdfConstants.EMPTY[languageIndex]: syllabus.mainSubjects.toString();
   }
 
   return syllabus.mainSubjects || "";
@@ -64,7 +66,7 @@ var SyllabusKeyInformation = function SyllabusKeyInformation(_ref) {
     style: _SyllabusStyles["default"].h2
   }, "".concat(mainSubjectHeader)), /*#__PURE__*/_react["default"].createElement(_renderer.Text, {
     style: _SyllabusStyles["default"].bodyText
-  }, "".concat(getMainSubjectText(syllabus)))));
+  }, "".concat(getMainSubjectText(syllabus, languageIndex)))));
 };
 
 var _default = SyllabusKeyInformation;
