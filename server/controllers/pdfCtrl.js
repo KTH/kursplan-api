@@ -1,6 +1,6 @@
 'use strict'
 
-const log = require('kth-node-log')
+const log = require('@kth/log')
 
 const { getSyllabus } = require('../koppsApi')
 const { createPdf } = require('../libs/pdfRenderer.js')

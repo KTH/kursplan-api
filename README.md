@@ -32,7 +32,7 @@ This API is independent and will not break other projects but it is important re
 
 ## Prerequisites
 
-- Node.js 14.15.1
+- Node.js 16.0.0
 
 ### Secrets for Development
 

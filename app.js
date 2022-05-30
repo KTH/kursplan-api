@@ -12,21 +12,7 @@ if (nodeEnv === 'development' || nodeEnv === 'dev' || !nodeEnv) {
 
 const config = require('./server/configuration').server
 const server = require('./server/server')
-const log = require('kth-node-log')
-
-// catches uncaught exceptions
-process.on('uncaughtException', (err, origin) => {
-  log.error('APPLICATION EXIT - uncaught exception in ', packageFile.name)
-  log.error(`Uncaught Exception, origin (${origin})`, { err })
-  process.exit(1)
-})
-
-// catches unhandled promise rejections
-process.on('unhandledRejection', reason => {
-  // This line below provokes an uncaughtException and will be caught few lines
-  // above
-  throw reason
-})
+const log = require('@kth/log')
 
 /* ****************************
  * ******* SERVER START *******
@@ -40,5 +26,5 @@ module.exports = server.start({
   ca: config.ssl.ca,
   cert: config.ssl.cert,
   port: config.port,
-  logger: log
+  logger: log,
 })
