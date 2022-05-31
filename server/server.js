@@ -31,7 +31,7 @@ const logConfiguration = {
   level: config.logging.log.level,
   console: config.logging.console,
   stdout: config.logging.stdout,
-  src: config.logging.src
+  src: config.logging.src,
 }
 log.init(logConfiguration)
 
@@ -42,7 +42,7 @@ log.init(logConfiguration)
 const exphbs = require('express-handlebars')
 
 server.set('views', path.join(__dirname, '/views'))
-server.engine('handlebars', exphbs())
+server.engine('handlebars', exphbs.engine())
 server.set('view engine', 'handlebars')
 
 /* ******************************
@@ -83,7 +83,12 @@ server.use(passport.session())
  * **********************************
  */
 const { addPaths } = require('kth-node-express-routing')
-const { createApiPaths, createSwaggerRedirectHandler, notFoundHandler, errorHandler } = require('@kth/kth-node-api-common')
+const {
+  createApiPaths,
+  createSwaggerRedirectHandler,
+  notFoundHandler,
+  errorHandler,
+} = require('@kth/kth-node-api-common')
 const swaggerData = require('../swagger.json')
 const { System } = require('./controllers')
 const _addProxy = uri => `${config.proxyPrefixPath.uri}${uri}`
@@ -111,7 +116,7 @@ addPaths(
   'api',
   createApiPaths({
     swagger: swaggerData,
-    proxyPrefixPathUri: config.proxyPrefixPath.uri
+    proxyPrefixPathUri: config.proxyPrefixPath.uri,
   })
 )
 
