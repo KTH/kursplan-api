@@ -55,6 +55,8 @@
     "cross-env": "^7.0.3",
     "eslint": "^8.15.0",
     "jest": "^28.1.0",
+    "jest-environment-jsdom": "28.1.0",
+    "jest-extended": "^1.2.0",
     "nodemon": "^2.0.16",
     "prettier": "^2.6.2",
     "husky": "^7.0.4",
