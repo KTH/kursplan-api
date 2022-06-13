@@ -18,8 +18,9 @@ async function _getSyllabus(req, res, next) {
     ', language: ',
     language
   )
-  const syllabus = await getSyllabus(courseCode, semester, language)
   try {
+    const syllabus = await getSyllabus(courseCode, semester, language)
+
     if (syllabus == null) {
       log.debug(`Could not get a syllabus for ${courseCode}, ${semester}, ${language}.`)
       res.sendStatus(404)
@@ -47,5 +48,5 @@ async function _getSyllabus(req, res, next) {
 }
 
 module.exports = {
-  getSyllabus: _getSyllabus
+  getSyllabus: _getSyllabus,
 }
