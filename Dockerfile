@@ -32,30 +32,30 @@ ENV NODE_PATH /application
 #
 ENV TZ Europe/Stockholm
 
+# Set user to node
+#
+RUN chown -R node:node /application
+USER node
 #
 # Copy the files needed to install the production dependencies
 # and install them using npm.
 #
 # Remember to only install production dependencies.
 #
-COPY ["package.json", "package.json"]
-COPY ["package-lock.json", "package-lock.json"]
-#
-# - Variant 1 - node-gyp not needed:
-RUN npm set-script prepare "" && \
-    npm install --production --no-optional --unsafe-perm && \
-    npm audit fix --only=prod
+COPY --chown=node:node ["package.json", "package.json"]
+COPY --chown=node:node ["package-lock.json", "package-lock.json"]
+
+RUN npm pkg delete scripts.prepare && \
+    npm ci --production --no-optional --unsafe-perm
+
 
 # Copy files used by Gulp.
-COPY ["config", "config"]
-COPY ["i18n", "i18n"]
-COPY ["lib", "lib"]
-COPY ["package.json", "package.json"]
-
-# Copy source files, so changes does not trigger gulp.
-COPY ["app.js", "app.js"]
-COPY ["swagger.json", "swagger.json"]
-COPY ["server", "server"]
+COPY --chown=node:node ["config", "config"]
+COPY --chown=node:node ["i18n", "i18n"]
+COPY --chown=node:node ["lib", "lib"]
+COPY --chown=node:node ["app.js", "app.js"]
+COPY --chown=node:node ["swagger.json", "swagger.json"]
+COPY --chown=node:node ["server", "server"]
 
 ENV NODE_PATH /application
 
