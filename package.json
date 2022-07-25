@@ -40,7 +40,7 @@
     "kth-node-redis": "^3.1.43",
     "passport": "^0.6.0",
     "safe-utils": "1.0.1",
-    "swagger-ui-dist": "^4.12.0",
+    "swagger-ui-dist": "^4.13.0",
     "react": "^16.14.0"    
   },
   "devDependencies": {
