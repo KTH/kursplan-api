@@ -21,7 +21,7 @@
     "@react-pdf/renderer": "file:./lib/@react-pdf/renderer-2.0.0-alpha.15/renderer",
     "applicationinsights": "^2.3.3",
     "@kth/api-call": "^4.0.38",
-    "@kth/kth-node-api-common": "^2.0.2",
+    "@kth/kth-node-api-common": "^2.0.3",
     "@kth/log": "^4.0.4",
     "@kth/monitor": "^3.0.24",
     "@kth/server": "^4.0.2",
