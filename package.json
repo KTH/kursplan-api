@@ -34,7 +34,7 @@
     "html-react-parser": "^1.4.14",
     "kth-node-access-log": "^0.2.8",
     "kth-node-api-key-strategy": "^2.0.0",
-    "kth-node-configuration": "^2.0.11",
+    "kth-node-configuration": "^2.0.12",
     "kth-node-express-routing": "^2.0.14",
     "kth-node-i18n": "^1.0.14",
     "kth-node-redis": "^3.1.41",
