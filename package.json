@@ -35,7 +35,7 @@
     "kth-node-access-log": "^0.2.8",
     "kth-node-api-key-strategy": "^2.0.0",
     "kth-node-configuration": "^2.0.12",
-    "kth-node-express-routing": "^2.0.14",
+    "kth-node-express-routing": "^2.0.15",
     "kth-node-i18n": "^1.0.14",
     "kth-node-redis": "^3.1.43",
     "passport": "^0.6.0",
