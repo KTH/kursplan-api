@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@react-pdf/renderer": "file:./lib/@react-pdf/renderer-2.0.0-alpha.15/renderer",
-    "applicationinsights": "^2.3.3",
+    "applicationinsights": "^2.3.4",
     "@kth/api-call": "^4.0.39",
     "@kth/kth-node-api-common": "^2.0.3",
     "@kth/log": "^4.0.4",
