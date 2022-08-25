@@ -40,12 +40,12 @@
     "kth-node-redis": "^3.1.43",
     "passport": "^0.6.0",
     "safe-utils": "1.0.1",
-    "swagger-ui-dist": "^4.13.2",
+    "swagger-ui-dist": "^4.14.0",
     "react": "^16.14.0"    
   },
   "devDependencies": {
     "@babel/cli": "^7.18.9",
-    "@babel/core": "^7.18.9",
+    "@babel/core": "^7.18.13",
     "@babel/eslint-parser": "^7.18.9",
     "@babel/plugin-transform-runtime": "7.18.10",
     "@babel/preset-env": "^7.18.10",
