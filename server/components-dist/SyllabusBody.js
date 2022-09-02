@@ -34,7 +34,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 // Copied logic from generareHTML
 var getExamObject = function getExamObject(dataObject, grades, courseCredits) {
   var language = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 0;
-  var examString = "";
+  var examString = '';
 
   if (dataObject.length > 0) {
     var _iterator = _createForOfIteratorHelper(dataObject),
@@ -46,12 +46,12 @@ var getExamObject = function getExamObject(dataObject, grades, courseCredits) {
 
         if (exam.credits) {
           //* * Adding a decimal if it's missing in credits **/
-          exam.credits = exam.credits !== "" && exam.credits.toString().indexOf(".") < 0 ? exam.credits + ".0" : exam.credits;
+          exam.credits = exam.credits !== '' && exam.credits.toString().indexOf('.') < 0 ? exam.credits + '.0' : exam.credits;
         } else {
-          exam.credits = "-";
+          exam.credits = '-';
         }
 
-        examString += "<li>".concat(exam.examCode, " - \n                        ").concat(exam.title, ",\n                        ").concat(language === 0 ? exam.credits : exam.credits.toString().replace(".", ","), " ").concat(language === 0 ? "credits" : courseCredits, ",  \n                        ").concat(_i18n["default"].messages[language].courseInformation.course_grade_label.toLowerCase(), ": ").concat(grades[exam.gradeScaleCode], "             \n                        </li>");
+        examString += "<li>".concat(exam.examCode, " - \n                        ").concat(exam.title, ",\n                        ").concat(language === 0 ? exam.credits : exam.credits.toString().replace('.', ','), " ").concat(language === 0 ? 'credits' : courseCredits, ",  \n                        ").concat(_i18n["default"].messages[language].courseInformation.course_grade_label.toLowerCase(), ": ").concat(grades[exam.gradeScaleCode], "             \n                        </li>");
       }
     } catch (err) {
       _iterator.e(err);
@@ -66,9 +66,9 @@ var getExamObject = function getExamObject(dataObject, grades, courseCredits) {
 var getLiterature = function getLiterature(_ref) {
   var literature = _ref.literature,
       literatureComment = _ref.literatureComment;
-  var literatureContent = "";
-  literatureContent += literature || "";
-  literatureContent += literatureComment || "";
+  var literatureContent = '';
+  literatureContent += literature || '';
+  literatureContent += literatureComment || '';
   return literatureContent;
 }; // Copied logic from generareHTML
 
@@ -76,18 +76,16 @@ var getLiterature = function getLiterature(_ref) {
 var sectionData = function sectionData(syllabus, activeSyllabus, languageIndex) {
   return activeSyllabus ? {
     course_language: activeSyllabus.courseSyllabus.languageOfInstruction,
-    course_goals: activeSyllabus.courseSyllabus.goals || "",
-    course_content: activeSyllabus.courseSyllabus.content || "",
-    course_disposition: activeSyllabus.courseSyllabus.disposition || "",
-    course_eligibility: activeSyllabus.courseSyllabus.eligibility || "",
+    course_goals: activeSyllabus.courseSyllabus.goals || '',
+    course_content: activeSyllabus.courseSyllabus.content || '',
+    course_disposition: activeSyllabus.courseSyllabus.disposition || '',
     course_literature: getLiterature(activeSyllabus.courseSyllabus),
-    course_required_equipment: activeSyllabus.courseSyllabus.requiredEquipment || "",
+    course_required_equipment: activeSyllabus.courseSyllabus.requiredEquipment || '',
     course_examination: getExamObject(syllabus.examinationSets[Object.keys(syllabus.examinationSets)[0]].examinationRounds, syllabus.formattedGradeScales, syllabus.course.creditUnitAbbr, languageIndex),
-    course_examination_comments: activeSyllabus.courseSyllabus.examComments || "",
-    course_requirments_for_final_grade: activeSyllabus.courseSyllabus.reqsForFinalGrade || "",
-    course_transitional_reg: activeSyllabus.courseSyllabus.transitionalRegulations || "",
-    course_ethical: activeSyllabus.courseSyllabus.ethicalApproach || "",
-    course_additional_regulations: activeSyllabus.courseSyllabus.additionalRegulations || ""
+    course_examination_comments: activeSyllabus.courseSyllabus.examComments || '',
+    course_requirments_for_final_grade: activeSyllabus.courseSyllabus.reqsForFinalGrade || '',
+    course_transitional_reg: activeSyllabus.courseSyllabus.transitionalRegulations || '',
+    course_ethical: activeSyllabus.courseSyllabus.ethicalApproach || ''
   } : {};
 };
 
@@ -112,7 +110,7 @@ var Section = function Section(_ref4) {
       content = _ref4.content,
       languageIndex = _ref4.languageIndex;
 
-  if (!content && id !== "course_eligibility" && id !== "course_goals" && id !== "course_content" && id !== "course_examination") {
+  if (!content && id !== 'course_goals' && id !== 'course_content' && id !== 'course_examination') {
     return null;
   }
 
@@ -130,7 +128,7 @@ var SyllabusBody = function SyllabusBody(_ref5) {
       activeSyllabus = _ref5.activeSyllabus,
       language = _ref5.language;
   var course = syllabus.course;
-  var languageIndex = language === "en" ? 0 : 1;
+  var languageIndex = language === 'en' ? 0 : 1;
   var sections = renderSections(syllabus, activeSyllabus, languageIndex);
   return /*#__PURE__*/_react["default"].createElement(_renderer.View, null, sections);
 };

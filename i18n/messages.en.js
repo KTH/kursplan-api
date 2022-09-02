@@ -33,7 +33,7 @@ module.exports = {
     locale_text: 'Course information in English',
 
     site_name: 'Kursplan',
-    host_name: 'KTH'
+    host_name: 'KTH',
   },
   courseInformationLabels: {
     label_course_syllabus: 'Course Syllabus',
@@ -45,7 +45,7 @@ module.exports = {
     label_course_finalize: 'Finalize course',
     label_course_other: 'Contact and additional information',
     label_postgraduate_course: 'Postgraduate courses at ',
-    label_last_exam: 'Last planned examination: '
+    label_last_exam: 'Last planned examination: ',
   },
   courseInformation: {
     course_title: 'Title english',
@@ -56,7 +56,6 @@ module.exports = {
     course_goals: 'Intended learning outcomes',
     course_content: 'Course contents',
     course_disposition: 'Disposition',
-    course_eligibility: 'Specific prerequisites',
     course_requirments_for_final_grade: 'Other requirements for final grade',
     course_literature: 'Course literature',
     course_literature_comment: '',
@@ -71,7 +70,7 @@ module.exports = {
       PREPARATORY: 'Pre-university level',
       BASIC: 'First cycle',
       ADVANCED: 'Second cycle',
-      RESEARCH: 'Third cycle'
+      RESEARCH: 'Third cycle',
     },
     course_department: 'Offered by',
     course_contact_name: 'Contact ',
@@ -90,17 +89,16 @@ module.exports = {
     course_establishment: 'Establishment',
     course_decision_to_discontinue: 'Decision to discontinue this course',
     course_transitional_reg: 'Transitional regulations',
-    course_additional_regulations: 'Additional regulations',
     course_short_semester: {
       1: 'Spring ',
-      2: 'Autumn '
-    }
+      2: 'Autumn ',
+    },
   },
   course_pdf_footer_string: {
     for_code: 'Course syllabus for ',
     valid_from: ' valid from ',
     semester: ['Summer ', 'Spring ', 'Autumn '],
-    edition: ', edition '
+    edition: ', edition ',
   },
   courseRoundInformation: {
     round_application_code: 'Application code',
@@ -120,7 +118,7 @@ module.exports = {
     round_tutoring_form_label: {
       NML: 'Normal',
       DST: 'Distance',
-      ITD: 'IT based distance'
+      ITD: 'IT based distance',
     },
     round_tutoring_language: 'Language of instruction',
     round_campus: 'Campus',
@@ -129,10 +127,10 @@ module.exports = {
       DAG: 'Daytime',
       KVA: 'Evenings',
       KVÄ: 'Evenings',
-      VSL: 'Weekends'
+      VSL: 'Weekends',
     },
     round_type: 'Type of round',
     round_time_slots: 'Planned timeslots',
-    round_application_link: 'Application link'
-  }
+    round_application_link: 'Application link',
+  },
 }

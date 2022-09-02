@@ -1,5 +1,5 @@
 module.exports = {
-  shortNames: [ 'sv', 'se' ],
+  shortNames: ['sv', 'se'],
   longNameSe: 'Svenska',
   longNameEn: 'Swedish',
   messages: {
@@ -33,7 +33,7 @@ module.exports = {
     locale_text: 'Kursplan på svenska',
 
     site_name: 'Course information',
-    host_name: 'KTH'
+    host_name: 'KTH',
   },
   courseInformationLabels: {
     label_course_syllabus: 'Kursplan',
@@ -45,7 +45,7 @@ module.exports = {
     label_course_finalize: 'Slutföra kurs',
     label_course_other: 'Kontakt och övrig information',
     label_last_exam: 'Sista planerade examination: ',
-    label_postgraduate_course: 'Forskarkurser på '
+    label_postgraduate_course: 'Forskarkurser på ',
   },
   courseInformation: {
     roundId: 'Kursomgångs nr',
@@ -57,7 +57,6 @@ module.exports = {
     course_goals: 'Lärandemål',
     course_content: 'Kursinnehåll',
     course_disposition: 'Kursupplägg',
-    course_eligibility: 'Särskild behörighet',
     course_requirments_for_final_grade: 'Övriga krav för slutbetyg',
     course_literature: 'Kurslitteratur',
     course_literature_comment: '',
@@ -72,7 +71,7 @@ module.exports = {
       PREPARATORY: 'Förberedande nivå',
       BASIC: 'Grundnivå',
       ADVANCED: 'Avancerad nivå',
-      RESEARCH: 'Forskarnivå'
+      RESEARCH: 'Forskarnivå',
     },
     course_department: 'Ges av',
     course_contact_name: 'Kontaktperson',
@@ -83,23 +82,24 @@ module.exports = {
     course_examiners: 'Examinator',
     course_recruitment_text: 'Kort beskrivning svenska',
     course_ethical: 'Etiskt förhållningssätt',
-    course_ethical_text: '<li>Vid grupparbete har alla i gruppen ansvar för gruppens arbete.</li><li>Vid examination ska varje student ärligt redovisa hjälp som erhållits och källor som använts.</li><li>Vid muntlig examination ska varje student kunna redogöra för hela uppgiften och hela lösningen.</li>',
+    course_ethical_text:
+      '<li>Vid grupparbete har alla i gruppen ansvar för gruppens arbete.</li><li>Vid examination ska varje student ärligt redovisa hjälp som erhållits och källor som använts.</li><li>Vid muntlig examination ska varje student kunna redogöra för hela uppgiften och hela lösningen.</li>',
     course_grade_label: 'Betygsskala',
-    course_language_default_text: 'Undervisningsspråk anges i kurstillfällesinformationen i kurs- och programkatalogen.',
+    course_language_default_text:
+      'Undervisningsspråk anges i kurstillfällesinformationen i kurs- och programkatalogen.',
     course_establishment: 'Fastställande',
     course_decision_to_discontinue: 'Avvecklingsbeslut',
     course_transitional_reg: 'Övergångsbestämmelser',
-    course_additional_regulations: 'Övriga föreskrifter',
     course_short_semester: {
       1: 'VT ',
-      2: 'HT '
-    }
+      2: 'HT ',
+    },
   },
   course_pdf_footer_string: {
     for_code: 'Kursplan för ',
     valid_from: ' gäller från och med ',
     semester: ['sommar', 'VT', 'HT'],
-    edition: ', utgåva '
+    edition: ', utgåva ',
   },
   courseRoundInformation: {
     round_application_code: 'Anmälningskod',
@@ -119,7 +119,7 @@ module.exports = {
     round_tutoring_form_label: {
       NML: 'Normal',
       DST: 'Distans',
-      ITD: 'IT-baserad distans'
+      ITD: 'IT-baserad distans',
     },
     round_tutoring_language: 'Undervisningsspråk',
     round_campus: 'Skola',
@@ -128,11 +128,10 @@ module.exports = {
       DAG: 'Dagtid',
       KVA: 'Kvällstid',
       KVÄ: 'Kvällstid',
-      VSL: 'Veckoslut'
+      VSL: 'Veckoslut',
     },
     round_application_link: 'Anmälningslänk',
     round_type: 'Typ av kurstillfälle',
-    round_time_slots: 'Planerade moduler'
-  }
-
+    round_time_slots: 'Planerade moduler',
+  },
 }
