@@ -10,7 +10,14 @@ async function _getSyllabus(req, res, next) {
   const language = req.params.language.length === 2 ? req.params.language : 'sv'
   const { documentName, download } = req.query
   const fileName = documentName || `${courseCode}-${semester}`
-  log.debug('getSyllabus: Received request for PDF with: ', { courseCode, semester, language })
+  log.debug(
+    'getSyllabus: Received request for PDF with courseCode: ',
+    courseCode,
+    ', semester: ',
+    semester,
+    ', language: ',
+    language
+  )
   try {
     const syllabus = await getSyllabus(courseCode, semester, language)
 
@@ -26,7 +33,14 @@ async function _getSyllabus(req, res, next) {
     const pdf = await createPdf(syllabus, semester, language)
     pdf.pipe(res)
 
-    log.debug('getSyllabus: Responded to request for PDF with: ', { courseCode, semester, language })
+    log.debug(
+      'getSyllabus: Responded to request for PDF with courseCode: ',
+      courseCode,
+      ', semester: ',
+      semester,
+      ', language: ',
+      language
+    )
   } catch (err) {
     log.error('getSyllabus: Failed request for PDF, error:', { err })
     next(err)
