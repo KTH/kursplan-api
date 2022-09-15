@@ -28,13 +28,13 @@ function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && 
 var formatCredits = function formatCredits(credits, creditUnitAbbr, language) {
   var decimals = credits % 1 !== 0;
   var decimalCredits = decimals ? credits : Number(credits).toFixed(1);
-  var localeCredits = language === "sv" ? decimalCredits.toString().replace(".", ",") : decimalCredits;
-  var creditUnit = language === "sv" ? creditUnitAbbr : "credits";
+  var localeCredits = language === 'sv' ? decimalCredits.toString().replace('.', ',') : decimalCredits;
+  var creditUnit = language === 'sv' ? creditUnitAbbr : 'credits';
   return "".concat(localeCredits, " ").concat(creditUnit);
 };
 
 var englishTranslationText = function englishTranslationText(language) {
-  return language === "en" ? "This is a translation of the Swedish, legally binding, course syllabus." : "";
+  return language === 'en' ? 'This is a translation of the Swedish, legally binding, course syllabus.' : '';
 };
 
 var SyllabusHead = function SyllabusHead(_ref) {
@@ -42,7 +42,7 @@ var SyllabusHead = function SyllabusHead(_ref) {
       _ref$activeSyllabus = _ref.activeSyllabus,
       activeSyllabus = _ref$activeSyllabus === void 0 ? {} : _ref$activeSyllabus,
       language = _ref.language;
-  var languageIndex = language === "en" ? 0 : 1;
+  var languageIndex = language === 'en' ? 0 : 1;
   var course = syllabus.course;
   var courseCode = course.courseCode,
       title = course.title,
@@ -71,7 +71,7 @@ var SyllabusHead = function SyllabusHead(_ref) {
     style: _SyllabusStyles["default"].disclaimer
   }, /*#__PURE__*/_react["default"].createElement(_renderer.Text, {
     style: _SyllabusStyles["default"].p
-  }, "".concat(translationText)), /*#__PURE__*/_react["default"].createElement(_renderer.Text, {
+  }, "".concat(translationText)), discontinuationText && /*#__PURE__*/_react["default"].createElement(_renderer.Text, {
     style: _SyllabusStyles["default"].p
   }, "".concat(discontinuationText))), /*#__PURE__*/_react["default"].createElement(_renderer.Text, {
     style: _SyllabusStyles["default"].h2
