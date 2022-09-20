@@ -11,6 +11,8 @@ exports["default"] = void 0;
 
 var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
 
+var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
+
 var _react = _interopRequireWildcard(require("react"));
 
 var _renderer = require("@react-pdf/renderer");
@@ -25,6 +27,10 @@ function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "functio
 
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { (0, _defineProperty2["default"])(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
 function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
 
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
@@ -34,7 +40,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 // Copied logic from generareHTML
 var getExamObject = function getExamObject(dataObject, grades, courseCredits) {
   var language = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 0;
-  var examString = "";
+  var examString = '';
 
   if (dataObject.length > 0) {
     var _iterator = _createForOfIteratorHelper(dataObject),
@@ -46,12 +52,12 @@ var getExamObject = function getExamObject(dataObject, grades, courseCredits) {
 
         if (exam.credits) {
           //* * Adding a decimal if it's missing in credits **/
-          exam.credits = exam.credits !== "" && exam.credits.toString().indexOf(".") < 0 ? exam.credits + ".0" : exam.credits;
+          exam.credits = exam.credits !== '' && exam.credits.toString().indexOf('.') < 0 ? exam.credits + '.0' : exam.credits;
         } else {
-          exam.credits = "-";
+          exam.credits = '-';
         }
 
-        examString += "<li>".concat(exam.examCode, " - \n                        ").concat(exam.title, ",\n                        ").concat(language === 0 ? exam.credits : exam.credits.toString().replace(".", ","), " ").concat(language === 0 ? "credits" : courseCredits, ",  \n                        ").concat(_i18n["default"].messages[language].courseInformation.course_grade_label.toLowerCase(), ": ").concat(grades[exam.gradeScaleCode], "             \n                        </li>");
+        examString += "<li>".concat(exam.examCode, " - \n                        ").concat(exam.title, ",\n                        ").concat(language === 0 ? exam.credits : exam.credits.toString().replace('.', ','), " ").concat(language === 0 ? 'credits' : courseCredits, ",  \n                        ").concat(_i18n["default"].messages[language].courseInformation.course_grade_label.toLowerCase(), ": ").concat(grades[exam.gradeScaleCode], "             \n                        </li>");
       }
     } catch (err) {
       _iterator.e(err);
@@ -66,29 +72,35 @@ var getExamObject = function getExamObject(dataObject, grades, courseCredits) {
 var getLiterature = function getLiterature(_ref) {
   var literature = _ref.literature,
       literatureComment = _ref.literatureComment;
-  var literatureContent = "";
-  literatureContent += literature || "";
-  literatureContent += literatureComment || "";
+  var literatureContent = '';
+  literatureContent += literature || '';
+  literatureContent += literatureComment || '';
   return literatureContent;
 }; // Copied logic from generareHTML
 
 
 var sectionData = function sectionData(syllabus, activeSyllabus, languageIndex) {
-  return activeSyllabus ? {
+  var course = syllabus.course;
+  var _course$educationalTy = course.educationalTypeId,
+      educationalTypeId = _course$educationalTy === void 0 ? null : _course$educationalTy;
+  var isContractEducation = [101992, 101993].includes(educationalTypeId);
+  var courseEligibilityByEduTypeId = isContractEducation ? {} : {
+    course_eligibility: activeSyllabus.courseSyllabus.eligibility || ''
+  };
+  return activeSyllabus ? _objectSpread(_objectSpread({}, courseEligibilityByEduTypeId), {}, {
     course_language: activeSyllabus.courseSyllabus.languageOfInstruction,
-    course_goals: activeSyllabus.courseSyllabus.goals || "",
-    course_content: activeSyllabus.courseSyllabus.content || "",
-    course_disposition: activeSyllabus.courseSyllabus.disposition || "",
-    course_eligibility: activeSyllabus.courseSyllabus.eligibility || "",
+    course_goals: activeSyllabus.courseSyllabus.goals || '',
+    course_content: activeSyllabus.courseSyllabus.content || '',
+    course_disposition: activeSyllabus.courseSyllabus.disposition || '',
     course_literature: getLiterature(activeSyllabus.courseSyllabus),
-    course_required_equipment: activeSyllabus.courseSyllabus.requiredEquipment || "",
+    course_required_equipment: activeSyllabus.courseSyllabus.requiredEquipment || '',
     course_examination: getExamObject(syllabus.examinationSets[Object.keys(syllabus.examinationSets)[0]].examinationRounds, syllabus.formattedGradeScales, syllabus.course.creditUnitAbbr, languageIndex),
-    course_examination_comments: activeSyllabus.courseSyllabus.examComments || "",
-    course_requirments_for_final_grade: activeSyllabus.courseSyllabus.reqsForFinalGrade || "",
-    course_transitional_reg: activeSyllabus.courseSyllabus.transitionalRegulations || "",
-    course_ethical: activeSyllabus.courseSyllabus.ethicalApproach || "",
-    course_additional_regulations: activeSyllabus.courseSyllabus.additionalRegulations || ""
-  } : {};
+    course_examination_comments: activeSyllabus.courseSyllabus.examComments || '',
+    course_requirments_for_final_grade: activeSyllabus.courseSyllabus.reqsForFinalGrade || '',
+    course_transitional_reg: activeSyllabus.courseSyllabus.transitionalRegulations || '',
+    course_ethical: activeSyllabus.courseSyllabus.ethicalApproach || '',
+    course_additional_regulations: activeSyllabus.courseSyllabus.additionalRegulations || ''
+  }) : {};
 };
 
 var renderSections = function renderSections(syllabus, activeSyllabus, languageIndex) {
@@ -112,7 +124,7 @@ var Section = function Section(_ref4) {
       content = _ref4.content,
       languageIndex = _ref4.languageIndex;
 
-  if (!content && id !== "course_eligibility" && id !== "course_goals" && id !== "course_content" && id !== "course_examination") {
+  if (!content && id !== 'course_eligibility' && id !== 'course_goals' && id !== 'course_content' && id !== 'course_examination') {
     return null;
   }
 
@@ -129,8 +141,7 @@ var SyllabusBody = function SyllabusBody(_ref5) {
   var syllabus = _ref5.syllabus,
       activeSyllabus = _ref5.activeSyllabus,
       language = _ref5.language;
-  var course = syllabus.course;
-  var languageIndex = language === "en" ? 0 : 1;
+  var languageIndex = language === 'en' ? 0 : 1;
   var sections = renderSections(syllabus, activeSyllabus, languageIndex);
   return /*#__PURE__*/_react["default"].createElement(_renderer.View, null, sections);
 };

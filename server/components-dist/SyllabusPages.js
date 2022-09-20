@@ -21,41 +21,15 @@ var _SyllabusPageFooter = _interopRequireDefault(require("./SyllabusPageFooter")
 
 var _SyllabusStyles = _interopRequireDefault(require("./SyllabusStyles"));
 
-// Logic copied from generareHTML
-var getSelectedSyllabus = function getSelectedSyllabus(syllabusObject) {
-  var semester = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "20101";
-  var language = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
-  var count = 0;
-  var selectedSyllabus = {};
-  var syllabuses = syllabusObject.publicSyllabusVersions;
+var _syllabusFilter = require("./syllabusFilter");
 
-  for (var i = 0; i < syllabuses.length; i++) {
-    if (Number(syllabuses[i].validFromTerm.term) === Number(semester)) {
-      selectedSyllabus.edition = syllabuses[i].edition;
-      selectedSyllabus.index = count;
-      selectedSyllabus.semesterNumber = syllabuses[i].validFromTerm.term.toString().substring(4, 5);
-      selectedSyllabus.year = syllabuses[i].validFromTerm.term.toString().substring(2, 4);
-    }
-
-    count++;
-  }
-
-  return selectedSyllabus;
-};
-
-var getActiveSyllabus = function getActiveSyllabus(syllabus, selectedSyllabus) {
-  var activeSyllabus = syllabus.publicSyllabusVersions[selectedSyllabus.index];
-  return activeSyllabus;
-};
 /* A4 is default page size value, explicitly set for clarity */
-
-
 var SyllabusPages = function SyllabusPages(_ref) {
   var syllabus = _ref.syllabus,
       semester = _ref.semester,
       language = _ref.language;
-  var selectedSyllabus = getSelectedSyllabus(syllabus, semester);
-  var activeSyllabus = getActiveSyllabus(syllabus, selectedSyllabus);
+  var selectedSyllabus = (0, _syllabusFilter.getSelectedSyllabus)(syllabus, semester);
+  var activeSyllabus = (0, _syllabusFilter.getActiveSyllabus)(syllabus, selectedSyllabus);
   return /*#__PURE__*/_react["default"].createElement(_renderer.Page, {
     size: "A4",
     style: _SyllabusStyles["default"].pages
