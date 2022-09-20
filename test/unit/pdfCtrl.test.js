@@ -3,7 +3,7 @@ jest.mock('@kth/log', () => {
     init: jest.fn(),
     debug: jest.fn(),
     error: jest.fn(),
-    info: jest.fn()
+    info: jest.fn(),
   }
 })
 
@@ -15,7 +15,7 @@ function buildReq(overrides = {}) {
     body: {},
     params: {},
     query: {},
-    ...overrides
+    ...overrides,
   }
   return req
 }
@@ -58,7 +58,7 @@ describe('Test functions of pdfCtrl.js', () => {
     const { getSyllabus } = require('../../server/controllers/pdfCtrl')
     const req = buildReq({
       params: { courseCode, semester, language },
-      query: { documentName, download }
+      query: { documentName, download },
     })
     const res = buildRes()
     const next = buildNext()
