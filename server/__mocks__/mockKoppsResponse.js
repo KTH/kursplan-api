@@ -8,7 +8,7 @@ module.exports = {
     department: { code: 'ME', name: 'ITM/Industrial Economics and Management' },
     educationalLevelCode: 'ADVANCED',
     gradeScaleCode: 'AF',
-    infoContactName: 'Anna Jerbrant (anna.jerbrant@indek.kth.se)',
+    infoContactName: 'userGivenName userGivenName (testuser@test.here)',
     supplementaryInfo:
       '<p>Established Autumn 06</p><p>Replaces 4D1048 and 4D1073</p><p>Course with similar/overlapping content is ME1306 and ME2016. You can only take one of these three courses.</p>',
     title: 'Project Management: Leadership and Control',
@@ -28,7 +28,7 @@ module.exports = {
       givenName: 'userGivenName',
       lastName: 'userLastName',
       email: 'testuser@test.here',
-      username: 'annsjo',
+      username: 'testuser',
     },
   ],
   mainSubjects: ['Industrial Management'],

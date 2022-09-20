@@ -19,18 +19,18 @@
   },
   "examiners": [
     {
-      "kthid": "u12empxv",
-      "givenName": "Kristian",
-      "lastName": "Bjerklöv",
-      "email": "bjerklov@kth.se",
-      "username": "bjerklov"
+      "kthid": "userUniqueId",
+      "givenName": "userGivenName1",
+      "lastName": "userLastName1",
+      "email": "testuser1@test.here",
+      "username": "testuser1"
     },
     {
-      "kthid": "u1lvdahr",
-      "givenName": "Lars",
-      "lastName": "Filipsson",
-      "email": "lfn@kth.se",
-      "username": "lfn"
+      "kthid": "userUniqueId222",
+      "givenName": "userGivenName2",
+      "lastName": "userLastName2",
+      "email": "testuser2@test.here",
+      "username": "testuser2"
     }
   ],
   "mainSubjects": ["Mathematics", "Technology"],
