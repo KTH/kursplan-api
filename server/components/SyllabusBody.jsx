@@ -41,14 +41,14 @@ const getLiterature = ({ literature, literatureComment }) => {
 }
 
 // Copied logic from generareHTML
-const sectionData = (syllabus, activeSyllabus, languageIndex) => {
-  const { course } = syllabus
+const sectionData = (syllabus = {}, activeSyllabus, languageIndex) => {
+  const { course = {} } = syllabus
   const { educationalTypeId = null } = course
 
   const isContractEducation = [101992, 101993].includes(educationalTypeId)
   const courseEligibilityByEduTypeId = isContractEducation
     ? {}
-    : { course_eligibility: activeSyllabus.courseSyllabus.eligibility || '' }
+    : { course_eligibility: activeSyllabus ? activeSyllabus.courseSyllabus.eligibility : '' }
 
   return activeSyllabus
     ? {
