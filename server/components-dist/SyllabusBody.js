@@ -79,13 +79,17 @@ var getLiterature = function getLiterature(_ref) {
 }; // Copied logic from generareHTML
 
 
-var sectionData = function sectionData(syllabus, activeSyllabus, languageIndex) {
-  var course = syllabus.course;
+var sectionData = function sectionData() {
+  var syllabus = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var activeSyllabus = arguments.length > 1 ? arguments[1] : undefined;
+  var languageIndex = arguments.length > 2 ? arguments[2] : undefined;
+  var _syllabus$course = syllabus.course,
+      course = _syllabus$course === void 0 ? {} : _syllabus$course;
   var _course$educationalTy = course.educationalTypeId,
       educationalTypeId = _course$educationalTy === void 0 ? null : _course$educationalTy;
   var isContractEducation = [101992, 101993].includes(educationalTypeId);
   var courseEligibilityByEduTypeId = isContractEducation ? {} : {
-    course_eligibility: activeSyllabus.courseSyllabus.eligibility || ''
+    course_eligibility: activeSyllabus ? activeSyllabus.courseSyllabus.eligibility : ''
   };
   return activeSyllabus ? _objectSpread(_objectSpread({}, courseEligibilityByEduTypeId), {}, {
     course_language: activeSyllabus.courseSyllabus.languageOfInstruction,
