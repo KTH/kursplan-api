@@ -20,16 +20,16 @@ module.exports = {
     credits: 6.0,
     creditUnitLabel: 'Credits',
     creditUnitAbbr: 'hp',
-    state: 'ESTABLISHED'
+    state: 'ESTABLISHED',
   },
   examiners: [
     {
-      kthid: 'u1ft6qoy',
-      givenName: 'Anna',
-      lastName: 'Jerbrant',
-      email: 'anna.jerbrant@indek.kth.se',
-      username: 'annsjo'
-    }
+      kthid: 'userUniqueId',
+      givenName: 'userGivenName',
+      lastName: 'userLastName',
+      email: 'testuser@test.here',
+      username: 'annsjo',
+    },
   ],
   mainSubjects: ['Industrial Management'],
   examinationSets: {
@@ -43,7 +43,7 @@ module.exports = {
           credits: 3.0,
           creditUnitLabel: 'Credits',
           creditUnitAbbr: 'hp',
-          ladokUID: 'ff082c12-5f62-11e9-b67f-a77d6cb34fef'
+          ladokUID: 'ff082c12-5f62-11e9-b67f-a77d6cb34fef',
         },
         {
           examCode: 'KON1',
@@ -52,7 +52,7 @@ module.exports = {
           credits: 1.5,
           creditUnitLabel: 'Credits',
           creditUnitAbbr: 'hp',
-          ladokUID: 'daf195cf-5f62-11e9-b67f-a77d6cb34fef'
+          ladokUID: 'daf195cf-5f62-11e9-b67f-a77d6cb34fef',
         },
         {
           examCode: 'KON2',
@@ -61,7 +61,7 @@ module.exports = {
           credits: 1.5,
           creditUnitLabel: 'Credits',
           creditUnitAbbr: 'hp',
-          ladokUID: 'ed6e6773-5f62-11e9-b67f-a77d6cb34fef'
+          ladokUID: 'ed6e6773-5f62-11e9-b67f-a77d6cb34fef',
         },
         {
           examCode: 'TEN2',
@@ -70,10 +70,10 @@ module.exports = {
           credits: 0.0,
           creditUnitLabel: 'Credits',
           creditUnitAbbr: 'hp',
-          ladokUID: '26de898f-5f63-11e9-b67f-a77d6cb34fef'
-        }
-      ]
-    }
+          ladokUID: '26de898f-5f63-11e9-b67f-a77d6cb34fef',
+        },
+      ],
+    },
   },
   publicSyllabusVersions: [
     {
@@ -100,9 +100,9 @@ module.exports = {
         ethicalApproach:
           "<ul><li>All members of a group are responsible for the group's work.</li><li>In any assessment, every student shall honestly disclose any help received and sources used.</li><li>In an oral assessment, every student shall be able to present and answer questions about the entire assignment and solution.</li></ul>",
         additionalRegulations: '',
-        courseSyllabusVersionValidFromTerm: { term: 20192 }
-      }
-    }
+        courseSyllabusVersionValidFromTerm: { term: 20192 },
+      },
+    },
   ],
-  formattedGradeScales: { AF: 'A, B, C, D, E, FX, F', PF: 'P, F' }
+  formattedGradeScales: { AF: 'A, B, C, D, E, FX, F', PF: 'P, F' },
 }
