@@ -51,7 +51,7 @@ const sectionData = (syllabus = {}, activeSyllabus, languageIndex) => {
     : { course_eligibility: activeSyllabus ? activeSyllabus.courseSyllabus.eligibility : '' }
   const courseAdditionalRegulationsByEduTypeId = isContractEducation
     ? {}
-    : { course_additional_regulations: activeSyllabus.courseSyllabus.additionalRegulations || '' }
+    : { course_additional_regulations: activeSyllabus ? activeSyllabus.courseSyllabus.additionalRegulations : '' }
 
   return activeSyllabus
     ? {
