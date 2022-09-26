@@ -49,9 +49,13 @@ const sectionData = (syllabus = {}, activeSyllabus, languageIndex) => {
   const courseEligibilityByEduTypeId = isContractEducation
     ? {}
     : { course_eligibility: activeSyllabus ? activeSyllabus.courseSyllabus.eligibility : '' }
+  const courseAdditionalRegulationsByEduTypeId = isContractEducation
+    ? {}
+    : { course_additional_regulations: activeSyllabus.courseSyllabus.additionalRegulations || '' }
 
   return activeSyllabus
     ? {
+        ...courseAdditionalRegulationsByEduTypeId,
         ...courseEligibilityByEduTypeId,
         course_language: activeSyllabus.courseSyllabus.languageOfInstruction,
         course_goals: activeSyllabus.courseSyllabus.goals || '',
@@ -69,7 +73,6 @@ const sectionData = (syllabus = {}, activeSyllabus, languageIndex) => {
         course_requirments_for_final_grade: activeSyllabus.courseSyllabus.reqsForFinalGrade || '',
         course_transitional_reg: activeSyllabus.courseSyllabus.transitionalRegulations || '',
         course_ethical: activeSyllabus.courseSyllabus.ethicalApproach || '',
-        course_additional_regulations: activeSyllabus.courseSyllabus.additionalRegulations || '',
       }
     : {}
 }

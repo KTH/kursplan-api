@@ -91,7 +91,10 @@ var sectionData = function sectionData() {
   var courseEligibilityByEduTypeId = isContractEducation ? {} : {
     course_eligibility: activeSyllabus ? activeSyllabus.courseSyllabus.eligibility : ''
   };
-  return activeSyllabus ? _objectSpread(_objectSpread({}, courseEligibilityByEduTypeId), {}, {
+  var courseAdditionalRegulationsByEduTypeId = isContractEducation ? {} : {
+    course_additional_regulations: activeSyllabus.courseSyllabus.additionalRegulations || ''
+  };
+  return activeSyllabus ? _objectSpread(_objectSpread(_objectSpread({}, courseAdditionalRegulationsByEduTypeId), courseEligibilityByEduTypeId), {}, {
     course_language: activeSyllabus.courseSyllabus.languageOfInstruction,
     course_goals: activeSyllabus.courseSyllabus.goals || '',
     course_content: activeSyllabus.courseSyllabus.content || '',
@@ -102,8 +105,7 @@ var sectionData = function sectionData() {
     course_examination_comments: activeSyllabus.courseSyllabus.examComments || '',
     course_requirments_for_final_grade: activeSyllabus.courseSyllabus.reqsForFinalGrade || '',
     course_transitional_reg: activeSyllabus.courseSyllabus.transitionalRegulations || '',
-    course_ethical: activeSyllabus.courseSyllabus.ethicalApproach || '',
-    course_additional_regulations: activeSyllabus.courseSyllabus.additionalRegulations || ''
+    course_ethical: activeSyllabus.courseSyllabus.ethicalApproach || ''
   }) : {};
 };
 
