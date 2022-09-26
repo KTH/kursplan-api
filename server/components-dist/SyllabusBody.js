@@ -92,7 +92,7 @@ var sectionData = function sectionData() {
     course_eligibility: activeSyllabus ? activeSyllabus.courseSyllabus.eligibility : ''
   };
   var courseAdditionalRegulationsByEduTypeId = isContractEducation ? {} : {
-    course_additional_regulations: activeSyllabus.courseSyllabus.additionalRegulations || ''
+    course_additional_regulations: activeSyllabus ? activeSyllabus.courseSyllabus.additionalRegulations : ''
   };
   return activeSyllabus ? _objectSpread(_objectSpread(_objectSpread({}, courseAdditionalRegulationsByEduTypeId), courseEligibilityByEduTypeId), {}, {
     course_language: activeSyllabus.courseSyllabus.languageOfInstruction,
