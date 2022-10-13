@@ -167,7 +167,7 @@ var SyllabusHead = function SyllabusHead(_ref) {
             {
               style: _SyllabusStyles['default'].bodyText,
             },
-            (0, _SyllabusHtmlParser['default'])
+            (0, _SyllabusHtmlParser['default'])(decisionToDiscontinue)
           )
         )
       : /*#__PURE__*/ _react['default'].createElement(_react.Fragment, null)
