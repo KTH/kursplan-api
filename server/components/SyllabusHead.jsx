@@ -42,11 +42,11 @@ const SyllabusHead = ({ syllabus, activeSyllabus = {}, language }) => {
       <Text style={styles.h2}>{`${establishmentHeader}`}</Text>
       <Text style={styles.bodyText}>{parse(establishment)}</Text>
       {decisionToDiscontinue ? (
-        <View>
-          <Text style={styles.h2}>{`${discontinuationHeader}`}</Text>
-          <Text style={styles.bodyText}>{`${decisionToDiscontinue}`}</Text>
-        </View>
-      ) : (
+      <Fragment>
+       <Text style={styles.h2}>{`${discontinuationHeader}`}</Text>
+       <Text style={styles.bodyText}>{parse(decisionToDiscontinue)}</Text>
+      </Fragment>
+       ) : (
         <Fragment />
       )}
     </View>
