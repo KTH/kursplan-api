@@ -4,48 +4,37 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports["default"] = void 0;
-
 var _renderer = require("@react-pdf/renderer");
-
 var _pdfConstants = require("../libs/pdfConstants");
-
 _renderer.Font.register({
   family: "Open Sans",
   src: "server/fonts/OpenSans-Regular.ttf"
 });
-
 _renderer.Font.register({
   family: "Open Sans SemiBold",
   src: "server/fonts/OpenSans-SemiBold.ttf"
 });
-
 _renderer.Font.register({
   family: "Open Sans Bold",
   src: "server/fonts/OpenSans-Bold.ttf"
 });
-
 _renderer.Font.register({
   family: "Open Sans Italic",
   src: "server/fonts/OpenSans-Italic.ttf"
 });
-
 _renderer.Font.register({
   family: "Georgia",
   src: "server/fonts/Georgia.ttf"
 });
-
 _renderer.Font.register({
   family: "Georgia Italic",
   src: "server/fonts/Georgia-Italic.ttf"
 });
-
 _renderer.Font.register({
   family: "Georgia Bold",
   src: "server/fonts/Georgia-Bold.ttf"
 });
-
 var A4 = _pdfConstants.pageMeasurements.A4;
-
 var styles = _renderer.StyleSheet.create({
   logotype: {
     height: A4.logotype,
@@ -137,6 +126,5 @@ var styles = _renderer.StyleSheet.create({
     marginBottom: 12
   }
 });
-
 var _default = styles;
 exports["default"] = _default;
