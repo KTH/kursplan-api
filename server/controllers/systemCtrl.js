@@ -7,12 +7,12 @@ const log = require('@kth/log')
 const { getPaths } = require('kth-node-express-routing')
 const version = require('../../config/version')
 const configServer = require('../configuration').server
-const monitorSystems = require('@kth/monitor')
+const { monitorRequest } = require('@kth/monitor')
 
 /**
  * * Adds a zero (0) to numbers less then ten (10)
  */
- function zeroPad(value) {
+function zeroPad(value) {
   return value < 10 ? '0' + value : value
 }
 
@@ -44,8 +44,7 @@ function getSwagger(req, res) {
  * GET /swagger
  * Swagger
  */
- function getSwaggerUI(req, res) {
-  
+function getSwaggerUI(req, res) {
   const pathToSwaggerUi = require('swagger-ui-dist').absolutePath()
   const swaggerUrl = configServer.proxyPrefixPath.uri + '/swagger.json'
   const petstoreUrl = 'https://petstore.swagger.io/v2/swagger.json'
@@ -55,14 +54,14 @@ function getSwagger(req, res) {
     .toString()
     .replace(petstoreUrl, swaggerUrl)
 
-    return res.type('text/javascript').send(swaggerInitializerContent)
+  return res.type('text/javascript').send(swaggerInitializerContent)
 }
 
 /**
  * GET /_about
  * About page
  */
- function getAbout (req, res) {
+function getAbout(req, res) {
   const paths = getPaths()
   res.render('system/about', {
     layout: '', // must be empty by some reason
@@ -91,16 +90,9 @@ function getSwagger(req, res) {
  * GET /_monitor
  * Monitor page
  */
- async function getMonitor(req, res) {
+async function getMonitor(req, res) {
   try {
-    await monitorSystems(req, res, [
-      {
-        key: 'local',
-        isResolved: true,
-        message: '- local system checks: OK',
-        statusCode: 200,
-      },
-    ])
+    await monitorRequest(req, res, [])
   } catch (error) {
     log.error(`Monitor failed`, error)
     res.status(500).end()
