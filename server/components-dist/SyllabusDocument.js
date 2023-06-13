@@ -1,24 +1,18 @@
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports["default"] = void 0;
-
 var _react = _interopRequireDefault(require("react"));
-
 var _renderer = require("@react-pdf/renderer");
-
 var _SyllabusPages = _interopRequireDefault(require("./SyllabusPages"));
-
 var _pdfUtils = require("../libs/pdfUtils");
-
 var SyllabusDocument = function SyllabusDocument(_ref) {
   var syllabus = _ref.syllabus,
-      semester = _ref.semester,
-      language = _ref.language;
+    semester = _ref.semester,
+    language = _ref.language;
   var course = syllabus.course;
   var title = "".concat(course.courseCode, "-").concat(semester);
   return /*#__PURE__*/_react["default"].createElement(_renderer.Document, {
@@ -32,6 +26,5 @@ var SyllabusDocument = function SyllabusDocument(_ref) {
     language: language
   }));
 };
-
 var _default = SyllabusDocument;
 exports["default"] = _default;
