@@ -50,7 +50,7 @@
     "@babel/plugin-transform-runtime": "7.22.5",
     "@babel/preset-env": "^7.22.5",
     "@babel/preset-react": "^7.22.5",
-    "@kth/eslint-config-kth": "^3.0.13",
+    "@kth/eslint-config-kth": "^3.0.14",
     "babel-jest": "^29.5.0",
     "cross-env": "^7.0.3",
     "eslint": "^8.42.0",
