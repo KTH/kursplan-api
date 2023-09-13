@@ -1,7 +1,7 @@
 # Welcome to kursplan-api 👋
 
 ![Version](https://img.shields.io/badge/version-3.0.0.beta-blue.svg?cacheSeconds=2592000)
-![Prerequisite](https://img.shields.io/badge/node-14.15.1-blue.svg)
+![Prerequisite](https://img.shields.io/badge/node-20-blue.svg)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](#)
 
 ## Introduction
@@ -32,7 +32,7 @@ This API is independent and will not break other projects but it is important re
 
 ## Prerequisites
 
-- Node.js 16.0.0
+- Node.js 20.0.0
 
 ### Secrets for Development
 
