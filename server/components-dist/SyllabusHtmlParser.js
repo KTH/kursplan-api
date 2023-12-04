@@ -10,8 +10,8 @@ var _react = _interopRequireWildcard(require("react"));
 var _renderer = require("@react-pdf/renderer");
 var _htmlReactParser = _interopRequireWildcard(require("html-react-parser"));
 var _SyllabusStyles = _interopRequireDefault(require("./SyllabusStyles"));
-function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
-function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != _typeof(e) && "function" != typeof e) return { "default": e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n["default"] = e, t && t.set(e, n), n; }
 /* eslint-disable no-console */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable no-use-before-define */
@@ -19,10 +19,9 @@ function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && 
 // Borrowed from https://github.com/diegomura/react-pdf/
 var PROTOCOL_REGEXP = /^([a-z]+:(\/\/)?)/i;
 var DEST_REGEXP = /^#.+/;
-var isSrcId = function isSrcId(src) {
+var isSrcId = exports.isSrcId = function isSrcId(src) {
   return src.match(DEST_REGEXP);
 };
-exports.isSrcId = isSrcId;
 var getURL = function getURL(value) {
   if (!value) return '';
   if (isSrcId(value)) return value; // don't modify it if it is an id
@@ -30,7 +29,6 @@ var getURL = function getURL(value) {
   if (typeof value === 'string' && !value.match(PROTOCOL_REGEXP)) {
     return "https://kth.se".concat(value); // Fix internal links, like profiles
   }
-
   return value;
 };
 // End borrowed from https://github.com/diegomura/react-pdf/
@@ -148,5 +146,4 @@ var htmlParser = function htmlParser(rawHtml) {
   // console.timeEnd("htmlParser: parse");
   return parsedHtml;
 };
-var _default2 = htmlParser;
-exports["default"] = _default2;
+var _default2 = exports["default"] = htmlParser;
