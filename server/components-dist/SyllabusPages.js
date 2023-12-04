@@ -46,5 +46,4 @@ var SyllabusPages = function SyllabusPages(_ref) {
     language: language
   })));
 };
-var _default = SyllabusPages;
-exports["default"] = _default;
+var _default = exports["default"] = SyllabusPages;

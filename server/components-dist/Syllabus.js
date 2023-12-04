@@ -10,5 +10,4 @@ var _SyllabusDocument = _interopRequireDefault(require("./SyllabusDocument"));
 var Syllabus = function Syllabus(props) {
   return /*#__PURE__*/_react["default"].createElement(_SyllabusDocument["default"], props);
 };
-var _default = Syllabus;
-exports["default"] = _default;
+var _default = exports["default"] = Syllabus;

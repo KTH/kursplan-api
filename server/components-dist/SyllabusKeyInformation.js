@@ -54,5 +54,4 @@ var SyllabusKeyInformation = function SyllabusKeyInformation(_ref) {
     style: _SyllabusStyles["default"].bodyText
   }, "".concat(getMainSubjectText(syllabus)))));
 };
-var _default = SyllabusKeyInformation;
-exports["default"] = _default;
+var _default = exports["default"] = SyllabusKeyInformation;

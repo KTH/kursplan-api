@@ -126,5 +126,4 @@ var styles = _renderer.StyleSheet.create({
     marginBottom: 12
   }
 });
-var _default = styles;
-exports["default"] = _default;
+var _default = exports["default"] = styles;
