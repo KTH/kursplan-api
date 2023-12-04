@@ -23,7 +23,7 @@
     "@kth/log": "^4.0.7",
     "@kth/monitor": "^4.2.1",
     "@kth/server": "^4.0.4",
-    "@react-pdf/renderer": "file:./lib/@react-pdf/renderer-2.0.0-alpha.15/renderer",
+    "@react-pdf/renderer": "^3.1.14",
     "applicationinsights": "^2.9.1",
     "body-parser": "^1.20.2",
     "cookie-parser": "^1.4.6",
@@ -39,7 +39,7 @@
     "kth-node-i18n": "^1.0.18",
     "kth-node-redis": "^3.2.0",
     "passport": "^0.7.0",
-    "react": "^16.14.0",
+    "react": "^18.2.0",
     "safe-utils": "1.0.1",
     "swagger-ui-dist": "^5.10.3"
   },
