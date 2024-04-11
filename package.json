@@ -41,7 +41,7 @@
     "passport": "^0.6.0",
     "react": "^16.14.0",
     "safe-utils": "1.0.1",
-    "swagger-ui-dist": "^4.19.1"
+    "swagger-ui-dist": "^5.15.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.22.10",
