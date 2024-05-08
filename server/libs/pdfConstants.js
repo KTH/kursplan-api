@@ -1,6 +1,6 @@
 "use strict";
 
-const logotypePath = "server/img/KTH_Logotyp_RGB_2013.png";
+const logotypePath = "server/img/KTH_logo_blue.png";
 
 const pageMeasurements = {
   A4: {
