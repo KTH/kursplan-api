@@ -32,7 +32,7 @@
     "express": "^4.19.2",
     "express-handlebars": "^7.1.2",
     "fs": "0.0.2",
-    "html-react-parser": "^4.2.10",
+    "html-react-parser": "^5.1.10",
     "kth-node-access-log": "^0.2.9",
     "kth-node-api-key-strategy": "^2.0.3",
     "kth-node-configuration": "^2.1.0",
