@@ -39,3 +39,7 @@ slask_delete.txt
 # Local dependencies
 
 lib/@react-pdf/pdfkit-1.5.1-beta.0/node_modules
+
+
+# Developer notes
+notes*
