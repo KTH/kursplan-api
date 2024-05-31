@@ -26,5 +26,4 @@ var SyllabusDocument = function SyllabusDocument(_ref) {
     language: language
   }));
 };
-var _default = SyllabusDocument;
-exports["default"] = _default;
+var _default = exports["default"] = SyllabusDocument;
