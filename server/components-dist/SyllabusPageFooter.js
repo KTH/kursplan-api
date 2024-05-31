@@ -35,5 +35,4 @@ var SyllabusPageFooter = function SyllabusPageFooter(_ref) {
     fixed: true
   }));
 };
-var _default = SyllabusPageFooter;
-exports["default"] = _default;
+var _default = exports["default"] = SyllabusPageFooter;
