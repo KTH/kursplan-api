@@ -1,12 +1,11 @@
 {
-  "//": "The production flag is added in the jenkins build script.",
   "name": "kursplan-api",
   "version": "2.0.0",
   "description": "Node.js based API template application.",
   "main": "app.js",
   "private": true,
   "scripts": {
-    "lint": "eslint \"server/**/*.{js,jsx}\"",
+    "lint": "eslint \"{test,server}/**/*.{js,jsx}\"",
     "test": "NODE_ENV=test jest test/unit/*.js",
     "test-win": "cross-env NODE_ENV=test jest",
     "test:watch": "NODE_ENV=test jest test/unit/*.js --watch",
@@ -25,7 +24,7 @@
     "@kth/log": "^4.0.7",
     "@kth/monitor": "^4.3.1",
     "@kth/server": "^4.1.0",
-    "@react-pdf/renderer": "file:./lib/@react-pdf/renderer-2.0.0-alpha.15/renderer",
+    "@react-pdf/renderer": "^3.4.4",
     "body-parser": "^1.20.2",
     "cookie-parser": "^1.4.6",
     "dotenv": "^16.4.5",
@@ -85,5 +84,9 @@
     "**/*.{js,jsx}": [
       "npx prettier --write"
     ]
+  },
+  "//": "This override is needed until restructure 3.0.2 is out and react-pdf has taken it in: https://github.com/diegomura/react-pdf/issues/2675",
+  "overrides": {
+    "restructure": "3.0.0"
   }
 }
