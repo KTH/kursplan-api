@@ -119,11 +119,7 @@ Password find in gsv-key vault
 ### Configure secrets.env
 
 ```
-API_KEYS_2=?name=kursplan&apiKey=[generate a password for public pages]&scope=write&scope=read
-API_KEYS_1=?name=kursinfo&apiKey= [generate a password for public pages]&scope=write&scope=read
-API_KEYS_0=?name=kursinfo-web&apiKey= [generate a password for public pages]&scope=write&scope=read
-KURSPLAN_API_KEYS=?name=kursplan&apiKey=[generate a password for public pages]&scope=write&scope=read
-REDIS_URI=REDIS_ADDRESS:REDIS_PORT,password=REDIS_PASSWORD,ssl=True,abortConnect=False
+Secrets during local development are stored in a gitignored `.env` file (`env.in` can be used as template for your `.env` file). More details about environment variable setup and secrets can be found in [confluence](https://confluence.sys.kth.se/confluence/x/OYKBDQ).
 ```
 
 ## PDF Generation
