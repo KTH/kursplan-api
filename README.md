@@ -34,38 +34,6 @@ This API is independent and will not break other projects but it is important re
 
 - Node.js 18.0.0
 
-### Secrets for Development
-
-Secrets during local development are ALWAYS stored in a `.env`-file in the root of your project. This file should be in .gitignore.
-
-```
-API_KEYS_0=?name=kursinfo-web&apiKey=[generate a password for public pages]&scope=read
-API_KEYS_1=?name=kurs-pm-web&apiKey=[generate a password for admin page]&scope=write&scope=read
-# Replace PASSWORD with a strong password
-REDIS_URI=REDIS_ADDRESS:REDIS_PORT,password=REDIS_PASSWORD,ssl=True,abortConnect=False
-# Replace REDIS_ADDRESS, REDIS_PORT, and REDIS_PASSWORD
-SERVICE_PUBLISH
-# Default value is 'api/kursplan'
-SERVER_SSL
-# Default value is false
-SERVER_PORT
-# Default value is 3001
-SERVER_CERT_FILE
-# Default value is empty string, ''
-SERVER_CERT_PASSPHRASE
-# Default value is empty string, ''
-LOGGING_LEVEL
-# Default value is 'debug'
-LOGGING_ACCESS_LOG
-# Default value is 'true'
-KOPPS_API_CACHE_EXPIRE_TIME
-# Default value is 3600
-KOPPS_URI
-# Default value is 'https://api-r.referens.sys.kth.se/api/kopps/v2/?defaultTimeout=60000'
-```
-
-These settings are also available in an `env.in` file.
-
 ## For Development
 
 ### Install
@@ -119,11 +87,7 @@ Password find in gsv-key vault
 ### Configure secrets.env
 
 ```
-API_KEYS_2=?name=kursplan&apiKey=[generate a password for public pages]&scope=write&scope=read
-API_KEYS_1=?name=kursinfo&apiKey= [generate a password for public pages]&scope=write&scope=read
-API_KEYS_0=?name=kursinfo-web&apiKey= [generate a password for public pages]&scope=write&scope=read
-KURSPLAN_API_KEYS=?name=kursplan&apiKey=[generate a password for public pages]&scope=write&scope=read
-REDIS_URI=REDIS_ADDRESS:REDIS_PORT,password=REDIS_PASSWORD,ssl=True,abortConnect=False
+Secrets during local development are stored in a gitignored `.env` file (`env.in` can be used as template for your `.env` file). More details about environment variable setup and secrets can be found in [confluence](https://confluence.sys.kth.se/confluence/x/OYKBDQ).
 ```
 
 ## PDF Generation
