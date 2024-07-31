@@ -86,8 +86,9 @@
       "npx prettier --write"
     ]
   },
-  "//": "This override is needed until restructure 3.0.2 is out and react-pdf has taken it in: https://github.com/diegomura/react-pdf/issues/2675",
+  "//": "Override for restructure is needed until restructure 3.0.2 is out and react-pdf has taken it in: https://github.com/diegomura/react-pdf/issues/2675. Override for @react-pdf/layout is needed until nested style issue is fixed: https://github.com/diegomura/react-pdf/issues/2725",
   "overrides": {
-    "restructure": "3.0.0"
+    "restructure": "3.0.0",
+    "@react-pdf/layout": "3.11.5"
   }
 }
