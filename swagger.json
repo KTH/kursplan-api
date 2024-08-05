@@ -96,6 +96,43 @@
           }
         ]
       }
+    },
+    "/memoryUsage": {
+      "get": {
+        "operationId": "getMemoryUsage",
+        "summary": "Summary",
+        "description": "Description...",
+        "parameters": [
+          {
+            "name": "type",
+            "in": "query",
+            "description": "Use 'v8' to get v8.getHeapStatistics(), defualt is process.memoryUsage().",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "description": "Use 'json' to get response in json, default if tab delimited string.",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": ["v1"],
+        "responses": {
+          "200": {
+            "description": "Memory data",
+            "schema": {
+              "$ref": "#/definitions/MemoryData"
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": ["read"]
+          }
+        ]
+      }
     }
   },
   "securityDefinitions": {
@@ -110,6 +147,18 @@
     }
   },
   "definitions": {
+    "MemoryData": {
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier representing some specific data"
+        },
+        "name": {
+          "type": "string",
+          "description": "Description of the data"
+        }
+      }
+    },
     "Syllabus": {
       "properties": {
         "courseCode": {

@@ -121,7 +121,7 @@ addPaths(
 const authByApiKey = passport.authenticate('apikey', { session: false })
 
 // Application specific API enpoints
-const { PDF } = require('./controllers')
+const { PDF, Memory } = require('./controllers')
 const { ApiRouter } = require('kth-node-express-routing')
 
 const apiRoute = ApiRouter(authByApiKey)
@@ -130,6 +130,7 @@ const paths = getPaths()
 // Api enpoints
 apiRoute.register(paths.api.checkAPIkey, System.checkAPIKey)
 apiRoute.register(paths.api.getSyllabusByCourseCode, PDF.getSyllabus)
+apiRoute.register(paths.api.getMemoryUsage, Memory.getMemoryUsage)
 server.use('/', apiRoute.getRouter())
 
 // Catch not found and errors
