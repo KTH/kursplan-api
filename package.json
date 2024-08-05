@@ -24,7 +24,7 @@
     "@kth/log": "^4.0.7",
     "@kth/monitor": "^4.3.1",
     "@kth/server": "^4.1.0",
-    "@react-pdf/renderer": "^3.4.4",
+    "@react-pdf/renderer": "2.1.1",
     "body-parser": "^1.20.2",
     "cookie-parser": "^1.4.6",
     "dotenv": "^16.4.5",
@@ -40,7 +40,7 @@
     "kth-node-i18n": "^1.0.18",
     "kth-node-redis": "^3.3.0",
     "passport": "^0.7.0",
-    "react": "^18.3.1",
+    "react": "^17.0.2",
     "safe-utils": "1.0.1",
     "swagger-ui-dist": "^5.17.14"
   },
@@ -86,9 +86,12 @@
       "npx prettier --write"
     ]
   },
-  "//": "Override for restructure is needed until restructure 3.0.2 is out and react-pdf has taken it in: https://github.com/diegomura/react-pdf/issues/2675. Override for @react-pdf/layout is needed until nested style issue is fixed: https://github.com/diegomura/react-pdf/issues/2725",
   "overrides": {
-    "restructure": "3.0.0",
-    "@react-pdf/layout": "3.11.5"
+    "@react-pdf/font": "2.1.1",
+    "@react-pdf/layout": "2.1.1",
+    "@react-pdf/pdfkit": "2.1.0",
+    "@react-pdf/primitives": "2.0.2",
+    "@react-pdf/render": "2.1.0",
+    "@react-pdf/types": "2.0.8"
   }
 }
