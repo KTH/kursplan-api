@@ -30,8 +30,8 @@ async function _getSyllabus(req, res, next) {
     const contentDisposition = download === 'true' ? 'attachment' : 'inline'
     res.type('application/pdf')
     res.set('Content-Disposition', `${contentDisposition}; filename=${fileName}.pdf`)
-    const pdf = await createPdf(syllabus, semester, language)
-    pdf.pipe(res)
+    const pdfStream = await createPdf(syllabus, semester, language)
+    pdfStream.pipe(res)
 
     log.debug(
       'getSyllabus: Responded to request for PDF with courseCode: ',

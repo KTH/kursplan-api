@@ -44,15 +44,14 @@ var styles = _renderer.StyleSheet.create({
     fontFamily: "Georgia",
     fontSize: 12,
     paddingHorizontal: A4.pageMargin,
-    paddingTop: A4.pageMargin,
-    flexDirection: "column"
+    paddingVertical: A4.pageMargin
   },
-  content: {
-    flexGrow: 1,
-    padding: "0 0 10mm 0"
-  },
+  content: {},
   footer: {
-    flexGrow: 0
+    position: 'absolute',
+    bottom: 0,
+    left: A4.pageMargin,
+    right: A4.pageMargin
   },
   h1: {
     fontFamily: "Open Sans SemiBold",
@@ -98,22 +97,13 @@ var styles = _renderer.StyleSheet.create({
   pageFooter: {
     fontFamily: "Open Sans",
     fontSize: 12,
-    flexDirection: "row",
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     borderTopColor: "#808080",
     borderTopWidth: 1.33,
     paddingTop: 6,
     paddingBottom: 18
-  },
-  pageFooterLeft: {
-    flexGrow: 0,
-    flexDirection: "column",
-    fontSize: 12,
-    textAlign: "left"
-  },
-  pageFooterRight: {
-    flexGrow: 1,
-    fontSize: 12,
-    textAlign: "right"
   },
   subHeader: {
     fontFamily: "Open Sans SemiBold",
@@ -126,5 +116,4 @@ var styles = _renderer.StyleSheet.create({
     marginBottom: 12
   }
 });
-var _default = styles;
-exports["default"] = _default;
+var _default = exports["default"] = styles;

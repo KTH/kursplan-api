@@ -52,7 +52,6 @@ RUN npm pkg delete scripts.prepare && \
 # Copy files used by Gulp.
 COPY --chown=node:node ["config", "config"]
 COPY --chown=node:node ["i18n", "i18n"]
-COPY --chown=node:node ["lib", "lib"]
 COPY --chown=node:node ["app.js", "app.js"]
 COPY --chown=node:node ["swagger.json", "swagger.json"]
 COPY --chown=node:node ["server", "server"]

@@ -1,19 +1,19 @@
 {
-  "parser": "babel-eslint",
+  "parser": "@babel/eslint-parser",
   "env": {
     "node": true,
     "browser": true,
-    "jest/globals": true
+    "jest/globals": true,
   },
   "extends": ["@kth/eslint-config-kth", "prettier"],
   "plugins": ["prettier", "jest"],
   "rules": {
-    "import/newline-after-import": ["error", {"count": 1}],
+    "import/newline-after-import": ["error", { "count": 1 }],
     "semi": ["error", "never"],
     "import/order": "off",
     "quotes": [1, "single", "avoid-escape"],
     "array-callback-return": "off",
-    "react/no-access-state-in-setstate": "off"
+    "react/no-access-state-in-setstate": "off",
   },
-  "ignorePatterns": ["server/components-dist", "server/libs"]
+  "ignorePatterns": ["server/components-dist", "server/libs"],
 }
