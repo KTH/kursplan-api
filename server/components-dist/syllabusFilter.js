@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.getSelectedSyllabus = exports.getActiveSyllabus = void 0;
 // Logic copied from generareHTML
 
-var getSelectedSyllabus = function getSelectedSyllabus(syllabusObject) {
+var getSelectedSyllabus = exports.getSelectedSyllabus = function getSelectedSyllabus(syllabusObject) {
   var semester = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '20101';
   var language = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
   var syllabuses = syllabusObject.publicSyllabusVersions;
@@ -23,9 +23,7 @@ var getSelectedSyllabus = function getSelectedSyllabus(syllabusObject) {
   }
   return selectedSyllabus;
 };
-exports.getSelectedSyllabus = getSelectedSyllabus;
-var getActiveSyllabus = function getActiveSyllabus(syllabus, selectedSyllabus) {
+var getActiveSyllabus = exports.getActiveSyllabus = function getActiveSyllabus(syllabus, selectedSyllabus) {
   var activeSyllabus = syllabus.publicSyllabusVersions[selectedSyllabus.index];
   return activeSyllabus;
 };
-exports.getActiveSyllabus = getActiveSyllabus;

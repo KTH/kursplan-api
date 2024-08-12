@@ -23,17 +23,12 @@ var SyllabusPageFooter = function SyllabusPageFooter(_ref) {
   var languageIndex = language === 'en' ? 0 : 1;
   return /*#__PURE__*/_react["default"].createElement(_renderer.View, {
     style: _SyllabusStyles["default"].pageFooter
-  }, /*#__PURE__*/_react["default"].createElement(_renderer.Text, {
-    style: _SyllabusStyles["default"].pageFooterLeft
-  }, footerText(languageIndex, syllabus, semester)), /*#__PURE__*/_react["default"].createElement(_renderer.Text, {
-    style: _SyllabusStyles["default"].pageFooterRight,
+  }, /*#__PURE__*/_react["default"].createElement(_renderer.Text, null, footerText(languageIndex, syllabus, semester)), /*#__PURE__*/_react["default"].createElement(_renderer.Text, {
     render: function render(_ref2) {
       var pageNumber = _ref2.pageNumber,
         totalPages = _ref2.totalPages;
       return languageIndex ? "Sida ".concat(pageNumber, " av ").concat(totalPages) : "Page ".concat(pageNumber, " of ").concat(totalPages);
-    },
-    fixed: true
+    }
   }));
 };
-var _default = SyllabusPageFooter;
-exports["default"] = _default;
+var _default = exports["default"] = SyllabusPageFooter;

@@ -24,13 +24,10 @@ const SyllabusPageFooter = ({ syllabus, semester, language }) => {
   const languageIndex = language === 'en' ? 0 : 1
   return (
     <View style={styles.pageFooter}>
-      <Text style={styles.pageFooterLeft}>{footerText(languageIndex, syllabus, semester)}</Text>
-      <Text
-        style={styles.pageFooterRight}
-        render={({ pageNumber, totalPages }) =>
+      <Text>{footerText(languageIndex, syllabus, semester)}</Text>
+      <Text render={({ pageNumber, totalPages }) =>
           languageIndex ? `Sida ${pageNumber} av ${totalPages}` : `Page ${pageNumber} of ${totalPages}`
         }
-        fixed
       />
     </View>
   )
