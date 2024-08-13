@@ -21,8 +21,8 @@ function _createForOfIteratorHelper(r, e) { var t = "undefined" != typeof Symbol
 function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
 function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
 // Copied logic from generareHTML
-var getExamObject = function getExamObject(dataObject, grades, courseCredits) {
-  var language = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 0;
+var getExamObject = function getExamObject(dataObject, grades, courseCredits, isPreparatory) {
+  var language = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 0;
   var examString = '';
   if (dataObject.length > 0) {
     var _iterator = _createForOfIteratorHelper(dataObject),
@@ -36,7 +36,7 @@ var getExamObject = function getExamObject(dataObject, grades, courseCredits) {
         } else {
           exam.credits = '-';
         }
-        examString += "<li>".concat(exam.examCode, " - \n                        ").concat(exam.title, ",\n                        ").concat(language === 0 ? exam.credits : exam.credits.toString().replace('.', ','), " ").concat(language === 0 ? 'credits' : courseCredits, ",  \n                        ").concat(_i18n["default"].messages[language].courseInformation.course_grade_label.toLowerCase(), ": ").concat(grades[exam.gradeScaleCode], "             \n                        </li>");
+        examString += "<li>".concat(exam.examCode, " - \n                        ").concat(exam.title, ",\n                        ").concat(language === 0 ? exam.credits : exam.credits.toString().replace('.', ','), " ").concat(language === 0 && !isPreparatory ? 'credits' : courseCredits, ",  \n                        ").concat(_i18n["default"].messages[language].courseInformation.course_grade_label.toLowerCase(), ": ").concat(grades[exam.gradeScaleCode], "             \n                        </li>");
       }
     } catch (err) {
       _iterator.e(err);
@@ -64,6 +64,7 @@ var sectionData = function sectionData() {
     course = _syllabus$course === void 0 ? {} : _syllabus$course;
   var _course$educationalTy = course.educationalTypeId,
     educationalTypeId = _course$educationalTy === void 0 ? null : _course$educationalTy;
+  var isPreparatory = course.educationalLevelCode == 'PREPARATORY';
   var isContractEducation = [101992, 101993].includes(educationalTypeId);
   var courseEligibilityByEduTypeId = isContractEducation ? {} : {
     course_eligibility: activeSyllabus ? activeSyllabus.courseSyllabus.eligibility : ''
@@ -78,7 +79,7 @@ var sectionData = function sectionData() {
     course_disposition: activeSyllabus.courseSyllabus.disposition || '',
     course_literature: getLiterature(activeSyllabus.courseSyllabus),
     course_required_equipment: activeSyllabus.courseSyllabus.requiredEquipment || '',
-    course_examination: getExamObject(syllabus.examinationSets[Object.keys(syllabus.examinationSets)[0]].examinationRounds, syllabus.formattedGradeScales, syllabus.course.creditUnitAbbr, languageIndex),
+    course_examination: getExamObject(syllabus.examinationSets[Object.keys(syllabus.examinationSets)[0]].examinationRounds, syllabus.formattedGradeScales, syllabus.course.creditUnitAbbr, isPreparatory, languageIndex),
     course_examination_comments: activeSyllabus.courseSyllabus.examComments || '',
     course_requirments_for_final_grade: activeSyllabus.courseSyllabus.reqsForFinalGrade || '',
     course_transitional_reg: activeSyllabus.courseSyllabus.transitionalRegulations || '',
@@ -119,7 +120,7 @@ var SyllabusBody = function SyllabusBody(_ref5) {
     activeSyllabus = _ref5.activeSyllabus,
     language = _ref5.language;
   var languageIndex = language === 'en' ? 0 : 1;
-  var sections = renderSections(syllabus, activeSyllabus, languageIndex);
-  return /*#__PURE__*/_react["default"].createElement(_renderer.View, null, sections);
+  var view = renderSections(syllabus, activeSyllabus, languageIndex);
+  return /*#__PURE__*/_react["default"].createElement(_renderer.View, null, view);
 };
 var _default = exports["default"] = SyllabusBody;

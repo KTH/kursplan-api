@@ -7,11 +7,11 @@ import styles from './SyllabusStyles'
 import i18n from '../../i18n'
 import { logotypePath } from '../libs/pdfConstants'
 
-const formatCredits = (credits, creditUnitAbbr, language) => {
+const formatCredits = (isPreparatory, credits, creditUnitAbbr, language) => {
   const decimals = credits % 1 !== 0
   const decimalCredits = decimals ? credits : Number(credits).toFixed(1)
   const localeCredits = language === 'sv' ? decimalCredits.toString().replace('.', ',') : decimalCredits
-  const creditUnit = language === 'sv' ? creditUnitAbbr : 'credits'
+  const creditUnit = language === 'en' && !isPreparatory ? 'credits' : creditUnitAbbr
   return `${localeCredits} ${creditUnit}`
 }
 
@@ -21,11 +21,13 @@ const englishTranslationText = language =>
 const SyllabusHead = ({ syllabus, activeSyllabus = {}, language }) => {
   const languageIndex = language === 'en' ? 0 : 1
   const { course } = syllabus
-  const { courseCode, title, credits, creditUnitAbbr, titleOther } = course
+  const { courseCode, title, educationalLevelCode, credits, creditUnitAbbr, titleOther } = course
   const { courseSyllabus } = activeSyllabus
   const { discontinuationText, establishment, decisionToDiscontinue } = courseSyllabus || {}
 
-  const creditsText = formatCredits(credits, creditUnitAbbr, language)
+  const isPreparatory = educationalLevelCode == 'PREPARATORY'
+
+  const creditsText = formatCredits(isPreparatory, credits, creditUnitAbbr, language)
   const translationText = englishTranslationText(language)
   const establishmentHeader = i18n.messages[languageIndex].courseInformation.course_establishment
   const discontinuationHeader = i18n.messages[languageIndex].courseInformation.course_decision_to_discontinue
@@ -42,11 +44,11 @@ const SyllabusHead = ({ syllabus, activeSyllabus = {}, language }) => {
       <Text style={styles.h2}>{`${establishmentHeader}`}</Text>
       <Text style={styles.bodyText}>{parse(establishment)}</Text>
       {decisionToDiscontinue ? (
-      <Fragment>
-       <Text style={styles.h2}>{`${discontinuationHeader}`}</Text>
-       <Text style={styles.bodyText}>{parse(decisionToDiscontinue)}</Text>
-      </Fragment>
-       ) : (
+        <Fragment>
+          <Text style={styles.h2}>{`${discontinuationHeader}`}</Text>
+          <Text style={styles.bodyText}>{parse(decisionToDiscontinue)}</Text>
+        </Fragment>
+      ) : (
         <Fragment />
       )}
     </View>

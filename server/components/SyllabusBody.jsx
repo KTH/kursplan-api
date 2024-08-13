@@ -7,10 +7,10 @@ import parse from './SyllabusHtmlParser'
 import i18n from '../../i18n'
 
 // Copied logic from generareHTML
-const getExamObject = (dataObject, grades, courseCredits, language = 0) => {
+const getExamObject = (dataObject, grades, courseCredits, isPreparatory, language = 0) => {
   let examString = ''
   if (dataObject.length > 0) {
-    for (let exam of dataObject) {
+    for (const exam of dataObject) {
       if (exam.credits) {
         //* * Adding a decimal if it's missing in credits **/
         exam.credits =
@@ -18,15 +18,12 @@ const getExamObject = (dataObject, grades, courseCredits, language = 0) => {
       } else {
         exam.credits = '-'
       }
-
       examString += `<li>${exam.examCode} - 
                         ${exam.title},
-                        ${language === 0 ? exam.credits : exam.credits.toString().replace('.', ',')} ${
-        language === 0 ? 'credits' : courseCredits
-      },  
+                        ${language === 0 ? exam.credits : exam.credits.toString().replace('.', ',')} ${language === 0 && !isPreparatory ? 'credits' : courseCredits},  
                         ${i18n.messages[language].courseInformation.course_grade_label.toLowerCase()}: ${
-        grades[exam.gradeScaleCode]
-      }             
+                          grades[exam.gradeScaleCode]
+                        }             
                         </li>`
     }
   }
@@ -44,6 +41,8 @@ const getLiterature = ({ literature, literatureComment }) => {
 const sectionData = (syllabus = {}, activeSyllabus, languageIndex) => {
   const { course = {} } = syllabus
   const { educationalTypeId = null } = course
+
+  const isPreparatory = course.educationalLevelCode == 'PREPARATORY'
 
   const isContractEducation = [101992, 101993].includes(educationalTypeId)
   const courseEligibilityByEduTypeId = isContractEducation
@@ -67,6 +66,7 @@ const sectionData = (syllabus = {}, activeSyllabus, languageIndex) => {
           syllabus.examinationSets[Object.keys(syllabus.examinationSets)[0]].examinationRounds,
           syllabus.formattedGradeScales,
           syllabus.course.creditUnitAbbr,
+          isPreparatory,
           languageIndex
         ),
         course_examination_comments: activeSyllabus.courseSyllabus.examComments || '',
@@ -107,8 +107,8 @@ const Section = ({ id, content, languageIndex }) => {
 
 const SyllabusBody = ({ syllabus, activeSyllabus, language }) => {
   const languageIndex = language === 'en' ? 0 : 1
-  const sections = renderSections(syllabus, activeSyllabus, languageIndex)
-  return <View>{sections}</View>
+  const view = renderSections(syllabus, activeSyllabus, languageIndex)
+  return <View>{view}</View>
 }
 
 export default SyllabusBody
