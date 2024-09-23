@@ -24,7 +24,7 @@
     "@kth/log": "^4.0.7",
     "@kth/monitor": "^4.3.1",
     "@kth/server": "^4.1.0",
-    "@react-pdf/renderer": "2.1.1",
+    "@react-pdf/renderer": "^3.4.5",
     "body-parser": "^1.20.2",
     "cookie-parser": "^1.4.6",
     "dotenv": "^16.4.5",
