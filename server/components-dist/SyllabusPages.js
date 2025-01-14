@@ -35,7 +35,7 @@ var SyllabusPages = function SyllabusPages(_ref) {
     language: language
   }), /*#__PURE__*/_react["default"].createElement(_SyllabusBody["default"], {
     syllabus: syllabus,
-    activeSyllabus: activeSyllabus,
+    activeSyllabus: syllabus,
     language: language
   })), /*#__PURE__*/_react["default"].createElement(_renderer.View, {
     fixed: true,

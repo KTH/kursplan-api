@@ -18,8 +18,8 @@ var SyllabusDocument = function SyllabusDocument(_ref) {
   return /*#__PURE__*/_react["default"].createElement(_renderer.Document, {
     title: title,
     author: "KTH",
-    onRender: (0, _pdfUtils.timer)("SyllabusDocument", Date.now()),
-    lang: language === "en" ? "en-US" : "sv-SE"
+    onRender: (0, _pdfUtils.timer)('SyllabusDocument', Date.now()),
+    lang: language === 'en' ? 'en-US' : 'sv-SE'
   }, /*#__PURE__*/_react["default"].createElement(_SyllabusPages["default"], {
     syllabus: syllabus,
     semester: semester,
