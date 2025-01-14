@@ -47,34 +47,58 @@ const sectionData = (syllabus = {}, activeSyllabus, languageIndex) => {
   const isContractEducation = [101992, 101993].includes(educationalTypeId)
   const courseEligibilityByEduTypeId = isContractEducation
     ? {}
-    : { course_eligibility: activeSyllabus ? activeSyllabus.courseSyllabus.eligibility : '' }
+    : { course_eligibility: activeSyllabus ? activeSyllabus.kursplan.eligibility : '' }
   const courseAdditionalRegulationsByEduTypeId = isContractEducation
     ? {}
-    : { course_additional_regulations: activeSyllabus ? activeSyllabus.courseSyllabus.additionalRegulations : '' }
+    : { course_additional_regulations: activeSyllabus ? activeSyllabus.kursplan.additionalRegulations : '' }
 
   return activeSyllabus
     ? {
         ...courseAdditionalRegulationsByEduTypeId,
         ...courseEligibilityByEduTypeId,
-        course_language: activeSyllabus.courseSyllabus.languageOfInstruction,
-        course_goals: activeSyllabus.courseSyllabus.goals || '',
-        course_content: activeSyllabus.courseSyllabus.content || '',
-        course_disposition: activeSyllabus.courseSyllabus.disposition || '',
-        course_literature: getLiterature(activeSyllabus.courseSyllabus),
-        course_required_equipment: activeSyllabus.courseSyllabus.requiredEquipment || '',
-        course_examination: getExamObject(
-          syllabus.examinationSets[Object.keys(syllabus.examinationSets)[0]].examinationRounds,
-          syllabus.formattedGradeScales,
-          syllabus.course.creditUnitAbbr,
-          isPreparatory,
-          languageIndex
-        ),
-        course_examination_comments: activeSyllabus.courseSyllabus.examComments || '',
-        course_requirments_for_final_grade: activeSyllabus.courseSyllabus.reqsForFinalGrade || '',
-        course_transitional_reg: activeSyllabus.courseSyllabus.transitionalRegulations || '',
-        course_ethical: activeSyllabus.courseSyllabus.ethicalApproach || '',
+        course_language: activeSyllabus.kursplan.undervisningssprak,
+        course_goals: activeSyllabus.kursplan.larandemal || '',
+        course_content: activeSyllabus.kursplan.kursinnehall || '',
+        // course_disposition: activeSyllabus.courseSyllabus.disposition || '',
+        // course_literature: getLiterature(activeSyllabus.courseSyllabus),
+        // course_required_equipment: activeSyllabus.courseSyllabus.requiredEquipment || '',
+        // course_examination: getExamObject(
+        //   syllabus.examinationSets[Object.keys(syllabus.examinationSets)[0]].examinationRounds,
+        //   syllabus.formattedGradeScales,
+        //   syllabus.course.creditUnitAbbr,
+        //   isPreparatory,
+        //   languageIndex
+        // ),
+        course_examination: activeSyllabus.examination,
+        // course_examination_comments: activeSyllabus.courseSyllabus.examComments || '',
+        // course_requirments_for_final_grade: activeSyllabus.courseSyllabus.reqsForFinalGrade || '',
+        // course_transitional_reg: activeSyllabus.courseSyllabus.transitionalRegulations || '',
+        course_ethical: activeSyllabus.kursplan.etisktforhallandesatt || '',
       }
     : {}
+  // return activeSyllabus
+  //   ? {
+  //       ...courseAdditionalRegulationsByEduTypeId,
+  //       ...courseEligibilityByEduTypeId,
+  //       course_language: activeSyllabus.courseSyllabus.languageOfInstruction,
+  //       course_goals: activeSyllabus.courseSyllabus.goals || '',
+  //       course_content: activeSyllabus.courseSyllabus.content || '',
+  //       course_disposition: activeSyllabus.courseSyllabus.disposition || '',
+  //       course_literature: getLiterature(activeSyllabus.courseSyllabus),
+  //       course_required_equipment: activeSyllabus.courseSyllabus.requiredEquipment || '',
+  //       course_examination: getExamObject(
+  //         syllabus.examinationSets[Object.keys(syllabus.examinationSets)[0]].examinationRounds,
+  //         syllabus.formattedGradeScales,
+  //         syllabus.course.creditUnitAbbr,
+  //         isPreparatory,
+  //         languageIndex
+  //       ),
+  //       course_examination_comments: activeSyllabus.courseSyllabus.examComments || '',
+  //       course_requirments_for_final_grade: activeSyllabus.courseSyllabus.reqsForFinalGrade || '',
+  //       course_transitional_reg: activeSyllabus.courseSyllabus.transitionalRegulations || '',
+  //       course_ethical: activeSyllabus.courseSyllabus.ethicalApproach || '',
+  //     }
+  //   : {}
 }
 
 const renderSections = (syllabus, activeSyllabus, languageIndex) => {
