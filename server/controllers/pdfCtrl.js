@@ -21,13 +21,14 @@ async function _getSyllabus(req, res, next) {
   )
   try {
     const koppsSyllabus = await getSyllabus(courseCode, semester, language)
-    if (koppsSyllabus) {
-      log.debug('KOPPS SYLLABUS: ', koppsSyllabus)
-    }
-    const syllabuses = await getLadokSyllabuses(courseCode, semester, language)
-    if (syllabuses) {
-      log.debug('LADOK SYLLABUSES: ', syllabuses)
-    }
+    // if (koppsSyllabus) {
+    //   log.debug('KOPPS SYLLABUS: ', koppsSyllabus.publicSyllabusVersions[0].courseSyllabus)
+    //   log.debug('VALID FROM TERM: ', koppsSyllabus.publicSyllabusVersions[0].validFromTerm)
+    // }
+    // const syllabuses = await getLadokSyllabuses(courseCode, semester, language)
+    // if (syllabuses) {
+    //   log.debug('LADOK SYLLABUSES: ', syllabuses)
+    // }
     const syllabus = await getLadokSyllabus(courseCode, semester, language)
     if (syllabus) {
       log.debug('LADOK SYLLABUS: ', syllabus)
