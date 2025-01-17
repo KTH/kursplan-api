@@ -12,14 +12,10 @@ var _SyllabusKeyInformation = _interopRequireDefault(require("./SyllabusKeyInfor
 var _SyllabusBody = _interopRequireDefault(require("./SyllabusBody"));
 var _SyllabusPageFooter = _interopRequireDefault(require("./SyllabusPageFooter"));
 var _SyllabusStyles = _interopRequireDefault(require("./SyllabusStyles"));
-var _syllabusFilter = require("./syllabusFilter");
 /* A4 is default page size value, explicitly set for clarity */
 var SyllabusPages = function SyllabusPages(_ref) {
   var syllabus = _ref.syllabus,
-    semester = _ref.semester,
     language = _ref.language;
-  var selectedSyllabus = (0, _syllabusFilter.getSelectedSyllabus)(syllabus, semester);
-  var activeSyllabus = (0, _syllabusFilter.getActiveSyllabus)(syllabus, selectedSyllabus);
   return /*#__PURE__*/_react["default"].createElement(_renderer.Page, {
     size: "A4",
     style: _SyllabusStyles["default"].pages
@@ -27,22 +23,18 @@ var SyllabusPages = function SyllabusPages(_ref) {
     style: _SyllabusStyles["default"].content
   }, /*#__PURE__*/_react["default"].createElement(_SyllabusHead["default"], {
     syllabus: syllabus,
-    activeSyllabus: activeSyllabus,
     language: language
   }), /*#__PURE__*/_react["default"].createElement(_SyllabusKeyInformation["default"], {
     syllabus: syllabus,
-    activeSyllabus: activeSyllabus,
     language: language
   }), /*#__PURE__*/_react["default"].createElement(_SyllabusBody["default"], {
     syllabus: syllabus,
-    activeSyllabus: syllabus,
     language: language
   })), /*#__PURE__*/_react["default"].createElement(_renderer.View, {
     fixed: true,
     style: _SyllabusStyles["default"].footer
   }, /*#__PURE__*/_react["default"].createElement(_SyllabusPageFooter["default"], {
     syllabus: syllabus,
-    semester: semester,
     language: language
   })));
 };

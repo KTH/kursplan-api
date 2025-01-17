@@ -14,7 +14,7 @@ var SyllabusDocument = function SyllabusDocument(_ref) {
     semester = _ref.semester,
     language = _ref.language;
   var course = syllabus.course;
-  var title = "".concat(course.courseCode, "-").concat(semester);
+  var title = "".concat(course.kod, "-").concat(semester);
   return /*#__PURE__*/_react["default"].createElement(_renderer.Document, {
     title: title,
     author: "KTH",
@@ -22,7 +22,6 @@ var SyllabusDocument = function SyllabusDocument(_ref) {
     lang: language === 'en' ? 'en-US' : 'sv-SE'
   }, /*#__PURE__*/_react["default"].createElement(_SyllabusPages["default"], {
     syllabus: syllabus,
-    semester: semester,
     language: language
   }));
 };

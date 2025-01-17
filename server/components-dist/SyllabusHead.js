@@ -19,16 +19,14 @@ var englishTranslationText = function englishTranslationText(language) {
 };
 var SyllabusHead = function SyllabusHead(_ref) {
   var syllabus = _ref.syllabus,
-    _ref$activeSyllabus = _ref.activeSyllabus,
-    activeSyllabus = _ref$activeSyllabus === void 0 ? {} : _ref$activeSyllabus,
     language = _ref.language;
   var languageIndex = language === 'en' ? 0 : 1;
-  var course = syllabus.course;
+  var course = syllabus.course,
+    kursplan = syllabus.kursplan;
   var kod = course.kod,
-    benamning = course.benamning,
-    faststallande = course.faststallande;
-  var courseSyllabus = activeSyllabus.courseSyllabus;
-  var _ref2 = courseSyllabus || {},
+    benamning = course.benamning;
+  var faststallande = kursplan.faststallande;
+  var _ref2 = kursplan || {},
     discontinuationText = _ref2.discontinuationText,
     decisionToDiscontinue = _ref2.decisionToDiscontinue;
   var omfattning = course.omfattning.formattedWithUnit;
