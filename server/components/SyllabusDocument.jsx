@@ -6,7 +6,7 @@ import { timer } from '../libs/pdfUtils'
 
 const SyllabusDocument = ({ syllabus, semester, language }) => {
   const { course } = syllabus
-  const title = `${course.courseCode}-${semester}`
+  const title = `${course.kod}-${semester}`
   return (
     <Document
       title={title}
@@ -14,7 +14,7 @@ const SyllabusDocument = ({ syllabus, semester, language }) => {
       onRender={timer('SyllabusDocument', Date.now())}
       lang={language === 'en' ? 'en-US' : 'sv-SE'}
     >
-      <SyllabusPages syllabus={syllabus} semester={semester} language={language} />
+      <SyllabusPages syllabus={syllabus} language={language} />
     </Document>
   )
 }

@@ -10,12 +10,12 @@ import { logotypePath } from '../libs/pdfConstants'
 const englishTranslationText = language =>
   language === 'en' ? 'This is a translation of the Swedish, legally binding, course syllabus.' : ''
 
-const SyllabusHead = ({ syllabus, activeSyllabus = {}, language }) => {
+const SyllabusHead = ({ syllabus, language }) => {
   const languageIndex = language === 'en' ? 0 : 1
-  const { course } = syllabus
-  const { kod, benamning, faststallande } = course
-  const { courseSyllabus } = activeSyllabus
-  const { discontinuationText, decisionToDiscontinue } = courseSyllabus || {}
+  const { course, kursplan } = syllabus
+  const { kod, benamning } = course
+  const { faststallande } = kursplan
+  const { discontinuationText, decisionToDiscontinue } = kursplan || {}
   const omfattning = course.omfattning.formattedWithUnit
   const translationText = englishTranslationText(language)
   const establishmentHeader = i18n.messages[languageIndex].courseInformation.course_establishment

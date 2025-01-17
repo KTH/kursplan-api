@@ -5,47 +5,34 @@ import styles from './SyllabusStyles'
 
 import i18n from '../../i18n'
 
-const getEducationalLevelCode = course => course.educationalLevelCode
-
-const getCourseLevelCodeText = (course, languageIndex) => {
-  const educationalLevelCode = getEducationalLevelCode(course)
-  return educationalLevelCode
-    ? i18n.messages[languageIndex].courseInformation.course_level_code_label[educationalLevelCode]
-    : ''
-}
+const getEducationalLevelCode = course => course.nivainomstudieordning.code
 
 const showMainSubject = course => {
+  // TODO: Fix this so it uses the Ladok educational codes.
   const educationalLevelCode = getEducationalLevelCode(course)
-  return educationalLevelCode === 'BASIC' || educationalLevelCode === 'ADVANCED'
+  return educationalLevelCode === 'UPHPGKURS' || educationalLevelCode === 'UPHPAKURS'
 }
 
-const getMainSubjectText = syllabus => {
-  if (syllabus.mainSubjects && Array.isArray(syllabus.mainSubjects)) {
-    return syllabus.mainSubjects.toString()
-  }
-  return syllabus.mainSubjects || ''
-}
-
-const SyllabusKeyInformation = ({ syllabus, activeSyllabus, language }) => {
+const SyllabusKeyInformation = ({ syllabus, language }) => {
   const languageIndex = language === 'en' ? 0 : 1
   const { course } = syllabus
-  const { formattedGradeScale } = syllabus
+  const { betygsskala } = course
 
   const courseGradeHeader = i18n.messages[languageIndex].courseInformation.course_grade_label
   const courseLevelCodeHeader = i18n.messages[languageIndex].courseInformation.course_level_code
-  const courseLevelCodeText = getCourseLevelCodeText(course, languageIndex)
+  const courseLevelCodeText = course.nivainomstudieordning[language]
   const mainSubjectHeader = i18n.messages[languageIndex].courseInformation.course_main_subject
 
   return (
     <View>
       <Text style={styles.h2}>{`${courseGradeHeader}`}</Text>
-      <Text style={styles.bodyText}>{`${formattedGradeScale}`}</Text>
+      <Text style={styles.bodyText}>{`${betygsskala}`}</Text>
       <Text style={styles.h2}>{`${courseLevelCodeHeader}`}</Text>
       <Text style={styles.bodyText}>{`${courseLevelCodeText}`}</Text>
       {showMainSubject(course) && (
         <View>
           <Text style={styles.h2}>{`${mainSubjectHeader}`}</Text>
-          <Text style={styles.bodyText}>{`${getMainSubjectText(syllabus)}`}</Text>
+          <Text style={styles.bodyText}>{`${course.huvudomraden[0][language]}`}</Text>
         </View>
       )}
     </View>
