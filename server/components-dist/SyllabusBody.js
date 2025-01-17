@@ -58,67 +58,34 @@ var getLiterature = function getLiterature(_ref) {
 // Copied logic from generareHTML
 var sectionData = function sectionData() {
   var syllabus = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-  var activeSyllabus = arguments.length > 1 ? arguments[1] : undefined;
-  var languageIndex = arguments.length > 2 ? arguments[2] : undefined;
-  console.log('YOUR SYLLABUS: ', syllabus, activeSyllabus);
+  var languageIndex = arguments.length > 1 ? arguments[1] : undefined;
   var _syllabus$course = syllabus.course,
     course = _syllabus$course === void 0 ? {} : _syllabus$course;
   var _course$educationalTy = course.educationalTypeId,
     educationalTypeId = _course$educationalTy === void 0 ? null : _course$educationalTy;
-  var isPreparatory = course.educationalLevelCode == 'PREPARATORY';
   var isContractEducation = [101992, 101993].includes(educationalTypeId);
   var courseEligibilityByEduTypeId = isContractEducation ? {} : {
-    course_eligibility: activeSyllabus ? activeSyllabus.kursplan.eligibility : ''
+    course_eligibility: syllabus ? syllabus.kursplan.sarskildbehorighet : ''
   };
   var courseAdditionalRegulationsByEduTypeId = isContractEducation ? {} : {
-    course_additional_regulations: activeSyllabus ? activeSyllabus.kursplan.additionalRegulations : ''
+    course_additional_regulations: syllabus ? syllabus.kursplan.additionalRegulations : ''
   };
-  return activeSyllabus ? _objectSpread(_objectSpread(_objectSpread({}, courseAdditionalRegulationsByEduTypeId), courseEligibilityByEduTypeId), {}, {
-    course_language: activeSyllabus.kursplan.undervisningssprak,
-    course_goals: activeSyllabus.kursplan.larandemal || '',
-    course_content: activeSyllabus.kursplan.kursinnehall || '',
-    // course_disposition: activeSyllabus.courseSyllabus.disposition || '',
-    // course_literature: getLiterature(activeSyllabus.courseSyllabus),
-    // course_required_equipment: activeSyllabus.courseSyllabus.requiredEquipment || '',
-    // course_examination: getExamObject(
-    //   syllabus.examinationSets[Object.keys(syllabus.examinationSets)[0]].examinationRounds,
-    //   syllabus.formattedGradeScales,
-    //   syllabus.course.creditUnitAbbr,
-    //   isPreparatory,
-    //   languageIndex
-    // ),
-    course_examination: activeSyllabus.examination,
-    // course_examination_comments: activeSyllabus.courseSyllabus.examComments || '',
-    // course_requirments_for_final_grade: activeSyllabus.courseSyllabus.reqsForFinalGrade || '',
-    // course_transitional_reg: activeSyllabus.courseSyllabus.transitionalRegulations || '',
-    course_ethical: activeSyllabus.kursplan.etisktforhallandesatt || ''
+  return syllabus ? _objectSpread(_objectSpread(_objectSpread({}, courseAdditionalRegulationsByEduTypeId), courseEligibilityByEduTypeId), {}, {
+    course_language: syllabus.kursplan.undervisningssprak,
+    course_goals: syllabus.kursplan.larandemal || '',
+    course_content: syllabus.kursplan.kursinnehall || '',
+    course_disposition: syllabus.kursplan.kursupplagg || '',
+    course_literature: syllabus.kursplan.kurslitteratur,
+    // course_required_equipment: syllabus.courseSyllabus.requiredEquipment || '',
+    course_examination: syllabus.kursplan.examination,
+    course_examination_comments: syllabus.kursplan.kommentartillexamination || '',
+    course_requirments_for_final_grade: syllabus.kursplan.ovrigakravforslutbetyg || '',
+    // course_transitional_reg: syllabus.courseSyllabus.transitionalRegulations || '',
+    course_ethical: syllabus.kursplan.etisktforhallandesatt || ''
   }) : {};
-  // return activeSyllabus
-  //   ? {
-  //       ...courseAdditionalRegulationsByEduTypeId,
-  //       ...courseEligibilityByEduTypeId,
-  //       course_language: activeSyllabus.courseSyllabus.languageOfInstruction,
-  //       course_goals: activeSyllabus.courseSyllabus.goals || '',
-  //       course_content: activeSyllabus.courseSyllabus.content || '',
-  //       course_disposition: activeSyllabus.courseSyllabus.disposition || '',
-  //       course_literature: getLiterature(activeSyllabus.courseSyllabus),
-  //       course_required_equipment: activeSyllabus.courseSyllabus.requiredEquipment || '',
-  //       course_examination: getExamObject(
-  //         syllabus.examinationSets[Object.keys(syllabus.examinationSets)[0]].examinationRounds,
-  //         syllabus.formattedGradeScales,
-  //         syllabus.course.creditUnitAbbr,
-  //         isPreparatory,
-  //         languageIndex
-  //       ),
-  //       course_examination_comments: activeSyllabus.courseSyllabus.examComments || '',
-  //       course_requirments_for_final_grade: activeSyllabus.courseSyllabus.reqsForFinalGrade || '',
-  //       course_transitional_reg: activeSyllabus.courseSyllabus.transitionalRegulations || '',
-  //       course_ethical: activeSyllabus.courseSyllabus.ethicalApproach || '',
-  //     }
-  //   : {}
 };
-var renderSections = function renderSections(syllabus, activeSyllabus, languageIndex) {
-  var sectionsContent = sectionData(syllabus, activeSyllabus, languageIndex);
+var renderSections = function renderSections(syllabus, languageIndex) {
+  var sectionsContent = sectionData(syllabus, languageIndex);
   return Object.entries(sectionsContent).map(function (_ref2) {
     var _ref3 = (0, _slicedToArray2["default"])(_ref2, 2),
       id = _ref3[0],
@@ -148,10 +115,9 @@ var Section = function Section(_ref4) {
 };
 var SyllabusBody = function SyllabusBody(_ref5) {
   var syllabus = _ref5.syllabus,
-    activeSyllabus = _ref5.activeSyllabus,
     language = _ref5.language;
   var languageIndex = language === 'en' ? 0 : 1;
-  var view = renderSections(syllabus, activeSyllabus, languageIndex);
+  var view = renderSections(syllabus, languageIndex);
   return /*#__PURE__*/_react["default"].createElement(_renderer.View, null, view);
 };
 var _default = exports["default"] = SyllabusBody;
