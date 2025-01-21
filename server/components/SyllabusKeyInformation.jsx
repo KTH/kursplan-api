@@ -8,7 +8,7 @@ import i18n from '../../i18n'
 const getEducationalLevelCode = course => course.nivainomstudieordning.code
 
 const showMainSubject = course => {
-  // TODO: Fix this so it uses the Ladok educational codes.
+  // TODO: any particular rules that should apply here? This function is a product from before when we used Kopps
   const educationalLevelCode = getEducationalLevelCode(course)
   return educationalLevelCode === 'UPHPGKURS' || educationalLevelCode === 'UPHPAKURS'
 }

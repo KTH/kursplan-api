@@ -7,37 +7,6 @@ import parse from './SyllabusHtmlParser'
 import i18n from '../../i18n'
 
 // Copied logic from generareHTML
-const getExamObject = (dataObject, grades, courseCredits, isPreparatory, language = 0) => {
-  let examString = ''
-  if (dataObject.length > 0) {
-    for (const exam of dataObject) {
-      if (exam.credits) {
-        //* * Adding a decimal if it's missing in credits **/
-        exam.credits =
-          exam.credits !== '' && exam.credits.toString().indexOf('.') < 0 ? exam.credits + '.0' : exam.credits
-      } else {
-        exam.credits = '-'
-      }
-      examString += `<li>${exam.examCode} - 
-                        ${exam.title},
-                        ${language === 0 ? exam.credits : exam.credits.toString().replace('.', ',')} ${language === 0 && !isPreparatory ? 'credits' : courseCredits},  
-                        ${i18n.messages[language].courseInformation.course_grade_label.toLowerCase()}: ${
-                          grades[exam.gradeScaleCode]
-                        }             
-                        </li>`
-    }
-  }
-  return examString
-}
-
-const getLiterature = ({ literature, literatureComment }) => {
-  let literatureContent = ''
-  literatureContent += literature || ''
-  literatureContent += literatureComment || ''
-  return literatureContent
-}
-
-// Copied logic from generareHTML
 const sectionData = (syllabus = {}, languageIndex) => {
   const { course = {} } = syllabus
   const { educationalTypeId = null } = course
