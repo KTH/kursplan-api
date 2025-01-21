@@ -60,7 +60,6 @@ module.exports = {
   },
 
   koppsApi: unpackKOPPSConfig('KOPPS_URI', devKOPPSURI),
-
   ladokMellanlagerApi: {
     clientId: getEnv('LADOK_AUTH_CLIENT_ID', devDefaults('c978bff4-80c6-42d2-8d64-a6d90227013b')),
     clientSecret: getEnv('LADOK_AUTH_CLIENT_SECRET', null),

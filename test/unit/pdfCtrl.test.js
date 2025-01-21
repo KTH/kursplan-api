@@ -17,7 +17,8 @@ jest.mock('@kth/log', () => {
   }
 })
 
-jest.mock('../../server/koppsApi')
+// jest.mock('../../server/koppsApi')
+jest.mock('../../server/LadokApi')
 
 function buildReq(overrides = {}) {
   const req = {

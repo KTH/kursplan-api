@@ -13,7 +13,7 @@ var getEducationalLevelCode = function getEducationalLevelCode(course) {
   return course.nivainomstudieordning.code;
 };
 var showMainSubject = function showMainSubject(course) {
-  // TODO: Fix this so it uses the Ladok educational codes.
+  // TODO: any particular rules that should apply here? This function is a product from before when we used Kopps
   var educationalLevelCode = getEducationalLevelCode(course);
   return educationalLevelCode === 'UPHPGKURS' || educationalLevelCode === 'UPHPAKURS';
 };
