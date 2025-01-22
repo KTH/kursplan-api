@@ -28,11 +28,11 @@ const sectionData = (syllabus = {}, languageIndex) => {
         course_content: syllabus.kursplan.kursinnehall || '',
         course_disposition: syllabus.kursplan.kursupplagg || '',
         course_literature: syllabus.kursplan.kurslitteratur,
-        // course_required_equipment: syllabus.courseSyllabus.requiredEquipment || '',
+        course_required_equipment: syllabus.kursplan.gammalutrustning || '',
         course_examination: syllabus.kursplan.examination,
         course_examination_comments: syllabus.kursplan.kommentartillexamination || '',
         course_requirments_for_final_grade: syllabus.kursplan.ovrigakravforslutbetyg || '',
-        // course_transitional_reg: syllabus.courseSyllabus.transitionalRegulations || '',
+        course_transitional_reg: syllabus.course.overgangsbestammelser || '',
         course_ethical: syllabus.kursplan.etisktforhallandesatt || '',
       }
     : {}
