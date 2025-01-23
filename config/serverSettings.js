@@ -7,13 +7,7 @@
  * *************************************************
  *
  */
-const {
-  getEnv,
-  unpackKOPPSConfig,
-  unpackApiKeysConfig,
-  unpackRedisConfig,
-  devDefaults,
-} = require('kth-node-configuration')
+const { getEnv, unpackApiKeysConfig, unpackRedisConfig, devDefaults } = require('kth-node-configuration')
 const { safeGet } = require('safe-utils')
 
 // DEFAULT SETTINGS used for dev, if you want to override these for you local environment, use env-vars in .env
@@ -22,7 +16,6 @@ const devSsl = devDefaults(false)
 const devPort = devDefaults(3001)
 // EXAMPLE: const devApiKeys = devDefaults('?name=devClient&apiKey=SET_YOUR_API_KEY&scope=write&scope=read')
 const devApiKeys = devDefaults('?name=devClient&apiKey=5678&scope=write&scope=read')
-const devKOPPSURI = devDefaults('https://api-r.referens.sys.kth.se/api/kopps/v2/?defaultTimeout=60000')
 // END DEFAULT SETTINGS
 const devRedis = devDefaults('redis://localhost:6379/')
 
@@ -52,14 +45,8 @@ module.exports = {
       useAccessLog: safeGet(() => getEnv('LOGGING_ACCESS_LOG'), 'true') === 'true',
     },
   },
-  cache: {
-    koppsApi: {
-      redis: unpackRedisConfig('REDIS_URI', devRedis),
-      expireTime: getEnv('KOPPS_API_CACHE_EXPIRE_TIME', 60 * 60), // 60 minuteS
-    },
-  },
+  cache: {},
 
-  koppsApi: unpackKOPPSConfig('KOPPS_URI', devKOPPSURI),
   ladokMellanlagerApi: {
     clientId: getEnv('LADOK_AUTH_CLIENT_ID', devDefaults('c978bff4-80c6-42d2-8d64-a6d90227013b')),
     clientSecret: getEnv('LADOK_AUTH_CLIENT_SECRET', null),
