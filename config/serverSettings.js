@@ -7,7 +7,7 @@
  * *************************************************
  *
  */
-const { getEnv, unpackApiKeysConfig, unpackRedisConfig, devDefaults } = require('kth-node-configuration')
+const { getEnv, unpackApiKeysConfig, devDefaults } = require('kth-node-configuration')
 const { safeGet } = require('safe-utils')
 
 // DEFAULT SETTINGS used for dev, if you want to override these for you local environment, use env-vars in .env
@@ -17,7 +17,6 @@ const devPort = devDefaults(3001)
 // EXAMPLE: const devApiKeys = devDefaults('?name=devClient&apiKey=SET_YOUR_API_KEY&scope=write&scope=read')
 const devApiKeys = devDefaults('?name=devClient&apiKey=5678&scope=write&scope=read')
 // END DEFAULT SETTINGS
-const devRedis = devDefaults('redis://localhost:6379/')
 
 module.exports = {
   // The proxy prefix path if the application is proxied. E.g /places
