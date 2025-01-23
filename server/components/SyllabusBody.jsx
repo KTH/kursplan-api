@@ -7,7 +7,7 @@ import parse from './SyllabusHtmlParser'
 import i18n from '../../i18n'
 
 // Copied logic from generareHTML
-const sectionData = (syllabus = {}, languageIndex) => {
+const sectionData = (syllabus = {}) => {
   const { course = {} } = syllabus
   const { educationalTypeId = null } = course
 
@@ -39,7 +39,7 @@ const sectionData = (syllabus = {}, languageIndex) => {
 }
 
 const renderSections = (syllabus, languageIndex) => {
-  const sectionsContent = sectionData(syllabus, languageIndex)
+  const sectionsContent = sectionData(syllabus)
   return Object.entries(sectionsContent).map(([id, content]) => (
     <Section key={id} id={id} content={content} languageIndex={languageIndex} />
   ))
