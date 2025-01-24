@@ -15,17 +15,6 @@ async function getLadokSyllabus(courseCode, semester, lang) {
   }
 }
 
-async function getLadokSyllabuses(courseCode, semester, lang) {
-  try {
-    const course = await client.getCourseSyllabuses(courseCode, semester, lang)
-
-    return course
-  } catch (error) {
-    throw new Error(error.message)
-  }
-}
-
 module.exports = {
   getLadokSyllabus,
-  getLadokSyllabuses,
 }
