@@ -20,7 +20,6 @@ function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t =
 // Copied logic from generareHTML
 var sectionData = function sectionData() {
   var syllabus = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-  var languageIndex = arguments.length > 1 ? arguments[1] : undefined;
   var _syllabus$course = syllabus.course,
     course = _syllabus$course === void 0 ? {} : _syllabus$course;
   var _course$educationalTy = course.educationalTypeId,
@@ -47,7 +46,7 @@ var sectionData = function sectionData() {
   }) : {};
 };
 var renderSections = function renderSections(syllabus, languageIndex) {
-  var sectionsContent = sectionData(syllabus, languageIndex);
+  var sectionsContent = sectionData(syllabus);
   return Object.entries(sectionsContent).map(function (_ref) {
     var _ref2 = (0, _slicedToArray2["default"])(_ref, 2),
       id = _ref2[0],
