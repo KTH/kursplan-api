@@ -10,12 +10,11 @@ var _renderer = require("@react-pdf/renderer");
 var _SyllabusStyles = _interopRequireDefault(require("./SyllabusStyles"));
 var _i18n = _interopRequireDefault(require("../../i18n"));
 var getEducationalLevelCode = function getEducationalLevelCode(course) {
-  return course.nivainomstudieordning.code;
+  return course.nivainomstudieordning.level.code;
 };
 var showMainSubject = function showMainSubject(course) {
-  // TODO: any particular rules that should apply here? This function is a product from before when we used Kopps
   var educationalLevelCode = getEducationalLevelCode(course);
-  return educationalLevelCode === 'UPHPGKURS' || educationalLevelCode === 'UPHPAKURS';
+  return educationalLevelCode === '1' || educationalLevelCode === '2';
 };
 var SyllabusKeyInformation = function SyllabusKeyInformation(_ref) {
   var syllabus = _ref.syllabus,
