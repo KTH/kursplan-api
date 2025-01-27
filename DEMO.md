@@ -6,13 +6,14 @@
 
 #### API:s
 
-- Kopps (syllabuses)
+- Ladok Mellanlager (studadm-om-kursen-packages)
 
 #### Related projects
 
 - kursinfo-web
 - kursutveckling-web
 - kurs-pm-web
+- studadm-om-kursen-packages
 - node-api
 - Swagger
 - React-pdf

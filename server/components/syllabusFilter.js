@@ -3,7 +3,7 @@
 const getSelectedSyllabus = (syllabusObject, semester = '20101', language = 0) => {
   const { publicSyllabusVersions: syllabuses } = syllabusObject
   let count = 0
-  let selectedSyllabus = {}
+  const selectedSyllabus = {}
 
   for (let i = 0; i < syllabuses.length; i++) {
     if (Number(syllabuses[i].validFromTerm.term) === Number(semester)) {

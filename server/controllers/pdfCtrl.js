@@ -2,7 +2,7 @@
 
 const log = require('@kth/log')
 
-const { getSyllabus } = require('../koppsApi')
+const { getLadokSyllabus } = require('../ladokApi')
 const { createPdf } = require('../libs/pdfRenderer.js')
 
 async function _getSyllabus(req, res, next) {
@@ -19,7 +19,7 @@ async function _getSyllabus(req, res, next) {
     language
   )
   try {
-    const syllabus = await getSyllabus(courseCode, semester, language)
+    const syllabus = await getLadokSyllabus(courseCode, semester, language)
 
     if (syllabus == null) {
       log.debug(`Could not get a syllabus for ${courseCode}, ${semester}, ${language}.`)

@@ -2,5 +2,5 @@
 
 module.exports = {
   System: require('./systemCtrl'),
-  PDF: require('./pdfCtrl')
+  PDF: require('./pdfCtrl'),
 }

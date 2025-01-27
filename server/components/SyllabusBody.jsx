@@ -7,78 +7,39 @@ import parse from './SyllabusHtmlParser'
 import i18n from '../../i18n'
 
 // Copied logic from generareHTML
-const getExamObject = (dataObject, grades, courseCredits, isPreparatory, language = 0) => {
-  let examString = ''
-  if (dataObject.length > 0) {
-    for (const exam of dataObject) {
-      if (exam.credits) {
-        //* * Adding a decimal if it's missing in credits **/
-        exam.credits =
-          exam.credits !== '' && exam.credits.toString().indexOf('.') < 0 ? exam.credits + '.0' : exam.credits
-      } else {
-        exam.credits = '-'
-      }
-      examString += `<li>${exam.examCode} - 
-                        ${exam.title},
-                        ${language === 0 ? exam.credits : exam.credits.toString().replace('.', ',')} ${language === 0 && !isPreparatory ? 'credits' : courseCredits},  
-                        ${i18n.messages[language].courseInformation.course_grade_label.toLowerCase()}: ${
-                          grades[exam.gradeScaleCode]
-                        }             
-                        </li>`
-    }
-  }
-  return examString
-}
-
-const getLiterature = ({ literature, literatureComment }) => {
-  let literatureContent = ''
-  literatureContent += literature || ''
-  literatureContent += literatureComment || ''
-  return literatureContent
-}
-
-// Copied logic from generareHTML
-const sectionData = (syllabus = {}, activeSyllabus, languageIndex) => {
+const sectionData = (syllabus = {}) => {
   const { course = {} } = syllabus
   const { educationalTypeId = null } = course
-
-  const isPreparatory = course.educationalLevelCode == 'PREPARATORY'
 
   const isContractEducation = [101992, 101993].includes(educationalTypeId)
   const courseEligibilityByEduTypeId = isContractEducation
     ? {}
-    : { course_eligibility: activeSyllabus ? activeSyllabus.courseSyllabus.eligibility : '' }
+    : { course_eligibility: syllabus ? syllabus.kursplan.sarskildbehorighet : '' }
   const courseAdditionalRegulationsByEduTypeId = isContractEducation
     ? {}
-    : { course_additional_regulations: activeSyllabus ? activeSyllabus.courseSyllabus.additionalRegulations : '' }
+    : { course_additional_regulations: syllabus ? syllabus.kursplan.additionalRegulations : '' }
 
-  return activeSyllabus
+  return syllabus
     ? {
         ...courseAdditionalRegulationsByEduTypeId,
         ...courseEligibilityByEduTypeId,
-        course_language: activeSyllabus.courseSyllabus.languageOfInstruction,
-        course_goals: activeSyllabus.courseSyllabus.goals || '',
-        course_content: activeSyllabus.courseSyllabus.content || '',
-        course_disposition: activeSyllabus.courseSyllabus.disposition || '',
-        course_literature: getLiterature(activeSyllabus.courseSyllabus),
-        course_required_equipment: activeSyllabus.courseSyllabus.requiredEquipment || '',
-        course_examination: getExamObject(
-          syllabus.examinationSets[Object.keys(syllabus.examinationSets)[0]].examinationRounds,
-          syllabus.formattedGradeScales,
-          syllabus.course.creditUnitAbbr,
-          isPreparatory,
-          languageIndex
-        ),
-        course_examination_comments: activeSyllabus.courseSyllabus.examComments || '',
-        course_requirments_for_final_grade: activeSyllabus.courseSyllabus.reqsForFinalGrade || '',
-        course_transitional_reg: activeSyllabus.courseSyllabus.transitionalRegulations || '',
-        course_ethical: activeSyllabus.courseSyllabus.ethicalApproach || '',
+        course_language: syllabus.kursplan.undervisningssprak,
+        course_goals: syllabus.kursplan.larandemal || '',
+        course_content: syllabus.kursplan.kursinnehall || '',
+        course_disposition: syllabus.kursplan.kursupplagg || '',
+        course_literature: syllabus.kursplan.kurslitteratur,
+        course_required_equipment: syllabus.kursplan.gammalutrustning || '',
+        course_examination: syllabus.kursplan.examination,
+        course_examination_comments: syllabus.kursplan.kommentartillexamination || '',
+        course_requirments_for_final_grade: syllabus.kursplan.ovrigakravforslutbetyg || '',
+        course_transitional_reg: syllabus.course.overgangsbestammelser || '',
+        course_ethical: syllabus.kursplan.etisktforhallandesatt || '',
       }
     : {}
 }
 
-const renderSections = (syllabus, activeSyllabus, languageIndex) => {
-  const sectionsContent = sectionData(syllabus, activeSyllabus, languageIndex)
+const renderSections = (syllabus, languageIndex) => {
+  const sectionsContent = sectionData(syllabus)
   return Object.entries(sectionsContent).map(([id, content]) => (
     <Section key={id} id={id} content={content} languageIndex={languageIndex} />
   ))
@@ -105,9 +66,9 @@ const Section = ({ id, content, languageIndex }) => {
   )
 }
 
-const SyllabusBody = ({ syllabus, activeSyllabus, language }) => {
+const SyllabusBody = ({ syllabus, language }) => {
   const languageIndex = language === 'en' ? 0 : 1
-  const view = renderSections(syllabus, activeSyllabus, languageIndex)
+  const view = renderSections(syllabus, languageIndex)
   return <View>{view}</View>
 }
 

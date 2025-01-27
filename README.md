@@ -14,7 +14,7 @@ Kursplan-api is a microservice to generate course syllabuses for ([kursinfo-web]
 
 ## Overview
 
-Kursplan-api generates syllabuses from Kopps data. [Swagger](https://swagger.io/) is used for API documentation.
+Kursplan-api generates syllabuses from Ladok data. [Swagger](https://swagger.io/) is used for API documentation.
 
 Syllabuses are generated in `HTML` or as `PDF`files.
 
