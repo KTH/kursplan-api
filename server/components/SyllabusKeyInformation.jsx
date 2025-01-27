@@ -1,16 +1,15 @@
 import React from 'react'
-import { View, Text, Image } from '@react-pdf/renderer'
+import { View, Text } from '@react-pdf/renderer'
 
 import styles from './SyllabusStyles'
 
 import i18n from '../../i18n'
 
-const getEducationalLevelCode = course => course.nivainomstudieordning.code
+const getEducationalLevelCode = course => course.nivainomstudieordning.level.code
 
 const showMainSubject = course => {
-  // TODO: any particular rules that should apply here? This function is a product from before when we used Kopps
   const educationalLevelCode = getEducationalLevelCode(course)
-  return educationalLevelCode === 'UPHPGKURS' || educationalLevelCode === 'UPHPAKURS'
+  return educationalLevelCode === '1' || educationalLevelCode === '2'
 }
 
 const SyllabusKeyInformation = ({ syllabus, language }) => {
