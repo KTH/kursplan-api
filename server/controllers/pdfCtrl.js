@@ -21,6 +21,8 @@ async function _getSyllabus(req, res, next) {
   try {
     const syllabus = await getLadokSyllabus(courseCode, semester, language)
 
+    console.log('Here is the Syllabus: ', syllabus.course.nivainomstudieordning.level)
+
     if (syllabus == null) {
       log.debug(`Could not get a syllabus for ${courseCode}, ${semester}, ${language}.`)
       res.sendStatus(404)
