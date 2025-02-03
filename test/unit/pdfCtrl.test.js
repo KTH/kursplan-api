@@ -41,7 +41,7 @@ jest.mock('../../server/ladokApi', () => ({
       },
       kursplan: {
         giltigfrom: 'VT2013',
-        versionsnummer: '2',
+        utgava: '2',
         undervisningssprak:
           '<p>Undervisningsspråk anges i kurstillfällesinformationen i kurs- och programkatalogen.</p>',
         larandemal:
