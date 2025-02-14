@@ -38,7 +38,7 @@ var sectionData = function sectionData() {
     course_disposition: syllabus.kursplan.kursupplagg || '',
     course_literature: syllabus.kursplan.kurslitteratur,
     course_required_equipment: syllabus.kursplan.gammalutrustning || '',
-    course_examination: syllabus.kursplan.examinationModules,
+    course_examination: syllabus.kursplan.examinationModules.completeExaminationStrings,
     course_examination_comments: syllabus.kursplan.kommentartillexamination || '',
     course_requirments_for_final_grade: syllabus.kursplan.ovrigakravforslutbetyg || '',
     course_transitional_reg: syllabus.course.overgangsbestammelser || '',
