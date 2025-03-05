@@ -29,6 +29,7 @@ This API is independent and will not break other projects but it is important re
 - [Swagger](https://swagger.io/)
 - [React-pdf](https://react-pdf.org/)
 - [html-react-parser](https://github.com/remarkablemark/html-react-parser)
+- [studadm-om-kursen-packages] (https://github.com/KTH/studadm-om-kursen-packages)
 
 ## Prerequisites
 
