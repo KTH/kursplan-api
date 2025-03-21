@@ -39,7 +39,7 @@
     "kth-node-express-routing": "^2.2.0",
     "kth-node-i18n": "^1.0.18",
     "kth-node-redis": "^3.3.0",
-    "@kth/om-kursen-ladok-client": "^1.0.5",
+    "@kth/om-kursen-ladok-client": "^1.1.2",
     "passport": "^0.7.0",
     "react": "^17.0.2",
     "safe-utils": "1.0.1",
