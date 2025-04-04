@@ -12,7 +12,7 @@ var _i18n = _interopRequireDefault(require("../../i18n"));
 var footerText = function footerText(languageIndex, syllabus) {
   var kod = syllabus.course.kod;
   var translation = _i18n["default"].messages[languageIndex].course_pdf_footer_string;
-  return translation.for_code + kod + translation.valid_from + syllabus.kursplan.giltigfrom.slice(0, 2) + syllabus.kursplan.giltigfrom.slice(4) + translation.edition + syllabus.kursplan.utgava;
+  return translation.for_code + kod + translation.valid_from + (syllabus.kursplan.giltigfrom.slice(0, 2) === 'VT' ? 'Spring ' : 'Autumn ') + syllabus.kursplan.giltigfrom.slice(4) + translation.edition + syllabus.kursplan.utgava;
 };
 var SyllabusPageFooter = function SyllabusPageFooter(_ref) {
   var syllabus = _ref.syllabus,
