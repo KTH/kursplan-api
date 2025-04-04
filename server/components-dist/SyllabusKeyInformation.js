@@ -26,6 +26,7 @@ var SyllabusKeyInformation = function SyllabusKeyInformation(_ref) {
   var courseLevelCodeHeader = _i18n["default"].messages[languageIndex].courseInformation.course_level_code;
   var courseLevelCodeText = course.nivainomstudieordning.level[language];
   var mainSubjectHeader = _i18n["default"].messages[languageIndex].courseInformation.course_main_subject;
+  console.log(course.huvudomraden);
   return /*#__PURE__*/_react["default"].createElement(_renderer.View, null, /*#__PURE__*/_react["default"].createElement(_renderer.Text, {
     style: _SyllabusStyles["default"].h2
   }, "".concat(courseGradeHeader)), /*#__PURE__*/_react["default"].createElement(_renderer.Text, {
@@ -38,6 +39,8 @@ var SyllabusKeyInformation = function SyllabusKeyInformation(_ref) {
     style: _SyllabusStyles["default"].h2
   }, "".concat(mainSubjectHeader)), /*#__PURE__*/_react["default"].createElement(_renderer.Text, {
     style: _SyllabusStyles["default"].bodyText
-  }, "".concat(course.huvudomraden[0][language]))));
+  }, "".concat(course.huvudomraden.map(function (item) {
+    return item[language];
+  }).join(', ')))));
 };
 var _default = exports["default"] = SyllabusKeyInformation;

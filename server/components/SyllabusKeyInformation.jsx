@@ -22,6 +22,8 @@ const SyllabusKeyInformation = ({ syllabus, language }) => {
   const courseLevelCodeText = course.nivainomstudieordning.level[language]
   const mainSubjectHeader = i18n.messages[languageIndex].courseInformation.course_main_subject
 
+  console.log(course.huvudomraden)
+
   return (
     <View>
       <Text style={styles.h2}>{`${courseGradeHeader}`}</Text>
@@ -31,7 +33,8 @@ const SyllabusKeyInformation = ({ syllabus, language }) => {
       {showMainSubject(course) && (
         <View>
           <Text style={styles.h2}>{`${mainSubjectHeader}`}</Text>
-          <Text style={styles.bodyText}>{`${course.huvudomraden[0][language]}`}</Text>
+          {/* <Text style={styles.bodyText}>{`${course.huvudomraden[0][language]}`}</Text> */}
+          <Text style={styles.bodyText}>{`${course.huvudomraden.map(item => item[language]).join(', ')}`}</Text>
         </View>
       )}
     </View>
