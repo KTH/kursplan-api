@@ -26,7 +26,6 @@ var SyllabusKeyInformation = function SyllabusKeyInformation(_ref) {
   var courseLevelCodeHeader = _i18n["default"].messages[languageIndex].courseInformation.course_level_code;
   var courseLevelCodeText = course.nivainomstudieordning.level[language];
   var mainSubjectHeader = _i18n["default"].messages[languageIndex].courseInformation.course_main_subject;
-  console.log(course.huvudomraden);
   return /*#__PURE__*/_react["default"].createElement(_renderer.View, null, /*#__PURE__*/_react["default"].createElement(_renderer.Text, {
     style: _SyllabusStyles["default"].h2
   }, "".concat(courseGradeHeader)), /*#__PURE__*/_react["default"].createElement(_renderer.Text, {
