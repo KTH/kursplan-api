@@ -11,7 +11,7 @@ const footerText = (languageIndex, syllabus) => {
     translation.for_code +
     kod +
     translation.valid_from +
-    syllabus.kursplan.giltigfrom.slice(0, 2) +
+    (syllabus.kursplan.giltigfrom.slice(0, 2) === 'VT' ? 'Spring ' : 'Autumn ') +
     syllabus.kursplan.giltigfrom.slice(4) +
     translation.edition +
     syllabus.kursplan.utgava
