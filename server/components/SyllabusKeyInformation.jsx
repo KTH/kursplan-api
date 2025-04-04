@@ -22,8 +22,6 @@ const SyllabusKeyInformation = ({ syllabus, language }) => {
   const courseLevelCodeText = course.nivainomstudieordning.level[language]
   const mainSubjectHeader = i18n.messages[languageIndex].courseInformation.course_main_subject
 
-  console.log(course.huvudomraden)
-
   return (
     <View>
       <Text style={styles.h2}>{`${courseGradeHeader}`}</Text>
