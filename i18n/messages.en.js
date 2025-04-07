@@ -93,8 +93,12 @@ module.exports = {
     course_additional_regulations: 'Additional regulations',
     course_short_semester: {
       1: 'Spring ',
-      2: 'Autumn '
-    }
+      2: 'Autumn ',
+    },
+    ladok_semester: {
+      VT: 'Spring ',
+      HT: 'Autumn ',
+    },
   },
   course_pdf_footer_string: {
     for_code: 'Course syllabus for ',

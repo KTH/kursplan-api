@@ -93,7 +93,11 @@ module.exports = {
     course_short_semester: {
       1: 'VT ',
       2: 'HT '
-    }
+    },
+    ladok_semester: {
+      VT: 'VT',
+      HT: 'HT',
+    },
   },
   course_pdf_footer_string: {
     for_code: 'Kursplan för ',
