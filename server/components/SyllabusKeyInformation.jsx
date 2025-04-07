@@ -19,7 +19,10 @@ const SyllabusKeyInformation = ({ syllabus, language }) => {
 
   const courseGradeHeader = i18n.messages[languageIndex].courseInformation.course_grade_label
   const courseLevelCodeHeader = i18n.messages[languageIndex].courseInformation.course_level_code
-  const courseLevelCodeText = course.nivainomstudieordning.level[language]
+  const courseLevelCodeText =
+    course.nivainomstudieordning.code === 'FUPKURS'
+      ? courseLevelCodeTextForPreparatory[language]
+      : course.nivainomstudieordning.level[language]
   const mainSubjectHeader = i18n.messages[languageIndex].courseInformation.course_main_subject
 
   return (
