@@ -7,12 +7,13 @@ Object.defineProperty(exports, "__esModule", {
 exports["default"] = void 0;
 var _react = _interopRequireDefault(require("react"));
 var _renderer = require("@react-pdf/renderer");
+var _semesterUtils = require("../utils/semesterUtils");
 var _SyllabusStyles = _interopRequireDefault(require("./SyllabusStyles"));
 var _i18n = _interopRequireDefault(require("../../i18n"));
 var footerText = function footerText(languageIndex, syllabus) {
   var kod = syllabus.course.kod;
   var translation = _i18n["default"].messages[languageIndex].course_pdf_footer_string;
-  return translation.for_code + kod + translation.valid_from + (syllabus.kursplan.giltigfrom.slice(0, 2) === 'VT' ? 'Spring ' : 'Autumn ') + syllabus.kursplan.giltigfrom.slice(4) + translation.edition + syllabus.kursplan.utgava;
+  return translation.for_code + kod + translation.valid_from + (0, _semesterUtils.getSemesterStringByLanguage)(syllabus.kursplan.giltigfrom, languageIndex) + syllabus.kursplan.giltigfrom.slice(4) + translation.edition + syllabus.kursplan.utgava;
 };
 var SyllabusPageFooter = function SyllabusPageFooter(_ref) {
   var syllabus = _ref.syllabus,
