@@ -1,6 +1,7 @@
 import React from 'react'
 import { View, Text } from '@react-pdf/renderer'
 
+import { getSemesterStringByLanguage } from '../utils/semesterUtils'
 import styles from './SyllabusStyles'
 import i18n from '../../i18n'
 
@@ -11,7 +12,7 @@ const footerText = (languageIndex, syllabus) => {
     translation.for_code +
     kod +
     translation.valid_from +
-    (syllabus.kursplan.giltigfrom.slice(0, 2) === 'VT' ? 'Spring ' : 'Autumn ') +
+    getSemesterStringByLanguage(syllabus.kursplan.giltigfrom, languageIndex) +
     syllabus.kursplan.giltigfrom.slice(4) +
     translation.edition +
     syllabus.kursplan.utgava
