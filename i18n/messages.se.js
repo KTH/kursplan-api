@@ -68,12 +68,6 @@ module.exports = {
     course_language: 'Undervisningsspråk',
     course_required_equipment: 'Utrustning',
     course_level_code: 'Utbildningsnivå',
-    course_level_code_label: {
-      PREPARATORY: 'Förberedande nivå',
-      BASIC: 'Grundnivå',
-      ADVANCED: 'Avancerad nivå',
-      RESEARCH: 'Forskarnivå'
-    },
     course_department: 'Ges av',
     course_contact_name: 'Kontaktperson',
     course_suggested_addon_studies: 'Rekommenderade förkunskaper',
