@@ -24,7 +24,7 @@ var SyllabusKeyInformation = function SyllabusKeyInformation(_ref) {
   var betygsskala = course.betygsskala;
   var courseGradeHeader = _i18n["default"].messages[languageIndex].courseInformation.course_grade_label;
   var courseLevelCodeHeader = _i18n["default"].messages[languageIndex].courseInformation.course_level_code;
-  var courseLevelCodeText = course.nivainomstudieordning.code === 'FUPKURS' ? courseLevelCodeTextForPreparatory[language] : course.nivainomstudieordning.level[language];
+  var courseLevelCodeText = course.nivainomstudieordning.level[language];
   var mainSubjectHeader = _i18n["default"].messages[languageIndex].courseInformation.course_main_subject;
   return /*#__PURE__*/_react["default"].createElement(_renderer.View, null, /*#__PURE__*/_react["default"].createElement(_renderer.Text, {
     style: _SyllabusStyles["default"].h2
