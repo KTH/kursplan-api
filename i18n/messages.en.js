@@ -67,12 +67,6 @@ module.exports = {
     course_language: 'Language of instruction',
     course_required_equipment: 'Equipment',
     course_level_code: 'Education cycle',
-    course_level_code_label: {
-      PREPARATORY: 'Pre-university level',
-      BASIC: 'First cycle',
-      ADVANCED: 'Second cycle',
-      RESEARCH: 'Third cycle'
-    },
     course_department: 'Offered by',
     course_contact_name: 'Contact ',
     course_suggested_addon_studies: 'Recommended prerequisites',
