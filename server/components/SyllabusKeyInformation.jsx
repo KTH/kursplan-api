@@ -31,7 +31,7 @@ const SyllabusKeyInformation = ({ syllabus, language }) => {
       {showMainSubject(course) && (
         <View>
           <Text style={styles.h2}>{`${mainSubjectHeader}`}</Text>
-          <Text style={styles.bodyText}>{`${course.huvudomraden.map(item => item[language]).join(', ')}`}</Text>
+          <Text style={styles.bodyText}>{`${course.huvudomraden?.map(item => item[language]).join(', ')}`}</Text>
         </View>
       )}
     </View>
