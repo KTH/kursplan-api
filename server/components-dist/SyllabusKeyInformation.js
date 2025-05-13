@@ -17,6 +17,7 @@ var showMainSubject = function showMainSubject(course) {
   return educationalLevelCode === '1' || educationalLevelCode === '2';
 };
 var SyllabusKeyInformation = function SyllabusKeyInformation(_ref) {
+  var _course$huvudomraden;
   var syllabus = _ref.syllabus,
     language = _ref.language;
   var languageIndex = language === 'en' ? 0 : 1;
@@ -38,8 +39,8 @@ var SyllabusKeyInformation = function SyllabusKeyInformation(_ref) {
     style: _SyllabusStyles["default"].h2
   }, "".concat(mainSubjectHeader)), /*#__PURE__*/_react["default"].createElement(_renderer.Text, {
     style: _SyllabusStyles["default"].bodyText
-  }, "".concat(course.huvudomraden.map(function (item) {
+  }, ((_course$huvudomraden = course.huvudomraden) !== null && _course$huvudomraden !== void 0 ? _course$huvudomraden : []).map(function (item) {
     return item[language];
-  }).join(', ')))));
+  }).join(', '))));
 };
 var _default = exports["default"] = SyllabusKeyInformation;
