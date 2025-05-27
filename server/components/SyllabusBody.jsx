@@ -6,11 +6,6 @@ import parse from './SyllabusHtmlParser'
 
 import i18n from '../../i18n'
 
-const formatExaminationSection = examinationModules => {
-  const formatted = examinationModules.map(examinationModule => `<li>${examinationModule}</li>`)
-  return `<ul>${formatted.join('')}</ul>`
-}
-
 // Copied logic from generareHTML
 const sectionData = (syllabus = {}) => {
   const { course = {} } = syllabus
@@ -34,7 +29,7 @@ const sectionData = (syllabus = {}) => {
         course_disposition: syllabus.kursplan.kursupplagg || '',
         course_literature: syllabus.kursplan.kurslitteratur,
         course_required_equipment: syllabus.kursplan.gammalutrustning || '',
-        course_examination: formatExaminationSection(syllabus.kursplan.examinationModules.completeExaminationStrings),
+        course_examination: syllabus.kursplan.examinationModules.completeExaminationStrings || '',
         course_examination_comments: syllabus.kursplan.kommentartillexamination || '',
         course_requirments_for_final_grade: syllabus.kursplan.ovrigakravforslutbetyg || '',
         course_transitional_reg: syllabus.course.overgangsbestammelser || '',
