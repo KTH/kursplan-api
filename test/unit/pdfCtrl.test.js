@@ -113,7 +113,7 @@ jest.mock('../../server/ladokApi', () => ({
         kursupplagg: '<p>Föreläsningar, laborationer, slutprojekt och tentamen.</p>',
         sarskildbehorighet: '<p>ID1301 eller ID1018</p>',
         gammalutrustning: '<p>LapTop</p>',
-        examinationModules: {completeExaminationStrings: ['testy testy']}
+        examinationModules: {completeExaminationStrings: '<ul><li>testy testy</li></ul>'}
       },
     })
   ), // Mock the function to return null
