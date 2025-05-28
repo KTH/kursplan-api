@@ -21,7 +21,6 @@ const sectionData = (syllabus = {}) => {
 
   return syllabus
     ? {
-        ...courseAdditionalRegulationsByEduTypeId,
         ...courseEligibilityByEduTypeId,
         course_language: syllabus.kursplan.undervisningssprak,
         course_goals: syllabus.kursplan.larandemal || '',
@@ -34,6 +33,7 @@ const sectionData = (syllabus = {}) => {
         course_requirments_for_final_grade: syllabus.kursplan.ovrigakravforslutbetyg || '',
         course_transitional_reg: syllabus.course.overgangsbestammelser || '',
         course_ethical: syllabus.kursplan.etisktforhallandesatt || '',
+        ...courseAdditionalRegulationsByEduTypeId,
       }
     : {}
 }

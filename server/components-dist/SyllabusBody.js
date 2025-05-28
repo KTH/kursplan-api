@@ -31,7 +31,7 @@ var sectionData = function sectionData() {
   var courseAdditionalRegulationsByEduTypeId = isContractEducation ? {} : {
     course_additional_regulations: syllabus ? syllabus.kursplan.ovrigaForeskrifter : ''
   };
-  return syllabus ? _objectSpread(_objectSpread(_objectSpread({}, courseAdditionalRegulationsByEduTypeId), courseEligibilityByEduTypeId), {}, {
+  return syllabus ? _objectSpread(_objectSpread({}, courseEligibilityByEduTypeId), {}, {
     course_language: syllabus.kursplan.undervisningssprak,
     course_goals: syllabus.kursplan.larandemal || '',
     course_content: syllabus.kursplan.kursinnehall || '',
@@ -43,7 +43,7 @@ var sectionData = function sectionData() {
     course_requirments_for_final_grade: syllabus.kursplan.ovrigakravforslutbetyg || '',
     course_transitional_reg: syllabus.course.overgangsbestammelser || '',
     course_ethical: syllabus.kursplan.etisktforhallandesatt || ''
-  }) : {};
+  }, courseAdditionalRegulationsByEduTypeId) : {};
 };
 var renderSections = function renderSections(syllabus, languageIndex) {
   var sectionsContent = sectionData(syllabus);
