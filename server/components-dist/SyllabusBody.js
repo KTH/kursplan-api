@@ -29,7 +29,7 @@ var sectionData = function sectionData() {
     course_eligibility: syllabus ? syllabus.kursplan.sarskildbehorighet : ''
   };
   var courseAdditionalRegulationsByEduTypeId = isContractEducation ? {} : {
-    course_additional_regulations: syllabus ? syllabus.kursplan.additionalRegulations : ''
+    course_additional_regulations: syllabus ? syllabus.kursplan.ovrigaForeskrifter : ''
   };
   return syllabus ? _objectSpread(_objectSpread(_objectSpread({}, courseAdditionalRegulationsByEduTypeId), courseEligibilityByEduTypeId), {}, {
     course_language: syllabus.kursplan.undervisningssprak,

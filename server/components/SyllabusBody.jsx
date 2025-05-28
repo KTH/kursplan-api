@@ -17,7 +17,7 @@ const sectionData = (syllabus = {}) => {
     : { course_eligibility: syllabus ? syllabus.kursplan.sarskildbehorighet : '' }
   const courseAdditionalRegulationsByEduTypeId = isContractEducation
     ? {}
-    : { course_additional_regulations: syllabus ? syllabus.kursplan.additionalRegulations : '' }
+    : { course_additional_regulations: syllabus ? syllabus.kursplan.ovrigaForeskrifter : '' }
 
   return syllabus
     ? {
