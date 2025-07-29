@@ -73,7 +73,7 @@ jest.mock('../../server/ladokApi', () => ({
           '</ul>\n' +
           '<p>(Introduktion till Ruby)</p>\n' +
           '<p>(Introduktion till Rails)</p>',
-        etisktforhallandesatt:
+        etisktforhallningssatt:
           '<ul>\n' +
           '<li>Vid grupparbete har alla i gruppen ansvar för gruppens arbete.</li>\n' +
           '<li>Vid examination ska varje student ärligt redovisa hjälp som erhållits och källor som använts.</li>\n' +

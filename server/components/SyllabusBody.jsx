@@ -32,7 +32,7 @@ const sectionData = (syllabus = {}) => {
         course_examination_comments: syllabus.kursplan.kommentartillexamination || '',
         course_requirments_for_final_grade: syllabus.kursplan.ovrigakravforslutbetyg || '',
         course_transitional_reg: syllabus.course.overgangsbestammelser || '',
-        course_ethical: syllabus.kursplan.etisktforhallandesatt || '',
+        course_ethical: syllabus.kursplan.etisktforhallningssatt || '',
         ...courseAdditionalRegulationsByEduTypeId,
       }
     : {}
