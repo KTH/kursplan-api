@@ -10,7 +10,7 @@ var _renderer = require("@react-pdf/renderer");
 var _SyllabusStyles = _interopRequireDefault(require("./SyllabusStyles"));
 var _i18n = _interopRequireDefault(require("../../i18n"));
 var getEducationalLevelCode = function getEducationalLevelCode(course) {
-  return course.nivainomstudieordning.level.code;
+  return course.utbildningstyp.level.code;
 };
 var showMainSubject = function showMainSubject(course) {
   var educationalLevelCode = getEducationalLevelCode(course);
@@ -25,13 +25,13 @@ var SyllabusKeyInformation = function SyllabusKeyInformation(_ref) {
   var betygsskala = course.betygsskala;
   var courseGradeHeader = _i18n["default"].messages[languageIndex].courseInformation.course_grade_label;
   var courseLevelCodeHeader = _i18n["default"].messages[languageIndex].courseInformation.course_level_code;
-  var courseLevelCodeText = course.nivainomstudieordning.level[language];
+  var courseLevelCodeText = course.utbildningstyp.level.name;
   var mainSubjectHeader = _i18n["default"].messages[languageIndex].courseInformation.course_main_subject;
   return /*#__PURE__*/_react["default"].createElement(_renderer.View, null, /*#__PURE__*/_react["default"].createElement(_renderer.Text, {
     style: _SyllabusStyles["default"].h2
   }, "".concat(courseGradeHeader)), /*#__PURE__*/_react["default"].createElement(_renderer.Text, {
     style: _SyllabusStyles["default"].bodyText
-  }, "".concat(betygsskala)), /*#__PURE__*/_react["default"].createElement(_renderer.Text, {
+  }, "".concat(betygsskala.formatted)), /*#__PURE__*/_react["default"].createElement(_renderer.Text, {
     style: _SyllabusStyles["default"].h2
   }, "".concat(courseLevelCodeHeader)), /*#__PURE__*/_react["default"].createElement(_renderer.Text, {
     style: _SyllabusStyles["default"].bodyText
@@ -40,7 +40,7 @@ var SyllabusKeyInformation = function SyllabusKeyInformation(_ref) {
   }, "".concat(mainSubjectHeader)), /*#__PURE__*/_react["default"].createElement(_renderer.Text, {
     style: _SyllabusStyles["default"].bodyText
   }, ((_course$huvudomraden = course.huvudomraden) !== null && _course$huvudomraden !== void 0 ? _course$huvudomraden : []).map(function (item) {
-    return item[language];
+    return item.name;
   }).join(', '))));
 };
 var _default = exports["default"] = SyllabusKeyInformation;
