@@ -38,9 +38,9 @@ var SyllabusHead = function SyllabusHead(_ref) {
     src: _pdfConstants.logotypePath
   }), /*#__PURE__*/_react["default"].createElement(_renderer.Text, {
     style: _SyllabusStyles["default"].h1
-  }, "".concat(kod, " ").concat(benamning[language], " ").concat(omfattning)), /*#__PURE__*/_react["default"].createElement(_renderer.Text, {
+  }, "".concat(kod, " ").concat(benamning.name, " ").concat(omfattning)), /*#__PURE__*/_react["default"].createElement(_renderer.Text, {
     style: _SyllabusStyles["default"].subHeader
-  }, "".concat(benamning[language === 'sv' ? 'en' : 'sv'])), /*#__PURE__*/_react["default"].createElement(_renderer.View, {
+  }, "".concat(benamning.nameOther)), /*#__PURE__*/_react["default"].createElement(_renderer.View, {
     style: _SyllabusStyles["default"].disclaimer
   }, /*#__PURE__*/_react["default"].createElement(_renderer.Text, {
     style: _SyllabusStyles["default"].p

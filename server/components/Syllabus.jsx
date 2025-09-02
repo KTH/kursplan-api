@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react'
 
-import SyllabusDocument from "./SyllabusDocument";
+import SyllabusDocument from './SyllabusDocument'
 
-const Syllabus = (props) => <SyllabusDocument {...props} />;
+const Syllabus = props => <SyllabusDocument {...props} />
 
-export default Syllabus;
+export default Syllabus

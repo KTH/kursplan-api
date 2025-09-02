@@ -24,8 +24,8 @@ const SyllabusHead = ({ syllabus, language }) => {
   return (
     <View>
       <Image style={styles.logotype} src={logotypePath} />
-      <Text style={styles.h1}>{`${kod} ${benamning[language]} ${omfattning}`}</Text>
-      <Text style={styles.subHeader}>{`${benamning[language === 'sv' ? 'en' : 'sv']}`}</Text>
+      <Text style={styles.h1}>{`${kod} ${benamning.name} ${omfattning}`}</Text>
+      <Text style={styles.subHeader}>{`${benamning.nameOther}`}</Text>
       <View style={styles.disclaimer}>
         <Text style={styles.p}>{`${translationText}`}</Text>
         {discontinuationText && <Text style={styles.p}>{`${discontinuationText}`}</Text>}

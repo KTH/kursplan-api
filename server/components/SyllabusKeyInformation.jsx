@@ -5,7 +5,7 @@ import styles from './SyllabusStyles'
 
 import i18n from '../../i18n'
 
-const getEducationalLevelCode = course => course.nivainomstudieordning.level.code
+const getEducationalLevelCode = course => course.utbildningstyp.level.code
 
 const showMainSubject = course => {
   const educationalLevelCode = getEducationalLevelCode(course)
@@ -19,19 +19,19 @@ const SyllabusKeyInformation = ({ syllabus, language }) => {
 
   const courseGradeHeader = i18n.messages[languageIndex].courseInformation.course_grade_label
   const courseLevelCodeHeader = i18n.messages[languageIndex].courseInformation.course_level_code
-  const courseLevelCodeText = course.nivainomstudieordning.level[language]
+  const courseLevelCodeText = course.utbildningstyp.level.name
   const mainSubjectHeader = i18n.messages[languageIndex].courseInformation.course_main_subject
 
   return (
     <View>
       <Text style={styles.h2}>{`${courseGradeHeader}`}</Text>
-      <Text style={styles.bodyText}>{`${betygsskala}`}</Text>
+      <Text style={styles.bodyText}>{`${betygsskala.formatted}`}</Text>
       <Text style={styles.h2}>{`${courseLevelCodeHeader}`}</Text>
       <Text style={styles.bodyText}>{`${courseLevelCodeText}`}</Text>
       {showMainSubject(course) && (
         <View>
           <Text style={styles.h2}>{`${mainSubjectHeader}`}</Text>
-          <Text style={styles.bodyText}>{(course.huvudomraden ?? []).map(item => item[language]).join(', ')}</Text>
+          <Text style={styles.bodyText}>{(course.huvudomraden ?? []).map(item => item.name).join(', ')}</Text>
         </View>
       )}
     </View>
