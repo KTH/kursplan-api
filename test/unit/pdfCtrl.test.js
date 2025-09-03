@@ -28,13 +28,13 @@ jest.mock('../../server/ladokApi', () => ({
         },
         omfattning: { number: '7.5', formattedWithUnit: '7,5 hp' },
         betygsskala: 'A, B, C, D, E, FX, F',
-        nivainomstudieordning:  {
+        utbildningstyp: {
           id: '22',
           code: '2007GKURS',
           sv: 'Kurs, grundnivå',
           en: 'Course, First-cycle',
           creditsUnit: { code: 'HP', sv: 'Högskolepoäng', en: 'Credits' },
-          level: { code: '1', sv: 'Grundnivå', en: 'First cycle' }
+          level: { code: '1', sv: 'Grundnivå', en: 'First cycle' },
         },
         huvudomraden: [[Object], [Object]],
         overgangsbestammelser: undefined,
@@ -113,7 +113,7 @@ jest.mock('../../server/ladokApi', () => ({
         kursupplagg: '<p>Föreläsningar, laborationer, slutprojekt och tentamen.</p>',
         sarskildbehorighet: '<p>ID1301 eller ID1018</p>',
         gammalutrustning: '<p>LapTop</p>',
-        examinationModules: {completeExaminationStrings: '<ul><li>testy testy</li></ul>'}
+        examinationModules: { completeExaminationStrings: '<ul><li>testy testy</li></ul>' },
       },
     })
   ), // Mock the function to return null
