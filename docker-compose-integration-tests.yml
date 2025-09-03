@@ -1,5 +1,3 @@
-version: '3.7'
-
 services:
   api:
     image: $LOCAL_IMAGE_ID
