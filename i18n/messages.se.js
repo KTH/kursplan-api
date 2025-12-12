@@ -131,6 +131,8 @@ module.exports = {
     round_application_link: 'Anmälningslänk',
     round_type: 'Typ av kurstillfälle',
     round_time_slots: 'Planerade moduler'
-  }
-
+  },
+  syllabusErrorMessages: {
+    syllabus_fetching_error: ({code, time_stamp}) => `Kunde inte skapa kursplan för ${code}. Tidpunkt: ${time_stamp}. Försök igen om ett tag och kontakta IT-support med detta felmeddelande om problemet kvarstår.`,
+  },
 }
