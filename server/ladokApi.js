@@ -9,14 +9,9 @@ const client = createApiClient(serverConfig.ladokMellanlagerApi)
 
 async function getLadokSyllabus(courseCode, semester, lang) {
   try {
-    const course = await client.getCourseSyllabus(courseCode, semester, lang)
-
-    return course
+    return client.getCourseSyllabus(courseCode, semester, lang)
   } catch (error) {
-    const languageIndex = lang === 'en' ? 0 : 1
-    const status = error.response?.status || 500
-    const message = i18n.messages[languageIndex].syllabusErrorMessages.syllabus_fetching_error({ code: courseCode, time_stamp: new Date().toISOString() })
-    throw new Error(`Status code ${status}: ${message}`)
+    throw new Error(error.message)
   }
 }
 

@@ -2,6 +2,7 @@
 
 const log = require('@kth/log')
 
+const i18n = require('../../i18n')
 const { getLadokSyllabus } = require('../ladokApi')
 const { createPdf } = require('../libs/pdfRenderer.js')
 
@@ -21,7 +22,7 @@ async function _getSyllabus(req, res, next) {
   try {
     const syllabus = await getLadokSyllabus(courseCode, semester, language)
 
-    if (syllabus == null) {
+    if (!syllabus) {
       log.debug(`Could not get a syllabus for ${courseCode}, ${semester}, ${language}.`)
       res.sendStatus(404)
       return
@@ -43,7 +44,11 @@ async function _getSyllabus(req, res, next) {
     )
   } catch (err) {
     log.error('getSyllabus: Failed request for PDF, error:', { err })
-    next(err)
+    const languageIndex = language === 'en' ? 0 : 1
+    const status = err.response?.status || 500
+    const message = i18n.messages[languageIndex].syllabusErrorMessages.syllabus_fetching_error({ code: courseCode, semester, time_stamp: new Date().toISOString() })
+    const error = new Error(`${status}: ${message}`)
+    next(error)
   }
 }
 
