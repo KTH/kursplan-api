@@ -132,5 +132,8 @@ module.exports = {
     round_type: 'Type of round',
     round_time_slots: 'Planned timeslots',
     round_application_link: 'Application link'
-  }
+  },
+  syllabusErrorMessages: {
+    syllabus_fetching_error: ({ code, semester, time_stamp }) => `Could not create syllabus for ${code}-${semester}. Time: ${time_stamp}. Please try again later and contact IT support with this error message if the problem persists.`,
+  },
 }
