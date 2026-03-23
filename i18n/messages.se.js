@@ -62,6 +62,7 @@ module.exports = {
     course_literature: 'Kurslitteratur',
     course_literature_comment: '',
     course_examination_comments: '',
+    course_examination_comments_freetext: '',
     course_examination: 'Examination',
     course_valid_from: 'Giltig från',
     course_main_subject: 'Huvudområden',
