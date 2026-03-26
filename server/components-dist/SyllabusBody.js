@@ -39,6 +39,7 @@ var sectionData = function sectionData() {
     course_required_equipment: syllabus.kursplan.gammalutrustning || '',
     course_examination: syllabus.kursplan.examinationModules.completeExaminationStrings || '',
     course_examination_comments: syllabus.kursplan.kommentartillexamination || '',
+    course_examination_comments_freetext: syllabus.kursplan.kommentartillexaminationfritext || '',
     course_requirments_for_final_grade: syllabus.kursplan.ovrigakravforslutbetyg || '',
     course_transitional_reg: syllabus.course.overgangsbestammelser || '',
     course_ethical: syllabus.kursplan.etisktforhallningssatt || ''
