@@ -15,6 +15,9 @@
     "build": "babel server/components --out-dir server/components-dist",
     "start": "NODE_ENV=production node app.js",
     "start-dev": "cross-env NODE_ENV=development nodemon app.js",
+    "start-dev-debug": "cross-env NODE_ENV=development nodemon --inspect app.js",
+    "use-local-oklc": "npm install file:../studadm-om-kursen-packages/packages/om-kursen-ladok-client --no-save",
+    "use-published-oklc": "npm ci",
     "start-debug": "cross-env NODE_ENV=development nodemon -- --inspect app.js"
   },
   "dependencies": {
