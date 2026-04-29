@@ -59,6 +59,7 @@ module.exports = {
     course_disposition: 'Kursupplägg',
     course_eligibility: 'Särskild behörighet',
     course_requirments_for_final_grade: 'Övriga krav för slutbetyg',
+    course_transitional_regulations: 'Övergångsbestämmelser',
     course_literature: 'Kurslitteratur',
     course_literature_comment: '',
     course_examination_comments: '',
