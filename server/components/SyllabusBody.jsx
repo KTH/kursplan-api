@@ -21,21 +21,22 @@ const sectionData = (syllabus = {}) => {
 
   return syllabus
     ? {
-      ...courseEligibilityByEduTypeId,
-      course_language: syllabus.kursplan.undervisningssprak,
-      course_goals: syllabus.kursplan.larandemal || '',
-      course_content: syllabus.kursplan.kursinnehall || '',
-      course_disposition: syllabus.kursplan.kursupplagg || '',
-      course_literature: syllabus.kursplan.kurslitteratur,
-      course_required_equipment: syllabus.kursplan.gammalutrustning || '',
-      course_examination: syllabus.kursplan.examinationModules.completeExaminationStrings || '',
-      course_examination_comments: syllabus.kursplan.kommentartillexamination || '',
-      course_examination_comments_freetext: syllabus.kursplan.kommentartillexaminationfritext || '',
-      course_requirments_for_final_grade: syllabus.kursplan.ovrigakravforslutbetyg || '',
-      course_transitional_reg: syllabus.course.overgangsbestammelser || '',
-      course_ethical: syllabus.kursplan.etisktforhallningssatt || '',
-      ...courseAdditionalRegulationsByEduTypeId,
-    }
+        ...courseEligibilityByEduTypeId,
+        course_language: syllabus.kursplan.undervisningssprak,
+        course_goals: syllabus.kursplan.larandemal || '',
+        course_content: syllabus.kursplan.kursinnehall || '',
+        course_disposition: syllabus.kursplan.kursupplagg || '',
+        course_literature: syllabus.kursplan.kurslitteratur,
+        course_required_equipment: syllabus.kursplan.gammalutrustning || '',
+        course_examination: syllabus.kursplan.examinationModules.completeExaminationStrings || '',
+        course_examination_comments: syllabus.kursplan.kommentartillexamination || '',
+        course_examination_comments_freetext: syllabus.kursplan.kommentartillexaminationfritext || '',
+        course_requirments_for_final_grade: syllabus.kursplan.ovrigakravforslutbetyg || '',
+        course_transitional_regulations: syllabus.kursplan.overgangsbestammelser || '',
+        course_transitional_reg: syllabus.course.overgangsbestammelser || '',
+        course_ethical: syllabus.kursplan.etisktforhallningssatt || '',
+        ...courseAdditionalRegulationsByEduTypeId,
+      }
     : {}
 }
 

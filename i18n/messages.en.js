@@ -58,6 +58,7 @@ module.exports = {
     course_disposition: 'Disposition',
     course_eligibility: 'Specific prerequisites',
     course_requirments_for_final_grade: 'Other requirements for final grade',
+    course_transitional_regulations: 'Transitional regulations',
     course_literature: 'Course literature',
     course_literature_comment: '',
     course_examination_comments: '',
